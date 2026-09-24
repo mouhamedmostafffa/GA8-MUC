@@ -73,7 +73,7 @@
         <img src="./icon.png" class="w-9 h-9 rounded-xl shrink-0" alt="A8"/>
         <div class="leading-tight min-w-0">
           <h1 class="text-sm font-bold text-white font-head" style="direction:ltr">A8 Schedule</h1>
-          <p class="text-[10px] text-zinc-400 truncate"><span data-i18n="subtitle">Weekly Schedule</span><span id="weather-chip"></span></p>
+          <p class="text-[10px] text-zinc-400 truncate"><span data-i18n="subtitle">Weekly Schedule</span><span id="group-chip"></span><span id="weather-chip"></span></p>
         </div>
       </div>
       <div class="flex items-center gap-2 relative z-10 shrink-0">
@@ -123,11 +123,11 @@
     </div>
   </section>
 
-  <section class="glass rounded-2xl p-3 flex items-center justify-between rise" style="animation-delay:.2s">
+  <section id="week-card" class="glass rounded-2xl p-3 flex items-center justify-between rise" style="animation-delay:.2s">
     <div class="flex items-center gap-2 relative z-10">
       <i class="fa-solid fa-repeat text-zinc-300 text-sm"></i>
       <div><p class="text-xs font-bold text-white" data-i18n="weekTitle">Odd / even week</p>
-      <p class="text-[10px] text-zinc-400" data-i18n="weekDesc">Switches Tuesday Physics between Exercise and Lab</p></div>
+      <p class="text-[10px] text-zinc-400" id="week-desc">Switches Tuesday Physics between Exercise and Lab</p></div>
     </div>
     <div class="flex glass rounded-full p-1 relative z-10" id="week-switch">
       <button data-w="odd" class="w-switch px-3 py-1 rounded-full text-[11px] font-bold transition" data-i18n="odd">Odd</button>
@@ -138,7 +138,7 @@
   <div class="flex gap-2.5 overflow-x-auto no-scrollbar py-1.5 rise" id="day-tabs" style="animation-delay:.26s"></div>
   <p class="text-[11px] text-zinc-400" id="stats-line"></p>
   <div class="flex gap-2 overflow-x-auto no-scrollbar text-[10px] rise" id="legend" style="animation-delay:.3s"></div>
-  <p class="text-[10px] text-zinc-500 -mt-3" data-i18n="legendNote">ODD / EVEN = session runs on odd or even weeks only</p>
+  <p id="legend-note" class="text-[10px] text-zinc-500 -mt-3" data-i18n="legendNote">ODD / EVEN = session runs on odd or even weeks only</p>
 
   <section id="lecture-list" class="space-y-3.5"></section>
 </main>
@@ -161,6 +161,8 @@
     <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold text-white" data-i18n="settingsTitle">Settings</h2>
       <button data-close class="w-8 h-8 rounded-full glass flex items-center justify-center text-zinc-300"><i class="fa-solid fa-xmark text-xs"></i></button></div>
     <div class="space-y-4 text-sm">
+      <div><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="groupLabel">Group</p>
+        <div class="seg glass rounded-full p-1" id="group-seg"></div></div>
       <div><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="theme">Appearance</p>
         <div class="seg glass rounded-full p-1" id="theme-seg"><button data-v="dark" data-i18n="dark">Dark</button><button data-v="light" data-i18n="light">Light</button></div></div>
       <div><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="arFont">Arabic font</p>
@@ -205,8 +207,8 @@
 
 <script>
 const I18N = {
-en:{subtitle:"Weekly Schedule",nextClass:"Next class",room:"Room",weekTitle:"Odd / even week",weekDesc:"Switches Tuesday Physics between Exercise and Lab",odd:"Odd",even:"Even",noClass:"No classes today",install:"Install this app",installDesc:"Works offline with reminders before class",installBtn:"Install",iosInstall:'Tap Share, then "Add to Home Screen"',today:"Today",share:"Share",notify:"Alerts",remindOn:"Reminder on",remindOff:"Remind me before",offline:"You're offline",searchPh:"Search a course or doctor",settingsTitle:"Settings",theme:"Appearance",dark:"Dark",light:"Light",arFont:"Arabic font",reminderDefault:"Default reminder time",testNotif:"Send a test notification",aboutLine:"A8 Schedule · built for GA8, Faculty of Computers & AI",now:"Now",undo:"Undo",gap:"break",noResults:"No matches",busiest:"Busiest day",attendance:"Mark attended (resets weekly)",shareExport:"Share & export",gpaCalc:"GPA calculator",addCourse:"+ Add course",gpaResult:"Estimated GPA",copyLink:"Copy link",nativeShare:"Share via…",showQr:"Show QR code",saveImage:"Save as image",printPdf:"Print / Save as PDF",bgNote:"Background alerts depend on your OS/browser — most reliable when the app stays installed. Not supported on iOS Safari."},
-ar:{subtitle:"الجدول الأسبوعي",nextClass:"المحاضرة الجاية",room:"القاعة",weekTitle:"أسبوع فردي / زوجي",weekDesc:"بيبدّل فيزيا الثلاثاء بين تمرين ومعمل",odd:"فردي",even:"زوجي",noClass:"مفيش محاضرات النهارده",install:"ثبّت التطبيق",installDesc:"يشتغل أوفلاين مع تنبيه قبل كل محاضرة",installBtn:"تثبيت",iosInstall:'دوس Share بعدين "Add to Home Screen"',today:"النهارده",share:"مشاركة",notify:"التنبيهات",remindOn:"التنبيه شغال",remindOff:"نبّهني قبلها بـ",offline:"مفيش نت دلوقتي",searchPh:"دور على مادة أو دكتور",settingsTitle:"الإعدادات",theme:"المظهر",dark:"غامق",light:"فاتح",arFont:"الخط العربي",reminderDefault:"وقت التنبيه الافتراضي",testNotif:"جرّب تنبيه تجريبي",aboutLine:"A8 Schedule · اتعمل لجروب GA8، كلية الحاسبات والذكاء الاصطناعي",now:"دلوقتي",undo:"تراجع",gap:"فترة راحة",noResults:"مفيش نتايج",busiest:"أزحم يوم",attendance:"سجّل حضور (بيتصفر كل أسبوع)",shareExport:"مشاركة وتصدير",gpaCalc:"حاسبة الجي بي إيه",addCourse:"+ ضيف مادة",gpaResult:"الجي بي إيه التقديري",copyLink:"انسخ الرابط",nativeShare:"شارك عبر…",showQr:"اعرض QR كود",saveImage:"احفظ كصورة",printPdf:"اطبع / احفظ PDF",bgNote:"التنبيهات في الخلفية بتعتمد على نظام التشغيل والمتصفح — بتشتغل أفضل لما التطبيق يفضل متثبت. مش مدعومة على iOS Safari."}
+en:{subtitle:"Weekly Schedule",nextClass:"Next class",room:"Room",weekTitle:"Odd / even week",weekDesc:"Switches Tuesday Physics between Exercise and Lab",odd:"Odd",even:"Even",noClass:"No classes today",install:"Install this app",installDesc:"Works offline with reminders before class",installBtn:"Install",iosInstall:'Tap Share, then "Add to Home Screen"',today:"Today",share:"Share",notify:"Alerts",remindOn:"Reminder on",remindOff:"Remind me before",offline:"You're offline",searchPh:"Search a course or doctor",settingsTitle:"Settings",theme:"Appearance",dark:"Dark",light:"Light",arFont:"Arabic font",reminderDefault:"Default reminder time",testNotif:"Send a test notification",aboutLine:"A8 Schedule · built for {g}, Faculty of Computers & AI",groupLabel:"Group",switchedTo:"Switched to",legendNote:"ODD / EVEN = session runs on odd or even weeks only",now:"Now",undo:"Undo",gap:"break",noResults:"No matches",busiest:"Busiest day",attendance:"Mark attended (resets weekly)",shareExport:"Share & export",gpaCalc:"GPA calculator",addCourse:"+ Add course",gpaResult:"Estimated GPA",copyLink:"Copy link",nativeShare:"Share via…",showQr:"Show QR code",saveImage:"Save as image",printPdf:"Print / Save as PDF",bgNote:"Background alerts depend on your OS/browser — most reliable when the app stays installed. Not supported on iOS Safari."},
+ar:{subtitle:"الجدول الأسبوعي",nextClass:"المحاضرة الجاية",room:"القاعة",weekTitle:"أسبوع فردي / زوجي",weekDesc:"بيبدّل فيزيا الثلاثاء بين تمرين ومعمل",odd:"فردي",even:"زوجي",noClass:"مفيش محاضرات النهارده",install:"ثبّت التطبيق",installDesc:"يشتغل أوفلاين مع تنبيه قبل كل محاضرة",installBtn:"تثبيت",iosInstall:'دوس Share بعدين "Add to Home Screen"',today:"النهارده",share:"مشاركة",notify:"التنبيهات",remindOn:"التنبيه شغال",remindOff:"نبّهني قبلها بـ",offline:"مفيش نت دلوقتي",searchPh:"دور على مادة أو دكتور",settingsTitle:"الإعدادات",theme:"المظهر",dark:"غامق",light:"فاتح",arFont:"الخط العربي",reminderDefault:"وقت التنبيه الافتراضي",testNotif:"جرّب تنبيه تجريبي",aboutLine:"A8 Schedule · اتعمل لجروب {g}، كلية الحاسبات والذكاء الاصطناعي",groupLabel:"الجروب",switchedTo:"اتبدّل لجروب",legendNote:"فردي / زوجي = الحصة بتحصل في الأسابيع الفردية أو الزوجية بس",now:"دلوقتي",undo:"تراجع",gap:"فترة راحة",noResults:"مفيش نتايج",busiest:"أزحم يوم",attendance:"سجّل حضور (بيتصفر كل أسبوع)",shareExport:"مشاركة وتصدير",gpaCalc:"حاسبة الجي بي إيه",addCourse:"+ ضيف مادة",gpaResult:"الجي بي إيه التقديري",copyLink:"انسخ الرابط",nativeShare:"شارك عبر…",showQr:"اعرض QR كود",saveImage:"احفظ كصورة",printPdf:"اطبع / احفظ PDF",bgNote:"التنبيهات في الخلفية بتعتمد على نظام التشغيل والمتصفح — بتشتغل أفضل لما التطبيق يفضل متثبت. مش مدعومة على iOS Safari."}
 };
 const DAYNAMES = { sat:{en:'Saturday',ar:'السبت'}, sun:{en:'Sunday',ar:'الأحد'}, mon:{en:'Monday',ar:'الإثنين'}, tue:{en:'Tuesday',ar:'الثلاثاء'}, wed:{en:'Wednesday',ar:'الأربعاء'}, thu:{en:'Thursday',ar:'الخميس'} };
 const CATS = { lecture:{color:'#93A6B8',icon:'fa-chalkboard-user'}, lab:{color:'#8FB89B',icon:'fa-flask'}, exercise:{color:'#C79B77',icon:'fa-pen'}, community:{color:'#B0A98E',icon:'fa-people-group'} };
@@ -214,7 +216,8 @@ const TYPE_AR = {Lecture:'محاضرة',Laboratory:'معمل',Exercise:'تمري
 const PERIODS = {1:'09:00 – 10:40',2:'10:50 – 12:30',3:'12:40 – 14:20',4:'14:20 – 16:00'};
 const PMIN = {1:[540,640],2:[650,750],3:[760,860],4:[860,960]};
 const DAYS = [{key:'sat',idx:6},{key:'sun',idx:0},{key:'mon',idx:1},{key:'tue',idx:2},{key:'wed',idx:3},{key:'thu',idx:4}];
-const L = [
+const GROUPS = {
+ GA8:[
  {day:'sun',p:1,code:'CAI115',title:'CAI115 – Introduction to Computer Science',titleAr:'CAI115 – مقدمة في علوم الحاسب',type:'Lecture',cat:'lecture',room:'C333',staff:'Prof. Rania, Dr. Yasser, Dr. Ghada',staffAr:'أ.د رانيا، د.ياسر، د.غادة'},
  {day:'sun',p:2,code:'BSC111',title:'BSC111 – Physics',titleAr:'BSC111 – فيزياء',type:'Lecture',cat:'lecture',room:'C333',staff:'Prof. Hany, Dr. Kareem, Dr. Ahmed Fawzy',staffAr:'أ.د هاني، د.كريم، د.أحمد فوزي'},
  {day:'sun',p:3,code:'UNI109',title:'UNI109 – Critical Thinking and Problem-Solving',titleAr:'UNI109 – التفكير الناقد وحل المشكلات',type:'Laboratory',cat:'lab',room:'P.L.C228',staff:'L.A. Ganna',staffAr:'م.م جنا'},
@@ -229,7 +232,66 @@ const L = [
  {day:'thu',p:1,code:'BSC112',title:'BSC112 – Calculus I',titleAr:'BSC112 – تفاضل وتكامل (1)',type:'Exercise',cat:'exercise',room:'C223',staff:'L.A. Asmaa, T.A. Albaraa',staffAr:'م.م أسماء، م.م البراء'},
  {day:'thu',p:2,code:'BSC114',title:'BSC114 – Discrete Mathematics',titleAr:'BSC114 – رياضيات متقطعة',type:'Exercise',cat:'exercise',room:'C430',staff:'T.A. Yousef, T.A. M. Esmaeel',staffAr:'م.م يوسف، م.م إسماعيل'},
  {day:'thu',p:3,code:'MATH0',title:'Math 0 – Mathematics 0',titleAr:'Math 0 – رياضيات صفر',type:'Lecture',cat:'lecture',room:'C201',staff:'Prof. Ramy, Dr. Naglaa, Dr. Marwa',staffAr:'أ.د رامي، د.نجلاء، د.مروة'}
-];
+ ],
+ GA6:[
+ {day:'sun',p:1,code:'CAI115',title:'CAI115 – Introduction to Computer Science',titleAr:'CAI115 – مقدمة في علوم الحاسب',type:'Lecture',cat:'lecture',room:'C333',staff:'Prof. Rania, Dr. Yasser, Dr. Ghada',staffAr:'أ.د رانيا، د.ياسر، د.غادة'},
+ {day:'sun',p:2,code:'BSC111',title:'BSC111 – Physics',titleAr:'BSC111 – فيزياء',type:'Lecture',cat:'lecture',room:'C333',staff:'Prof. Hany, Dr. Kareem, Dr. Ahmed Fawzy',staffAr:'أ.د هاني، د.كريم، د.أحمد فوزي'},
+ {day:'sun',p:4,code:'BSC112',title:'BSC112 – Calculus I',titleAr:'BSC112 – تفاضل وتكامل (1)',type:'Exercise',cat:'exercise',room:'C225',staff:'L.A. Andro, T.A. Heba',staffAr:'م.م أندرو، م.م هبة'},
+ {day:'mon',p:1,code:'BSC114',title:'BSC114 – Discrete Mathematics',titleAr:'BSC114 – رياضيات متقطعة',type:'Lecture',cat:'lecture',room:'C201',staff:'Prof. Ramy, Dr. Marwa, Dr. Lamya',staffAr:'أ.د رامي، د.مروة، د.لمياء'},
+ {day:'mon',p:2,code:'BSC112',title:'BSC112 – Calculus I',titleAr:'BSC112 – تفاضل وتكامل (1)',type:'Lecture',cat:'lecture',room:'C201',staff:'Prof. Ramy, Dr. Naglaa',staffAr:'أ.د رامي، د.نجلاء'},
+ {day:'mon',p:3,code:'UNI101',title:'UNI101 – Professional Ethics and Legal Aspects',titleAr:'UNI101 – أخلاقيات المهنة والجوانب القانونية',type:'Lecture',cat:'lecture',room:'C201',staff:'Prof. Hany, Dr. Bahaa',staffAr:'أ.د هاني، د.بهاء'},
+ {day:'mon',p:4,code:'UNI109',title:'UNI109 – Critical Thinking and Problem-Solving',titleAr:'UNI109 – التفكير الناقد وحل المشكلات',type:'Lecture',cat:'lecture',room:'C201',staff:'Prof. Rania, Dr. Abdullah',staffAr:'أ.د رانيا، د.عبدالله'},
+ {day:'tue',p:1,code:'BSC111',title:'BSC111 – Physics',titleAr:'BSC111 – فيزياء',type:'Exercise',cat:'exercise',room:'C432',staff:"T.A. Mo'men, T.A. Gana",staffAr:'م.م مؤمن، م.م جانا',alt:{type:'Laboratory',cat:'lab',room:'Phys. Lab',staff:"T.A. Mo'men, T.A. Gana",staffAr:'م.م مؤمن، م.م جانا'}},
+ {day:'tue',p:2,code:'CAI115',title:'CAI115 – Introduction to Computer Science',titleAr:'CAI115 – مقدمة في علوم الحاسب',type:'Laboratory',cat:'lab',room:'P.L.C334',staff:'L.A. Engy, T.A. M.Khaled',staffAr:'م.م إنجي، م.م خالد'},
+ {day:'tue',p:3,code:'—',title:'Community Activities',titleAr:'الأنشطة الطلابية',type:'Community Activity',cat:'community',room:'C333',staff:'',staffAr:''},
+ {day:'tue',p:4,code:'MATH0',title:'Math 0 – Mathematics 0',titleAr:'Math 0 – رياضيات صفر',type:'Section',cat:'exercise',room:'C224',staff:'T.A. A. Othman',staffAr:'م.م أ.عثمان'},
+ {day:'thu',p:1,code:'BSC114',title:'BSC114 – Discrete Mathematics',titleAr:'BSC114 – رياضيات متقطعة',type:'Exercise',cat:'exercise',room:'C430',staff:'T.A. Yousef, T.A. M. Esmaeel',staffAr:'م.م يوسف، م.م إسماعيل'},
+ {day:'thu',p:2,code:'UNI109',title:'UNI109 – Critical Thinking and Problem-Solving',titleAr:'UNI109 – التفكير الناقد وحل المشكلات',type:'Laboratory',cat:'lab',room:'P.L.C334',staff:'L.A. Shahd',staffAr:'م.م شهد'},
+ {day:'thu',p:3,code:'MATH0',title:'Math 0 – Mathematics 0',titleAr:'Math 0 – رياضيات صفر',type:'Lecture',cat:'lecture',room:'C201',staff:'Prof. Ramy, Dr. Naglaa, Dr. Marwa',staffAr:'أ.د رامي، د.نجلاء، د.مروة'}
+ ],
+ GC1:[
+ {day:'sun',p:1,code:'CAI115',title:'CAI115 – Introduction to Computer Science',titleAr:'CAI115 – مقدمة في علوم الحاسب',type:'Laboratory',cat:'lab',room:'P.L.C228',staff:'T.A. Amr T.A. Ayman',staffAr:'م.م عمرو، م.م أيمن'},
+ {day:'sun',p:2,code:'BSC112',title:'BSC112 – Calculus I',titleAr:'BSC112 – تفاضل وتكامل (1)',type:'Exercise',cat:'exercise',room:'C223',staff:'L.A. Asmaa, T.A. Albaraa',staffAr:'م.م أسماء، م.م البراء'},
+ {day:'sun',p:3,code:'UNI101',title:'UNI101 – Professional Ethics and Legal Aspects',titleAr:'UNI101 – أخلاقيات المهنة والجوانب القانونية',type:'Lecture',cat:'lecture',room:'C135',staff:'Prof. Hany, Dr. Bahaa',staffAr:'أ.د هاني، د.بهاء'},
+ {day:'sun',p:4,code:'UNI109',title:'UNI109 – Critical Thinking and Problem-Solving',titleAr:'UNI109 – التفكير الناقد وحل المشكلات',type:'Lecture',cat:'lecture',room:'C135',staff:'Prof. Rania, Dr. Abdullah',staffAr:'أ.د رانيا، د.عبدالله'},
+ {day:'mon',p:1,code:'BSC111',title:'BSC111 – Physics',titleAr:'BSC111 – فيزياء',type:'Laboratory',cat:'lab',room:'Phys. Lab',staff:'L.A. Toqa, T.A. Habeba',staffAr:'م.م تقى، م.م حبيبة',alt:{type:'Exercise',cat:'exercise',room:'C432',staff:'L.A. Toqa, T.A. Habeba',staffAr:'م.م تقى، م.م حبيبة'}},
+ {day:'mon',p:2,code:'BSC111',title:'BSC111 – Physics',titleAr:'BSC111 – فيزياء',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Hany, Dr. Kareem, Dr. Ahmed Fawzy',staffAr:'أ.د هاني، د.كريم، د.أحمد فوزي'},
+ {day:'mon',p:4,code:'BSC114',title:'BSC114 – Discrete Mathematics',titleAr:'BSC114 – رياضيات متقطعة',type:'Exercise',cat:'exercise',room:'C331',staff:'L.A. Amira, T.A. May',staffAr:'م.م أميرة، م.م مي'},
+ {day:'tue',p:1,code:'UNI109',title:'UNI109 – Critical Thinking and Problem-Solving',titleAr:'UNI109 – التفكير الناقد وحل المشكلات',type:'Laboratory',cat:'lab',room:'P.L.C435',staff:'L.A. Mariam',staffAr:'م.م مريم'},
+ {day:'tue',p:3,code:'—',title:'Community Activities',titleAr:'الأنشطة الطلابية',type:'Community Activity',cat:'community',room:'C141',staff:'',staffAr:''},
+ {day:'wed',p:1,code:'BSC112',title:'BSC112 – Calculus I',titleAr:'BSC112 – تفاضل وتكامل (1)',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Ramy, Dr. Naglaa',staffAr:'أ.د رامي، د.نجلاء'},
+ {day:'wed',p:2,code:'BSC114',title:'BSC114 – Discrete Mathematics',titleAr:'BSC114 – رياضيات متقطعة',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Ramy, Dr. Marwa, Dr. Lamya',staffAr:'أ.د رامي، د.مروة، د.لمياء'},
+ {day:'thu',p:1,code:'CAI115',title:'CAI115 – Introduction to Computer Science',titleAr:'CAI115 – مقدمة في علوم الحاسب',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Rania, Dr. Yasser, Dr. Ghada',staffAr:'أ.د رانيا، د.ياسر، د.غادة'}
+ ],
+ GC2:[
+ {day:'sun',p:1,code:'CAI115',title:'CAI115 – Introduction to Computer Science',titleAr:'CAI115 – مقدمة في علوم الحاسب',type:'Laboratory',cat:'lab',room:'P.L.C334',staff:'L.A. Amir, T.A. Nada',staffAr:'م.م أمير، م.م ندى'},
+ {day:'sun',p:2,code:'BSC112',title:'BSC112 – Calculus I',titleAr:'BSC112 – تفاضل وتكامل (1)',type:'Exercise',cat:'exercise',room:'C225',staff:'L.A. Andro, T.A. Heba',staffAr:'م.م أندرو، م.م هبة'},
+ {day:'sun',p:3,code:'UNI101',title:'UNI101 – Professional Ethics and Legal Aspects',titleAr:'UNI101 – أخلاقيات المهنة والجوانب القانونية',type:'Lecture',cat:'lecture',room:'C135',staff:'Prof. Hany, Dr. Bahaa',staffAr:'أ.د هاني، د.بهاء'},
+ {day:'sun',p:4,code:'UNI109',title:'UNI109 – Critical Thinking and Problem-Solving',titleAr:'UNI109 – التفكير الناقد وحل المشكلات',type:'Lecture',cat:'lecture',room:'C135',staff:'Prof. Rania, Dr. Abdullah',staffAr:'أ.د رانيا، د.عبدالله'},
+ {day:'mon',p:1,code:'BSC111',title:'BSC111 – Physics',titleAr:'BSC111 – فيزياء',type:'Exercise',cat:'exercise',room:'C432',staff:'L.A. Danial, T.A. Shaimaa',staffAr:'م.م دانيال، م.م شيماء',alt:{type:'Laboratory',cat:'lab',room:'Phys. Lab',staff:'L.A. Danial, T.A. Shaimaa',staffAr:'م.م دانيال، م.م شيماء'}},
+ {day:'mon',p:2,code:'BSC111',title:'BSC111 – Physics',titleAr:'BSC111 – فيزياء',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Hany, Dr. Kareem, Dr. Ahmed Fawzy',staffAr:'أ.د هاني، د.كريم، د.أحمد فوزي'},
+ {day:'mon',p:4,code:'BSC114',title:'BSC114 – Discrete Mathematics',titleAr:'BSC114 – رياضيات متقطعة',type:'Exercise',cat:'exercise',room:'C222',staff:'L.A. Dina, T.A. Ziad',staffAr:'م.م دينا، م.م زياد'},
+ {day:'tue',p:2,code:'UNI109',title:'UNI109 – Critical Thinking and Problem-Solving',titleAr:'UNI109 – التفكير الناقد وحل المشكلات',type:'Laboratory',cat:'lab',room:'P.L.C435',staff:'L.A. Alieldeen',staffAr:'م.م علي الدين'},
+ {day:'tue',p:3,code:'—',title:'Community Activities',titleAr:'الأنشطة الطلابية',type:'Community Activity',cat:'community',room:'C141',staff:'',staffAr:''},
+ {day:'wed',p:1,code:'BSC112',title:'BSC112 – Calculus I',titleAr:'BSC112 – تفاضل وتكامل (1)',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Ramy, Dr. Naglaa',staffAr:'أ.د رامي، د.نجلاء'},
+ {day:'wed',p:2,code:'BSC114',title:'BSC114 – Discrete Mathematics',titleAr:'BSC114 – رياضيات متقطعة',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Ramy, Dr. Marwa, Dr. Lamya',staffAr:'أ.د رامي، د.مروة، د.لمياء'},
+ {day:'thu',p:1,code:'CAI115',title:'CAI115 – Introduction to Computer Science',titleAr:'CAI115 – مقدمة في علوم الحاسب',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Rania, Dr. Yasser, Dr. Ghada',staffAr:'أ.د رانيا، د.ياسر، د.غادة'}
+ ],
+ GD2:[
+ {day:'sun',p:1,code:'BSC114',title:'BSC114 – Discrete Mathematics',titleAr:'BSC114 – رياضيات متقطعة',type:'Exercise',cat:'exercise',room:'C430',staff:'T.A. Yousef, T.A. M. Esmaeel',staffAr:'م.م يوسف، م.م إسماعيل'},
+ {day:'sun',p:3,code:'UNI109',title:'UNI109 – Critical Thinking and Problem-Solving',titleAr:'UNI109 – التفكير الناقد وحل المشكلات',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Rania, Dr. Abdullah',staffAr:'أ.د رانيا، د.عبدالله'},
+ {day:'sun',p:4,code:'UNI101',title:'UNI101 – Professional Ethics and Legal Aspects',titleAr:'UNI101 – أخلاقيات المهنة والجوانب القانونية',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Hany, Dr. Bahaa',staffAr:'أ.د هاني، د.بهاء'},
+ {day:'mon',p:1,code:'BSC111',title:'BSC111 – Physics',titleAr:'BSC111 – فيزياء',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Hany, Dr. Kareem, Dr. Ahmed Fawzy',staffAr:'أ.د هاني، د.كريم، د.أحمد فوزي'},
+ {day:'mon',p:2,code:'BSC112',title:'BSC112 – Calculus I',titleAr:'BSC112 – تفاضل وتكامل (1)',type:'Exercise',cat:'exercise',room:'C223',staff:'L.A. Asmaa, T.A. Albaraa',staffAr:'م.م أسماء، م.م البراء'},
+ {day:'mon',p:3,code:'CAI115',title:'CAI115 – Introduction to Computer Science',titleAr:'CAI115 – مقدمة في علوم الحاسب',type:'Laboratory',cat:'lab',room:'P.L.C228',staff:'T.A. Amr T.A. Ayman',staffAr:'م.م عمرو، م.م أيمن'},
+ {day:'mon',p:4,code:'BSC111',title:'BSC111 – Physics',titleAr:'BSC111 – فيزياء',type:'Exercise',cat:'exercise',room:'C432',staff:'L.A. Danial, T.A. Shaimaa',staffAr:'م.م دانيال، م.م شيماء',alt:{type:'Laboratory',cat:'lab',room:'Phys. Lab',staff:'L.A. Danial, T.A. Shaimaa',staffAr:'م.م دانيال، م.م شيماء'}},
+ {day:'tue',p:2,code:'UNI109',title:'UNI109 – Critical Thinking and Problem-Solving',titleAr:'UNI109 – التفكير الناقد وحل المشكلات',type:'Laboratory',cat:'lab',room:'P.L.C220',staff:'L.A. Shahd',staffAr:'م.م شهد'},
+ {day:'tue',p:3,code:'—',title:'Community Activities',titleAr:'الأنشطة الطلابية',type:'Community Activity',cat:'community',room:'C101',staff:'',staffAr:''},
+ {day:'wed',p:3,code:'BSC112',title:'BSC112 – Calculus I',titleAr:'BSC112 – تفاضل وتكامل (1)',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Ramy, Dr. Naglaa',staffAr:'أ.د رامي، د.نجلاء'},
+ {day:'thu',p:2,code:'BSC114',title:'BSC114 – Discrete Mathematics',titleAr:'BSC114 – رياضيات متقطعة',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Ramy, Dr. Marwa, Dr. Lamya',staffAr:'أ.د رامي، د.مروة، د.لمياء'},
+ {day:'thu',p:3,code:'CAI115',title:'CAI115 – Introduction to Computer Science',titleAr:'CAI115 – مقدمة في علوم الحاسب',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Rania, Dr. Yasser, Dr. Ghada',staffAr:'أ.د رانيا، د.ياسر، د.غادة'}
+ ]
+};
 
 const $ = id => document.getElementById(id);
 let lang = localStorage.getItem('a8_lang') || 'en';
@@ -237,7 +299,9 @@ let theme = localStorage.getItem('a8_theme') || 'dark';
 let font = localStorage.getItem('a8_font') || 'plex';
 let defMins = localStorage.getItem('a8_mins') || '15';
 let searching = false;
-function t(k){ return I18N[lang][k]; }
+let group = localStorage.getItem('a8_group') || 'GA8'; if(!GROUPS[group]) group = 'GA8';
+let L = GROUPS[group];
+function t(k){ return String(I18N[lang][k]).replace(/\{g\}/g, group); }
 function applyChrome(){
   document.documentElement.classList.toggle('light', theme==='light');
   document.documentElement.classList.toggle('font-alt', font==='alt');
@@ -248,32 +312,57 @@ function applyChrome(){
 function setLang(l){
   lang=l; localStorage.setItem('a8_lang',l);
   document.documentElement.lang=l; document.documentElement.dir = l==='ar'?'rtl':'ltr';
+  applyI18n();
+  $('lang-btn').textContent = l==='ar' ? 'EN' : 'AR';
+  buildTabs(); buildLegend(); updateWeekCard(); render(); calcNext();
+}
+function applyI18n(){
   document.querySelectorAll('[data-i18n]').forEach(el=> el.innerHTML = t(el.dataset.i18n));
   document.querySelectorAll('[data-i18n-ph]').forEach(el=> el.placeholder = t(el.dataset.i18nPh));
-  $('lang-btn').textContent = l==='ar' ? 'EN' : 'AR';
-  buildTabs(); buildLegend(); render(); calcNext();
 }
 let week = localStorage.getItem('a8_week') || (isoWeekOdd() ? 'odd':'even');
 function isoWeekOdd(){ const d=new Date(); const onejan=new Date(d.getFullYear(),0,1); const wk=Math.ceil((((d-onejan)/86400000)+onejan.getDay()+1)/7); return wk%2===1; }
 function applyWeekUI(){ document.querySelectorAll('.w-switch').forEach(b=>{ const on=b.dataset.w===week; b.style.background= on?'#fff':'transparent'; b.style.color= on?'#111':'#A1A1AA'; }); }
 $('week-switch').addEventListener('click', e=>{ const b=e.target.closest('.w-switch'); if(!b) return; week=b.dataset.w; localStorage.setItem('a8_week',week); applyWeekUI(); render(); calcNext(); });
 
+function shortName(title){ const i=title.indexOf(' – '); return i>=0 ? title.slice(i+3) : title; }
+function updateWeekCard(){
+  const alts = L.filter(l=>l.alt);
+  const has = alts.length>0;
+  $('week-card').style.display = has ? '' : 'none';
+  $('legend-note').style.display = has ? '' : 'none';
+  if(!has) return;
+  const tn = (type)=> lang==='ar' ? (TYPE_AR[type]||type) : (type==='Laboratory'?'Lab':type);
+  $('week-desc').textContent = alts.map(l=> lang==='ar'
+    ? `بيبدّل ${shortName(l.titleAr)} ${DAYNAMES[l.day].ar} بين ${tn(l.type)} و${tn(l.alt.type)}`
+    : `Switches ${DAYNAMES[l.day].en} ${shortName(l.title)} between ${tn(l.type)} and ${tn(l.alt.type)}`).join(' · ');
+}
 function resolvedLecture(l){ return (l.alt && week==='even') ? {...l, type:l.alt.type, cat:l.alt.cat, room:l.alt.room, staff:l.alt.staff, staffAr:l.alt.staffAr} : l; }
 function disp(l,f){ return lang==='ar' ? (f==='title'?l.titleAr:f==='staff'?l.staffAr:TYPE_AR[l.type]||l.type) : (f==='title'?l.title:f==='staff'?l.staff:l.type); }
 
 function buildLegend(){
-  $('legend').innerHTML = Object.entries(CATS).map(([k,v])=>{
+  const used = new Set(); L.forEach(l=>{ used.add(l.cat); if(l.alt) used.add(l.alt.cat); });
+  $('legend').innerHTML = Object.entries(CATS).filter(([k])=>used.has(k)).map(([k,v])=>{
     const label = lang==='ar' ? (k==='exercise'?'تمرين / سكشن':k==='community'?'نشاط طلابي':k==='lecture'?'محاضرة':'معمل') : (k==='exercise'?'Exercise / Section':k==='community'?'Community Activity':k[0].toUpperCase()+k.slice(1));
     return `<span class="chip glass shrink-0" style="color:${v.color}"><span class="inline-block w-1.5 h-1.5 rounded-full ml-1" style="background:${v.color}"></span>${label}</span>`;
   }).join('');
 }
 let activeDay = DAYS.find(d=>d.idx===new Date().getDay()) || DAYS[0];
-function buildTabs(){ $('day-tabs').innerHTML = DAYS.map(d=>`<button data-day="${d.key}" class="day-tab shrink-0 px-3.5 py-2 rounded-full text-xs font-bold transition glass">${DAYNAMES[d.key][lang]}</button>`).join(''); paintTabs(); }
+function buildTabs(){ $('day-tabs').innerHTML = DAYS.map(d=>{ const has=L.some(l=>l.day===d.key); return `<button data-day="${d.key}" class="day-tab shrink-0 px-3.5 py-2 rounded-full text-xs font-bold transition glass" style="${has?'':'opacity:.45'}">${DAYNAMES[d.key][lang]}</button>`; }).join(''); paintTabs(); }
 function paintTabs(){ document.querySelectorAll('.day-tab').forEach(b=>{ const on=b.dataset.day===activeDay.key; b.style.background= on?'#fff':''; b.style.color= on?'#111':'#D4D4D8'; }); }
 $('day-tabs').addEventListener('click', e=>{ const b=e.target.closest('.day-tab'); if(!b) return; activeDay=DAYS.find(d=>d.key===b.dataset.day); searching=false; $('search-row').style.display='none'; $('search-input').value=''; paintTabs(); render(); });
 
 const savedReminders = JSON.parse(localStorage.getItem('a8_reminders')||'{}');
 const savedAttendance = JSON.parse(localStorage.getItem('a8_att')||'{}');
+// legacy keys ("sun-1-CAI115") were saved before groups existed and belong to GA8
+(function migrateLegacyKeys(){
+  const legacy = /^(sat|sun|mon|tue|wed|thu)-/;
+  [[savedReminders,'a8_reminders'],[savedAttendance,'a8_att']].forEach(([obj,key])=>{
+    let changed=false;
+    Object.keys(obj).forEach(k=>{ if(legacy.test(k)){ const nk='GA8:'+k; if(!(nk in obj)) obj[nk]=obj[k]; delete obj[k]; changed=true; } });
+    if(changed) localStorage.setItem(key, JSON.stringify(obj));
+  });
+})();
 function isoWeekNum(d){ const onejan=new Date(d.getFullYear(),0,1); return d.getFullYear()*100+Math.ceil((((d-onejan)/86400000)+onejan.getDay()+1)/7); }
 function nowInfo(l){
   const d=new Date(); const today=DAYS.find(dd=>dd.idx===d.getDay());
@@ -283,7 +372,7 @@ function nowInfo(l){
   return Math.round(((cur-s)/(e-s))*100);
 }
 function cardHTML(l, showDay){
-  const c=CATS[l.cat]; const id=`${l.day}-${l.p}-${l.code}`; const isSet=!!savedReminders[id]; const pct=nowInfo(l); const present=savedAttendance[id]===isoWeekNum(new Date());
+  const c=CATS[l.cat]; const id=`${group}:${l.day}-${l.p}-${l.code}`; const isSet=!!savedReminders[id]; const pct=nowInfo(l); const present=savedAttendance[id]===isoWeekNum(new Date());
   return `<article class="glass rounded-2xl p-4 relative z-10 ${pct!==null?'now-card':''}" style="${pct!==null?'border-width:1.5px':''}">
     <div class="flex justify-between items-start relative z-10">
       <div class="flex-1">
@@ -375,13 +464,13 @@ let nextLecCache=null;
 function calcNext(){
   const now=new Date(); const curDay=now.getDay(); const curMin=now.getHours()*60+now.getMinutes();
   let next=null, dayKey='';
-  for(let off=0; off<7; off++){
+  for(let off=0; off<=7; off++){
     const checkIdx=(curDay+off)%7; const d=DAYS.find(dd=>dd.idx===checkIdx); if(!d) continue;
     const todays = L.filter(l=>l.day===d.key).map(resolvedLecture).sort((a,b)=>a.p-b.p);
     for(const l of todays){ if(off>0 || PMIN[l.p][0]>curMin){ next=l; dayKey=d.key; nextLecCache={off,startMin:PMIN[l.p][0]}; break; } }
     if(next) break;
   }
-  if(!next){ next=resolvedLecture(L.find(l=>l.day==='sun'&&l.p===1)); dayKey='sun'; nextLecCache={off:7,startMin:PMIN[1][0]}; }
+  if(!next){ nextLecCache=null; ['next-lec-title','next-lec-doc','next-lec-hall','next-lec-meta','next-lec-countdown'].forEach(i=>$(i).textContent='--'); $('next-lec-type').textContent=''; return; }
   const c=CATS[next.cat];
   $('next-lec-title').textContent = disp(next,'title');
   $('next-lec-doc').textContent = disp(next,'staff') || '—';
@@ -398,6 +487,21 @@ function tickCountdown(){
   $('next-lec-countdown').innerHTML = `<i class="fa-regular fa-clock ml-1"></i>${h>0?h+(lang==='ar'?'س ':'h '):''}${m}${lang==='ar'?'د':'m'}`;
 }
 setInterval(()=>{ tickCountdown(); render(); }, 60000);
+
+// group switcher
+function paintGroupSeg(){
+  $('group-seg').innerHTML = Object.keys(GROUPS).sort().map(g=>`<button data-v="${g}" class="${g===group?'on':''}">${g}</button>`).join('');
+  $('group-chip').textContent = ' · '+group;
+  document.title = `A8 Schedule | ${group} Weekly Timetable`;
+}
+function setGroup(g, announce){
+  if(!GROUPS[g] || g===group) return;
+  group=g; L=GROUPS[g]; localStorage.setItem('a8_group', g);
+  paintGroupSeg(); applyI18n();
+  buildTabs(); buildLegend(); updateWeekCard(); render(); calcNext();
+  if(announce) showToast(`${t('switchedTo')} ${g}`);
+}
+$('group-seg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; setGroup(b.dataset.v, true); });
 
 // search
 $('search-btn').addEventListener('click', ()=>{ searching=!searching; $('search-row').style.display = searching?'flex':'none'; if(searching){ $('search-input').focus(); } else { $('search-input').value=''; } render(); });
@@ -425,7 +529,7 @@ $('settings-test-btn').addEventListener('click', fireTest);
 
 $('lang-btn').addEventListener('click', ()=> setLang(lang==='en'?'ar':'en'));
 $('today-shortcut-btn').addEventListener('click', ()=>{ const d=DAYS.find(dd=>dd.idx===new Date().getDay())||DAYS[0]; activeDay=d; searching=false; $('search-row').style.display='none'; paintTabs(); render(); showToast(lang==='ar'?'اتنقلت لجدول النهارده':'Jumped to today'); });
-$('share-schedule-btn').addEventListener('click', ()=>{ if(navigator.share){ navigator.share({title:'A8 Schedule', text:'GA8 weekly timetable', url:location.href}).catch(()=>{}); } else { navigator.clipboard.writeText(location.href); showToast(lang==='ar'?'اتنسخ الرابط':'Link copied'); } });
+$('share-schedule-btn').addEventListener('click', ()=>{ if(navigator.share){ navigator.share({title:'A8 Schedule', text:group+' weekly timetable', url:location.href}).catch(()=>{}); } else { navigator.clipboard.writeText(location.href); showToast(lang==='ar'?'اتنسخ الرابط':'Link copied'); } });
 $('dock-notify-btn').addEventListener('click', fireTest);
 
 window.addEventListener('online', ()=> $('offline-chip').style.display='none');
@@ -440,7 +544,7 @@ else { window.addEventListener('beforeinstallprompt', e=>{ e.preventDefault(); d
 if('serviceWorker' in navigator){ window.addEventListener('load', ()=> navigator.serviceWorker.register('./sw.js').catch(()=>{})); }
 
 // share & export
-$('native-share-btn').addEventListener('click', ()=>{ if(navigator.share){ navigator.share({title:'A8 Schedule', text:'GA8 weekly timetable', url:location.href}).catch(()=>{}); } else showToast(lang==='ar'?'المشاركة مش متاحة هنا':'Sharing not available here'); });
+$('native-share-btn').addEventListener('click', ()=>{ if(navigator.share){ navigator.share({title:'A8 Schedule', text:group+' weekly timetable', url:location.href}).catch(()=>{}); } else showToast(lang==='ar'?'المشاركة مش متاحة هنا':'Sharing not available here'); });
 $('copy-link-btn').addEventListener('click', ()=>{ navigator.clipboard.writeText(location.href); showToast(lang==='ar'?'اتنسخ الرابط':'Link copied'); });
 $('qr-btn').addEventListener('click', ()=>{
   const box=$('qr-box'); box.innerHTML=''; box.style.display='flex';
@@ -454,7 +558,7 @@ $('save-image-btn').addEventListener('click', async ()=>{
 });
 $('print-btn').addEventListener('click', ()=>{
   const wrap=document.createElement('div'); wrap.id='print-week';
-  let html = `<h1>A8 Schedule — GA8</h1>`;
+  let html = `<h1>A8 Schedule — ${group}</h1>`;
   DAYS.forEach(d=>{
     const items=L.filter(l=>l.day===d.key).sort((a,b)=>a.p-b.p).map(resolvedLecture); if(!items.length) return;
     html += `<h2>${DAYNAMES[d.key][lang]}</h2><table><tr><th>Time</th><th>Course</th><th>Type</th><th>Room</th><th>Staff</th></tr>`;
@@ -496,7 +600,7 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=30.06&longitude=31.25&cur
 const qp = new URLSearchParams(location.search);
 if(qp.get('view')==='today'){ const d=DAYS.find(dd=>dd.idx===new Date().getDay()); if(d) activeDay=d; }
 
-setLang(lang); applyWeekUI(); applyChrome();
+paintGroupSeg(); setLang(lang); applyWeekUI(); applyChrome();
 if(qp.get('view')==='settings') setTimeout(()=>openSheet('settings-sheet'), 250);
 </script>
 </body>
