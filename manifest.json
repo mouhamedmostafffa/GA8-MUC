@@ -14,5 +14,19 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "Today's classes",
+      "short_name": "Today",
+      "url": "./index.html?view=today",
+      "icons": [{ "src": "./icon.png", "sizes": "512x512" }]
+    },
+    {
+      "name": "Settings",
+      "short_name": "Settings",
+      "url": "./index.html?view=settings",
+      "icons": [{ "src": "./icon.png", "sizes": "512x512" }]
+    }
   ]
 }
