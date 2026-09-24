@@ -1,6 +1,6 @@
 {
-  "name": "A8 Schedule - GA8 Weekly Timetable",
-  "short_name": "A8 Schedule",
+  "name": "C.S Schedule - GA8 Weekly Timetable",
+  "short_name": "C.S Schedule",
   "description": "Weekly timetable and class reminders for group GA8, Faculty of Computers and Artificial Intelligence, May University in Cairo",
   "start_url": "./index.html",
   "display": "standalone",

@@ -6,7 +6,7 @@
 <link rel="manifest" href="./manifest.json"/>
 <meta name="theme-color" content="#050506"/>
 <link rel="apple-touch-icon" href="./icon.png">
-<title>A8 Schedule | GA8 Weekly Timetable</title>
+<title>C.S Schedule | GA8 Weekly Timetable</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Cairo:wght@400;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet"/>
@@ -70,9 +70,9 @@
   <div class="max-w-md mx-auto px-3">
     <div class="glass rounded-full pl-3 pr-2 py-2 flex items-center justify-between rise" style="animation-delay:.02s">
       <div class="flex items-center gap-2.5 relative z-10 min-w-0">
-        <img src="./icon.png" class="w-9 h-9 rounded-xl shrink-0" alt="A8"/>
+        <img src="./icon.png" class="w-9 h-9 rounded-xl shrink-0" alt="C.S"/>
         <div class="leading-tight min-w-0">
-          <h1 class="text-sm font-bold text-white font-head" style="direction:ltr">A8 Schedule</h1>
+          <h1 class="text-sm font-bold text-white font-head" style="direction:ltr">C.S Schedule</h1>
           <p class="text-[10px] text-zinc-400 truncate"><span data-i18n="subtitle">Weekly Schedule</span><span id="group-chip"></span><span id="weather-chip"></span></p>
         </div>
       </div>
@@ -173,7 +173,7 @@
       <p class="text-[10px] text-zinc-500" data-i18n="bgNote">Background alerts depend on your OS/browser — most reliable when the app stays installed. Not supported on iOS Safari.</p>
       <button id="share-tools-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><i class="fa-solid fa-share-nodes text-[11px]"></i><span data-i18n="shareExport">Share & export</span></button>
       <button id="gpa-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><i class="fa-solid fa-calculator text-[11px]"></i><span data-i18n="gpaCalc">GPA calculator</span></button>
-      <p class="text-[10px] text-zinc-500 pt-2 border-t border-white/10" data-i18n="aboutLine">A8 Schedule · built for GA8, Faculty of Computers &amp; AI</p>
+      <p class="text-[10px] text-zinc-500 pt-2 border-t border-white/10" data-i18n="aboutLine">C.S Schedule · built for GA8, Faculty of Computers &amp; AI</p>
     </div>
   </div>
 </div>
@@ -207,8 +207,8 @@
 
 <script>
 const I18N = {
-en:{subtitle:"Weekly Schedule",nextClass:"Next class",room:"Room",weekTitle:"Odd / even week",weekDesc:"Switches Tuesday Physics between Exercise and Lab",odd:"Odd",even:"Even",noClass:"No classes today",install:"Install this app",installDesc:"Works offline with reminders before class",installBtn:"Install",iosInstall:'Tap Share, then "Add to Home Screen"',today:"Today",share:"Share",notify:"Alerts",remindOn:"Reminder on",remindOff:"Remind me before",offline:"You're offline",searchPh:"Search a course or doctor",settingsTitle:"Settings",theme:"Appearance",dark:"Dark",light:"Light",arFont:"Arabic font",reminderDefault:"Default reminder time",testNotif:"Send a test notification",aboutLine:"A8 Schedule · built for {g}, Faculty of Computers & AI",groupLabel:"Group",switchedTo:"Switched to",legendNote:"ODD / EVEN = session runs on odd or even weeks only",now:"Now",undo:"Undo",gap:"break",noResults:"No matches",busiest:"Busiest day",attendance:"Mark attended (resets weekly)",shareExport:"Share & export",gpaCalc:"GPA calculator",addCourse:"+ Add course",gpaResult:"Estimated GPA",copyLink:"Copy link",nativeShare:"Share via…",showQr:"Show QR code",saveImage:"Save as image",printPdf:"Print / Save as PDF",bgNote:"Background alerts depend on your OS/browser — most reliable when the app stays installed. Not supported on iOS Safari."},
-ar:{subtitle:"الجدول الأسبوعي",nextClass:"المحاضرة الجاية",room:"القاعة",weekTitle:"أسبوع فردي / زوجي",weekDesc:"بيبدّل فيزيا الثلاثاء بين تمرين ومعمل",odd:"فردي",even:"زوجي",noClass:"مفيش محاضرات النهارده",install:"ثبّت التطبيق",installDesc:"يشتغل أوفلاين مع تنبيه قبل كل محاضرة",installBtn:"تثبيت",iosInstall:'دوس Share بعدين "Add to Home Screen"',today:"النهارده",share:"مشاركة",notify:"التنبيهات",remindOn:"التنبيه شغال",remindOff:"نبّهني قبلها بـ",offline:"مفيش نت دلوقتي",searchPh:"دور على مادة أو دكتور",settingsTitle:"الإعدادات",theme:"المظهر",dark:"غامق",light:"فاتح",arFont:"الخط العربي",reminderDefault:"وقت التنبيه الافتراضي",testNotif:"جرّب تنبيه تجريبي",aboutLine:"A8 Schedule · اتعمل لجروب {g}، كلية الحاسبات والذكاء الاصطناعي",groupLabel:"الجروب",switchedTo:"اتبدّل لجروب",legendNote:"فردي / زوجي = الحصة بتحصل في الأسابيع الفردية أو الزوجية بس",now:"دلوقتي",undo:"تراجع",gap:"فترة راحة",noResults:"مفيش نتايج",busiest:"أزحم يوم",attendance:"سجّل حضور (بيتصفر كل أسبوع)",shareExport:"مشاركة وتصدير",gpaCalc:"حاسبة الجي بي إيه",addCourse:"+ ضيف مادة",gpaResult:"الجي بي إيه التقديري",copyLink:"انسخ الرابط",nativeShare:"شارك عبر…",showQr:"اعرض QR كود",saveImage:"احفظ كصورة",printPdf:"اطبع / احفظ PDF",bgNote:"التنبيهات في الخلفية بتعتمد على نظام التشغيل والمتصفح — بتشتغل أفضل لما التطبيق يفضل متثبت. مش مدعومة على iOS Safari."}
+en:{subtitle:"Weekly Schedule",nextClass:"Next class",room:"Room",weekTitle:"Odd / even week",weekDesc:"Switches Tuesday Physics between Exercise and Lab",odd:"Odd",even:"Even",noClass:"No classes today",install:"Install this app",installDesc:"Works offline with reminders before class",installBtn:"Install",iosInstall:'Tap Share, then "Add to Home Screen"',today:"Today",share:"Share",notify:"Alerts",remindOn:"Reminder on",remindOff:"Remind me before",offline:"You're offline",searchPh:"Search a course or doctor",settingsTitle:"Settings",theme:"Appearance",dark:"Dark",light:"Light",arFont:"Arabic font",reminderDefault:"Default reminder time",testNotif:"Send a test notification",aboutLine:"C.S Schedule · built for {g}, Faculty of Computers & AI",groupLabel:"Group",switchedTo:"Switched to",legendNote:"ODD / EVEN = session runs on odd or even weeks only",now:"Now",undo:"Undo",gap:"break",noResults:"No matches",busiest:"Busiest day",attendance:"Mark attended (resets weekly)",shareExport:"Share & export",gpaCalc:"GPA calculator",addCourse:"+ Add course",gpaResult:"Estimated GPA",copyLink:"Copy link",nativeShare:"Share via…",showQr:"Show QR code",saveImage:"Save as image",printPdf:"Print / Save as PDF",bgNote:"Background alerts depend on your OS/browser — most reliable when the app stays installed. Not supported on iOS Safari."},
+ar:{subtitle:"الجدول الأسبوعي",nextClass:"المحاضرة الجاية",room:"القاعة",weekTitle:"أسبوع فردي / زوجي",weekDesc:"بيبدّل فيزيا الثلاثاء بين تمرين ومعمل",odd:"فردي",even:"زوجي",noClass:"مفيش محاضرات النهارده",install:"ثبّت التطبيق",installDesc:"يشتغل أوفلاين مع تنبيه قبل كل محاضرة",installBtn:"تثبيت",iosInstall:'دوس Share بعدين "Add to Home Screen"',today:"النهارده",share:"مشاركة",notify:"التنبيهات",remindOn:"التنبيه شغال",remindOff:"نبّهني قبلها بـ",offline:"مفيش نت دلوقتي",searchPh:"دور على مادة أو دكتور",settingsTitle:"الإعدادات",theme:"المظهر",dark:"غامق",light:"فاتح",arFont:"الخط العربي",reminderDefault:"وقت التنبيه الافتراضي",testNotif:"جرّب تنبيه تجريبي",aboutLine:"C.S Schedule · اتعمل لجروب {g}، كلية الحاسبات والذكاء الاصطناعي",groupLabel:"الجروب",switchedTo:"اتبدّل لجروب",legendNote:"فردي / زوجي = الحصة بتحصل في الأسابيع الفردية أو الزوجية بس",now:"دلوقتي",undo:"تراجع",gap:"فترة راحة",noResults:"مفيش نتايج",busiest:"أزحم يوم",attendance:"سجّل حضور (بيتصفر كل أسبوع)",shareExport:"مشاركة وتصدير",gpaCalc:"حاسبة الجي بي إيه",addCourse:"+ ضيف مادة",gpaResult:"الجي بي إيه التقديري",copyLink:"انسخ الرابط",nativeShare:"شارك عبر…",showQr:"اعرض QR كود",saveImage:"احفظ كصورة",printPdf:"اطبع / احفظ PDF",bgNote:"التنبيهات في الخلفية بتعتمد على نظام التشغيل والمتصفح — بتشتغل أفضل لما التطبيق يفضل متثبت. مش مدعومة على iOS Safari."}
 };
 const DAYNAMES = { sat:{en:'Saturday',ar:'السبت'}, sun:{en:'Sunday',ar:'الأحد'}, mon:{en:'Monday',ar:'الإثنين'}, tue:{en:'Tuesday',ar:'الثلاثاء'}, wed:{en:'Wednesday',ar:'الأربعاء'}, thu:{en:'Thursday',ar:'الخميس'} };
 const CATS = { lecture:{color:'#93A6B8',icon:'fa-chalkboard-user'}, lab:{color:'#8FB89B',icon:'fa-flask'}, exercise:{color:'#C79B77',icon:'fa-pen'}, community:{color:'#B0A98E',icon:'fa-people-group'} };
@@ -492,7 +492,7 @@ setInterval(()=>{ tickCountdown(); render(); }, 60000);
 function paintGroupSeg(){
   $('group-seg').innerHTML = Object.keys(GROUPS).sort().map(g=>`<button data-v="${g}" class="${g===group?'on':''}">${g}</button>`).join('');
   $('group-chip').textContent = ' · '+group;
-  document.title = `A8 Schedule | ${group} Weekly Timetable`;
+  document.title = `C.S Schedule | ${group} Weekly Timetable`;
 }
 function setGroup(g, announce){
   if(!GROUPS[g] || g===group) return;
@@ -520,8 +520,8 @@ async function fireTest(){
   if(!('Notification' in window)){ showToast(lang==='ar'?'المتصفح مش بيدعم الإشعارات':'Notifications not supported'); return; }
   const p = await Notification.requestPermission();
   if(p==='granted'){
-    if(navigator.serviceWorker?.controller){ navigator.serviceWorker.ready.then(r=>r.showNotification('A8 Schedule 🔔',{body:lang==='ar'?'التنبيهات شغالة تمام':'Notifications are working',icon:'./icon.png',vibrate:[120,60,120]})); }
-    else new Notification('A8 Schedule 🔔',{body:lang==='ar'?'التنبيهات شغالة تمام':'Notifications are working',icon:'./icon.png'});
+    if(navigator.serviceWorker?.controller){ navigator.serviceWorker.ready.then(r=>r.showNotification('C.S Schedule 🔔',{body:lang==='ar'?'التنبيهات شغالة تمام':'Notifications are working',icon:'./icon.png',vibrate:[120,60,120]})); }
+    else new Notification('C.S Schedule 🔔',{body:lang==='ar'?'التنبيهات شغالة تمام':'Notifications are working',icon:'./icon.png'});
     showToast(lang==='ar'?'التنبيهات مفعّلة':'Notifications enabled');
   } else showToast(lang==='ar'?'الإذن مرفوض':'Permission denied');
 }
@@ -529,7 +529,7 @@ $('settings-test-btn').addEventListener('click', fireTest);
 
 $('lang-btn').addEventListener('click', ()=> setLang(lang==='en'?'ar':'en'));
 $('today-shortcut-btn').addEventListener('click', ()=>{ const d=DAYS.find(dd=>dd.idx===new Date().getDay())||DAYS[0]; activeDay=d; searching=false; $('search-row').style.display='none'; paintTabs(); render(); showToast(lang==='ar'?'اتنقلت لجدول النهارده':'Jumped to today'); });
-$('share-schedule-btn').addEventListener('click', ()=>{ if(navigator.share){ navigator.share({title:'A8 Schedule', text:group+' weekly timetable', url:location.href}).catch(()=>{}); } else { navigator.clipboard.writeText(location.href); showToast(lang==='ar'?'اتنسخ الرابط':'Link copied'); } });
+$('share-schedule-btn').addEventListener('click', ()=>{ if(navigator.share){ navigator.share({title:'C.S Schedule', text:group+' weekly timetable', url:location.href}).catch(()=>{}); } else { navigator.clipboard.writeText(location.href); showToast(lang==='ar'?'اتنسخ الرابط':'Link copied'); } });
 $('dock-notify-btn').addEventListener('click', fireTest);
 
 window.addEventListener('online', ()=> $('offline-chip').style.display='none');
@@ -544,7 +544,7 @@ else { window.addEventListener('beforeinstallprompt', e=>{ e.preventDefault(); d
 if('serviceWorker' in navigator){ window.addEventListener('load', ()=> navigator.serviceWorker.register('./sw.js').catch(()=>{})); }
 
 // share & export
-$('native-share-btn').addEventListener('click', ()=>{ if(navigator.share){ navigator.share({title:'A8 Schedule', text:group+' weekly timetable', url:location.href}).catch(()=>{}); } else showToast(lang==='ar'?'المشاركة مش متاحة هنا':'Sharing not available here'); });
+$('native-share-btn').addEventListener('click', ()=>{ if(navigator.share){ navigator.share({title:'C.S Schedule', text:group+' weekly timetable', url:location.href}).catch(()=>{}); } else showToast(lang==='ar'?'المشاركة مش متاحة هنا':'Sharing not available here'); });
 $('copy-link-btn').addEventListener('click', ()=>{ navigator.clipboard.writeText(location.href); showToast(lang==='ar'?'اتنسخ الرابط':'Link copied'); });
 $('qr-btn').addEventListener('click', ()=>{
   const box=$('qr-box'); box.innerHTML=''; box.style.display='flex';
@@ -553,12 +553,12 @@ $('qr-btn').addEventListener('click', ()=>{
 $('save-image-btn').addEventListener('click', async ()=>{
   showToast(lang==='ar'?'بنجهز الصورة...':'Preparing image…');
   try{ const canvas = await html2canvas(document.querySelector('main'), {backgroundColor:'#050506'});
-    const a=document.createElement('a'); a.download='a8-schedule.png'; a.href=canvas.toDataURL('image/png'); a.click(); }
+    const a=document.createElement('a'); a.download='cs-schedule.png'; a.href=canvas.toDataURL('image/png'); a.click(); }
   catch(e){ showToast(lang==='ar'?'حصل خطأ في التصدير':'Export failed'); }
 });
 $('print-btn').addEventListener('click', ()=>{
   const wrap=document.createElement('div'); wrap.id='print-week';
-  let html = `<h1>A8 Schedule — ${group}</h1>`;
+  let html = `<h1>C.S Schedule — ${group}</h1>`;
   DAYS.forEach(d=>{
     const items=L.filter(l=>l.day===d.key).sort((a,b)=>a.p-b.p).map(resolvedLecture); if(!items.length) return;
     html += `<h2>${DAYNAMES[d.key][lang]}</h2><table><tr><th>Time</th><th>Course</th><th>Type</th><th>Room</th><th>Staff</th></tr>`;
