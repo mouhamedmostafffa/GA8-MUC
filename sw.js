@@ -1,5 +1,5 @@
-const CACHE_NAME = 'ga8-pwa-v5';
-const ASSETS = ['./', './index.html', './manifest.json', './icon.png', './bg.jpg'];
+const CACHE_NAME = 'ga8-pwa-v4';
+const ASSETS = ['./', './index.html', './manifest.json', './icon.png', './icon-maskable.png', './bg.jpg'];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
