@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ga8-pwa-v4';
+const CACHE_NAME = 'ga8-pwa-v5';
 const ASSETS = ['./', './index.html', './manifest.json', './icon.png', './bg.jpg'];
 
 self.addEventListener('install', event => {
