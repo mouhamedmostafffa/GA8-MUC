@@ -1,7 +1,7 @@
 {
   "name": "C.S Schedule - FCAI Weekly Timetable",
   "short_name": "C.S Schedule",
-  "description": "Weekly timetable and class reminders for FCAI groups (GA1, GA6, GA7, GA8, GB2, GB4, GC1, GC2, GC4, GC5, GD2, GD3), Faculty of Computers and Artificial Intelligence, May University in Cairo",
+  "description": "Weekly timetable and class reminders for FCAI groups (GA1, GA6, GA7, GA8, GB2, GB4, GC1, GC2, GC3, GC4, GC5, GD2, GD3), Faculty of Computers and Artificial Intelligence, May University in Cairo",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
