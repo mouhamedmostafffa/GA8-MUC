@@ -4,55 +4,88 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
 <link rel="manifest" href="./manifest.json"/>
-<meta name="theme-color" content="#050506"/>
-<link rel="apple-touch-icon" href="./icon-maskable.png">
+<meta name="theme-color" content="#0A1220"/>
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="icon" type="image/png" href="./icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="C.S Schedule"/>
 <title>C.S Schedule | FCAI Weekly Timetable</title>
+<script>try{var d=document.documentElement,st=localStorage;d.dataset.wall=st.getItem('a8_wall')||'ocean';if(st.getItem('a8_theme')==='light')d.classList.add('light');if(st.getItem('a8_font')==='alt')d.classList.add('font-alt')}catch(e){}</script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Cairo:wght@400;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['"IBM Plex Sans Arabic"','system-ui','sans-serif'],alt:['Cairo','system-ui','sans-serif'],head:['Poppins','system-ui','sans-serif']}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <style>
-  :root{ color-scheme: dark; --head-h:68px; --dock-h:68px; }
+  :root{ color-scheme:dark; --head-h:68px; --dock-h:68px; --sat:env(safe-area-inset-top,0px); --sab:env(safe-area-inset-bottom,0px);
+    --g:9,12,20; --ov:4,6,12; --ov1:.55; --ov2:.15; --ov3:.18; --ov4:.6;
+    --acc:#8DBBFF; --acc-rgb:141,187,255; --on-acc:#08121f; --solid:#0A1220; --wall:url('./bg.jpg'); }
+  html[data-wall="graphite"]{ --wall:url('./bg-graphite.jpg'); --g:8,9,12; --ov:3,4,6; --ov1:.5; --ov2:.16; --ov3:.2; --ov4:.6; --acc:#9DB0CC; --acc-rgb:157,176,204; --on-acc:#0a0e14; --solid:#050608; }
+  html[data-wall="wave"]{ --wall:url('./bg-wave.jpg'); --g:10,13,18; --ov:5,7,10; --ov1:.55; --ov2:.3; --ov3:.42; --ov4:.72; --acc:#EAD08A; --acc-rgb:234,208,138; --on-acc:#1a1408; --solid:#0A0D10; }
+  html[data-wall="smoke"]{ --wall:url('./bg-smoke.jpg'); --g:12,12,15; --ov:4,4,6; --ov1:.5; --ov2:.16; --ov3:.2; --ov4:.6; --acc:#C4C8D2; --acc-rgb:196,200,210; --on-acc:#0d0e12; --solid:#0B0B0D; }
+  html[data-wall="onyx"]{ --wall:url('./bg-onyx.jpg'); --g:4,5,7; --ov:0,0,0; --ov1:.4; --ov2:.1; --ov3:.14; --ov4:.55; --acc:#E8EFFA; --acc-rgb:232,239,250; --on-acc:#0a0d12; --solid:#000305; }
+  html.light{ --acc:#111827; --acc-rgb:17,24,39; --on-acc:#fff; }
+  html{ background:var(--solid); }
+  html.light{ background:#EEEFF1; }
   html,body{ height:auto; min-height:100%; }
-  body{ color:#F2F3F5; font-family:'IBM Plex Sans Arabic',sans-serif; overflow-x:hidden; -webkit-tap-highlight-color:transparent; transition:background .3s,color .3s;
-    background-image:linear-gradient(180deg, rgba(4,6,12,.55), rgba(4,6,12,.15) 22%, rgba(4,6,12,.18) 68%, rgba(4,6,12,.6)), url('./bg.jpg');
-    background-size:cover; background-position:center top; background-repeat:no-repeat; background-color:#0A1220; }
-  html.font-alt body{ font-family:'Cairo',sans-serif; }
-  html.light body{ background:#EEEFF1; color:#111214; }
+  body{ color:#F2F3F5; font-family:'IBM Plex Sans Arabic',system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif; overflow-x:hidden; -webkit-tap-highlight-color:transparent; background:transparent; }
+  html.font-alt body{ font-family:'Cairo','IBM Plex Sans Arabic',system-ui,sans-serif; }
+  html.light body{ color:#111214; }
+  /* wallpaper lives in its own fixed layer: only the cards scroll, the background never moves */
+  #bg{ position:fixed; top:0; left:0; width:100%; height:100vh; height:100lvh; z-index:-1; pointer-events:none; background-color:var(--solid);
+    background-image:linear-gradient(180deg,rgba(var(--ov),var(--ov1)),rgba(var(--ov),var(--ov2)) 22%,rgba(var(--ov),var(--ov3)) 68%,rgba(var(--ov),var(--ov4))),var(--wall);
+    background-size:cover; background-position:center top; background-repeat:no-repeat; transition:opacity .3s ease; transform:translateZ(0); }
+  html.light #bg{ background-color:#EEEFF1; background-image:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.25) 25%,rgba(255,255,255,.3) 70%,rgba(255,255,255,.6)),var(--wall); }
   html.light .glass,html.light .dock,html.light .glass-hero{ background:linear-gradient(160deg,rgba(255,255,255,.75),rgba(255,255,255,.45)); border-color:rgba(0,0,0,.08); box-shadow:0 6px 20px -10px rgba(0,0,0,.18),inset 0 1px 0 0 rgba(255,255,255,.6); color:#111214; }
   html.light .text-zinc-400,html.light .text-zinc-300,html.light .text-zinc-500{ color:#5b5e66!important; }
   html.light .day-tab,html.light .w-switch{ color:#3f4147; }
-  html.light body{ background-image:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.25) 25%, rgba(255,255,255,.3) 70%, rgba(255,255,255,.6)), url('./bg.jpg'); background-size:cover; background-position:center top; }
-  @media (prefers-reduced-motion:reduce){ .hero-sheen::after,.rise{animation:none!important} }
-  .glass{ position:relative; background:linear-gradient(165deg, rgba(9,12,20,.38), rgba(9,12,20,.22)); backdrop-filter:blur(13px) saturate(160%); -webkit-backdrop-filter:blur(13px) saturate(160%); border:1px solid rgba(255,255,255,.11); box-shadow:0 12px 28px -18px rgba(0,0,0,.6); }
+  @media (prefers-reduced-motion:reduce){ .hero-sheen::after,.live-dot{animation:none!important} .rise,.pop-in{animation:none!important; opacity:1!important} }
+  html.bg-paused *,html.bg-paused *::after{ animation-play-state:paused!important; }
+  .glass{ position:relative; background:linear-gradient(165deg, rgba(var(--g),.38), rgba(var(--g),.22)); backdrop-filter:blur(13px) saturate(160%); -webkit-backdrop-filter:blur(13px) saturate(160%); border:1px solid rgba(255,255,255,.11); box-shadow:0 12px 28px -18px rgba(0,0,0,.6); }
+  /* glass inside glass / day pills: no second blur pass (same look, far less GPU work on phones) */
+  .glass .glass,.glass-hero .glass,.dock .glass,.day-tab.glass{ backdrop-filter:none; -webkit-backdrop-filter:none; background:rgba(var(--g),.34); box-shadow:none; }
   .chip.glass{ backdrop-filter:none; -webkit-backdrop-filter:none; background:rgba(10,12,18,.5); }
   .dock{ backdrop-filter:blur(13px) saturate(155%); -webkit-backdrop-filter:blur(13px) saturate(155%); background:rgba(8,11,18,.5); }
-  .glass-hero{ backdrop-filter:blur(18px) saturate(165%); -webkit-backdrop-filter:blur(18px) saturate(165%); background:linear-gradient(165deg, rgba(9,12,20,.46), rgba(9,12,20,.28)); border:1px solid rgba(255,255,255,.13); box-shadow:0 16px 36px -18px rgba(0,0,0,.65); }
+  .glass-hero{ backdrop-filter:blur(18px) saturate(165%); -webkit-backdrop-filter:blur(18px) saturate(165%); background:linear-gradient(165deg, rgba(var(--g),.46), rgba(var(--g),.28)); border:1px solid rgba(255,255,255,.13); box-shadow:0 16px 36px -18px rgba(0,0,0,.65); }
   .hero-sheen{ position:absolute; inset:0; overflow:hidden; border-radius:inherit; pointer-events:none; }
-  .hero-sheen::after{ content:''; position:absolute; top:-60%; left:-60%; width:24%; height:220%; background:linear-gradient(75deg,transparent,rgba(255,255,255,.06),transparent); transform:rotate(10deg); animation:sweep 11s ease-in-out infinite; }
-  @keyframes sweep{ 0%{left:-60%} 40%{left:130%} 100%{left:130%} }
+  .hero-sheen::after{ content:''; position:absolute; top:-60%; left:-60%; width:24%; height:220%; background:linear-gradient(75deg,transparent,rgba(255,255,255,.06),transparent); transform:translateX(0) rotate(10deg); animation:sweep 11s ease-in-out infinite; will-change:transform; }
+  @keyframes sweep{ 0%{transform:translateX(0) rotate(10deg)} 40%{transform:translateX(792%) rotate(10deg)} 100%{transform:translateX(792%) rotate(10deg)} }
   .no-scrollbar::-webkit-scrollbar{display:none} .no-scrollbar{-ms-overflow-style:none; scrollbar-width:none}
   @keyframes pulse-dot{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.8)} }
-  .live-dot{ animation:pulse-dot 2.4s ease-in-out infinite; }
+  .live-dot{ background:var(--acc); animation:pulse-dot 2.4s ease-in-out infinite; }
   .chip{ font-size:11px; padding:3px 9px; border-radius:999px; font-weight:600; }
+  .chip-now,.btn-acc{ background:var(--acc); color:var(--on-acc); }
   .rise{ opacity:0; animation:rise .6s cubic-bezier(.16,1,.3,1) forwards; }
+  .pop-in{ animation:rise .25s cubic-bezier(.16,1,.3,1) both; }
   @keyframes rise{ from{opacity:0; transform:translateY(12px)} to{opacity:1; transform:translateY(0)} }
   #lecture-list{ transition:opacity .22s ease, transform .22s ease; }
-  .now-card{ border-color:rgba(255,255,255,.25)!important; }
+  .now-card{ border-color:rgba(var(--acc-rgb),.5)!important; }
   .now-bar{ height:3px; border-radius:3px; background:rgba(255,255,255,.15); overflow:hidden; }
-  .now-bar i{ display:block; height:100%; background:#fff; }
+  .now-bar i{ display:block; height:100%; background:var(--acc); transition:width .6s ease; }
+  .ic{ display:inline-block; width:1em; height:1em; fill:currentColor; vertical-align:-.125em; flex:none; }
+  .day-tab{ color:#D4D4D8; }
+  .day-tab.on,html.light .day-tab.on{ background:var(--acc); color:var(--on-acc); }
+  .w-switch{ color:#A1A1AA; }
+  .w-switch.on,html.light .w-switch.on{ background:var(--acc); color:var(--on-acc); }
+  #group-btn{ color:var(--acc); box-shadow:inset 0 0 0 1.5px rgba(var(--acc-rgb),.6); }
+  #group-pop{ position:fixed; inset:0; z-index:65; display:none; }
+  #group-pop.open{ display:block; }
+  #group-pop .pop-bg{ position:absolute; inset:0; background:rgba(0,0,0,.25); }
+  .grp-opt{ padding:11px 0; border-radius:14px; font-size:12px; font-weight:700; color:#D4D4D8; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); transition:transform .12s; }
+  .grp-opt:active{ transform:scale(.94); }
+  .grp-opt.on{ background:var(--acc); color:var(--on-acc); border-color:transparent; }
+  html.light .grp-opt{ color:#3f4147; background:rgba(0,0,0,.05); border-color:rgba(0,0,0,.08); }
+  html.light .grp-opt.on{ background:var(--acc); color:var(--on-acc); }
+  .wall-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:8px; }
+  .wall-opt{ position:relative; overflow:hidden; border-radius:14px; aspect-ratio:3/4.2; background-size:cover; background-position:center; border:2px solid rgba(255,255,255,.14); }
+  .wall-opt.on{ border-color:var(--acc); box-shadow:0 0 0 2px rgba(var(--acc-rgb),.28); }
+  .wall-opt span{ position:absolute; left:0; right:0; bottom:0; padding:12px 2px 4px; font-size:9px; font-weight:700; text-align:center; color:#fff; background:linear-gradient(transparent,rgba(0,0,0,.75)); }
   .sheet{ position:fixed; inset:0; z-index:70; display:none; }
   .sheet.open{ display:block; }
   .sheet-bg{ position:absolute; inset:0; background:rgba(0,0,0,.5); }
-  .sheet-panel{ position:absolute; left:0; right:0; bottom:0; max-width:448px; margin:0 auto; border-radius:28px 28px 0 0; padding:18px; max-height:82vh; overflow-y:auto; }
+  .sheet-panel{ position:absolute; left:0; right:0; bottom:0; max-width:448px; margin:0 auto; border-radius:28px 28px 0 0; padding:18px; padding-bottom:calc(18px + var(--sab)); max-height:82vh; overflow-y:auto; }
   .seg{ display:flex; gap:4px; }
   .seg button{ flex:1; padding:7px 0; border-radius:999px; font-size:11px; font-weight:700; }
-  .seg button.on{ background:#fff; color:#111; } html.light .seg button.on{ background:#111; color:#fff; }
+  .seg button.on{ background:var(--acc); color:var(--on-acc); }
   .seg button:not(.on){ color:#a1a1aa; }
   #print-week{ display:none; }
   @media print{
@@ -63,52 +96,57 @@
     #print-week table{ width:100%; border-collapse:collapse; margin-bottom:10px; font-size:11px; }
     #print-week th,#print-week td{ border:1px solid #ccc; padding:4px 6px; text-align:left; }
   }
+
 </style>
+<style id="tw">*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:IBM Plex Sans Arabic,system-ui,sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.left-0{left:0}.left-1\/2{left:50%}.right-0{right:0}.z-10{z-index:10}.z-50{z-index:50}.z-\[60\]{z-index:60}.mx-auto{margin-left:auto;margin-right:auto}.-mt-3{margin-top:-.75rem}.mb-1{margin-bottom:.25rem}.mb-1\.5{margin-bottom:.375rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.ml-1{margin-left:.25rem}.mr-1{margin-right:.25rem}.mt-0\.5{margin-top:.125rem}.mt-2{margin-top:.5rem}.mt-2\.5{margin-top:.625rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.block{display:block}.inline-block{display:inline-block}.inline{display:inline}.flex{display:flex}.table{display:table}.grid{display:grid}.hidden{display:none}.h-1\.5{height:.375rem}.h-10{height:2.5rem}.h-2{height:.5rem}.h-7{height:1.75rem}.h-8{height:2rem}.h-9{height:2.25rem}.min-h-screen{min-height:100vh}.w-1\.5{width:.375rem}.w-10{width:2.5rem}.w-12{width:3rem}.w-2{width:.5rem}.w-7{width:1.75rem}.w-8{width:2rem}.w-9{width:2.25rem}.w-full{width:100%}.min-w-0{min-width:0}.min-w-\[58px\]{min-width:58px}.min-w-\[64px\]{min-width:64px}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.-translate-x-1\/2{--tw-translate-x:-50%}.-translate-x-1\/2,.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-around{justify-content:space-around}.gap-0\.5{gap:.125rem}.gap-1{gap:.25rem}.gap-1\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-2\.5{gap:.625rem}.gap-3{gap:.75rem}.gap-y-1\.5{row-gap:.375rem}.space-y-2>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.5rem*var(--tw-space-y-reverse))}.space-y-3\.5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.875rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.875rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.space-y-5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem*var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.truncate{overflow:hidden;text-overflow:ellipsis}.truncate,.whitespace-nowrap{white-space:nowrap}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-t{border-top-width:1px}.border-white\/10{border-color:hsla(0,0%,100%,.1)}.bg-transparent{background-color:transparent}.p-1{padding:.25rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-8{padding:2rem}.px-1{padding-left:.25rem;padding-right:.25rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-2\.5{padding-left:.625rem;padding-right:.625rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-3\.5{padding-left:.875rem;padding-right:.875rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.pl-3{padding-left:.75rem}.pr-2{padding-right:.5rem}.pt-2{padding-top:.5rem}.pt-3{padding-top:.75rem}.text-center{text-align:center}.font-alt{font-family:Cairo,system-ui,sans-serif}.font-head{font-family:Poppins,system-ui,sans-serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-semibold{font-weight:600}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.text-amber-200{--tw-text-opacity:1;color:rgb(253 230 138/var(--tw-text-opacity,1))}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.text-zinc-200{--tw-text-opacity:1;color:rgb(228 228 231/var(--tw-text-opacity,1))}.text-zinc-300{--tw-text-opacity:1;color:rgb(212 212 216/var(--tw-text-opacity,1))}.text-zinc-400{--tw-text-opacity:1;color:rgb(161 161 170/var(--tw-text-opacity,1))}.text-zinc-500{--tw-text-opacity:1;color:rgb(113 113 122/var(--tw-text-opacity,1))}.underline{text-decoration-line:underline}.placeholder-zinc-500::-moz-placeholder{--tw-placeholder-opacity:1;color:rgb(113 113 122/var(--tw-placeholder-opacity,1))}.placeholder-zinc-500::placeholder{--tw-placeholder-opacity:1;color:rgb(113 113 122/var(--tw-placeholder-opacity,1))}.opacity-0{opacity:0}.outline-none{outline:2px solid transparent;outline-offset:2px}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-300{transition-duration:.3s}.ease-in-out{transition-timing-function:cubic-bezier(.4,0,.2,1)}.active\:scale-90:active{--tw-scale-x:.9;--tw-scale-y:.9}.active\:scale-90:active,.active\:scale-95:active{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95}</style>
 </head>
 <body class="min-h-screen relative">
+<div id="bg" aria-hidden="true"></div>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true"><!-- Font Awesome Free (CC BY 4.0) - https://fontawesome.com/license/free --><symbol id="i-magnifying-glass" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7l126.6 126.7c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208M208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288"/></symbol><symbol id="i-sliders" viewBox="0 0 512 512"><path d="M32 64C14.3 64 0 78.3 0 96s14.3 32 32 32h86.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H265.3C253 35.7 224.8 16 192 16s-61 19.7-73.3 48zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h246.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32h-54.7c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h54.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H233.3c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48z"/></symbol><symbol id="i-xmark" viewBox="0 0 384 512"><path d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l137.3-137.4 137.4 137.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7z"/></symbol><symbol id="i-mobile-screen-button" viewBox="0 0 384 512"><path d="M16 64C16 28.7 44.7 0 80 0h224c35.3 0 64 28.7 64 64v384c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64zm64 0v304h224V64zm112 408c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32"/></symbol><symbol id="i-repeat" viewBox="0 0 512 512"><path d="M470.6 118.6c12.5-12.5 12.5-32.8 0-45.3l-64-64c-9.2-9.2-22.9-11.9-34.9-6.9S352 19.1 352 32v32H192C86 64 0 150 0 256c0 17.7 14.3 32 32 32s32-14.3 32-32c0-70.7 57.3-128 128-128h160v32c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l64-64zM41.4 393.4c-12.5 12.5-12.5 32.8 0 45.3l64 64c9.2 9.2 22.9 11.9 34.9 6.9S160 492.9 160 480v-32h160c106 0 192-86 192-192 0-17.7-14.3-32-32-32s-32 14.3-32 32c0 70.7-57.3 128-128 128H160v-32c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9l-64 64z"/></symbol><symbol id="i-calendar-day" viewBox="0 0 448 512"><path d="M128 0c17.7 0 32 14.3 32 32v32h128V32c0-17.7 14.3-32 32-32s32 14.3 32 32v32h32c35.3 0 64 28.7 64 64v288c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128c0-35.3 28.7-64 64-64h32V32c0-17.7 14.3-32 32-32m0 256c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32v-64c0-17.7-14.3-32-32-32z"/></symbol><symbol id="i-share-nodes" viewBox="0 0 512 512"><path d="M384 192c53 0 96-43 96-96S437 0 384 0s-96 43-96 96c0 5.4.5 10.8 1.3 16l-129.7 72.1c-16.9-15-39.2-24.1-63.6-24.1-53 0-96 43-96 96s43 96 96 96c24.4 0 46.6-9.1 63.6-24.1L289.3 400c-.9 5.2-1.3 10.5-1.3 16 0 53 43 96 96 96s96-43 96-96-43-96-96-96c-24.4 0-46.6 9.1-63.6 24.1L190.7 272c.9-5.2 1.3-10.5 1.3-16s-.5-10.8-1.3-16l129.7-72.1c16.9 15 39.2 24.1 63.6 24.1"/></symbol><symbol id="i-bell" viewBox="0 0 448 512"><path d="M224 0c-17.7 0-32 14.3-32 32v3.2C119 50 64 114.6 64 192v21.7c0 48.1-16.4 94.8-46.4 132.4l-9.8 12.2C2.7 364.6 0 372.4 0 380.5 0 400.1 15.9 416 35.5 416h376.9c19.6 0 35.5-15.9 35.5-35.5 0-8.1-2.7-15.9-7.8-22.2l-9.8-12.2c-29.9-37.6-46.3-84.3-46.3-132.4V192c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32m-62 464c7.1 27.6 32.2 48 62 48s54.9-20.4 62-48z"/></symbol><symbol id="i-qrcode" viewBox="0 0 448 512"><path d="M64 160h64V96H64zM0 80c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48zm64 336h64v-64H64zM0 336c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48zM320 96v64h64V96zm-16-64h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-96c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48m-16 320a32 32 0 1 1 0-64 32 32 0 1 1 0 64m0 64c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32m96 32c0-17.7 14.3-32 32-32s32 14.3 32 32-14.3 32-32 32-32-14.3-32-32m32-96a32 32 0 1 1 0-64 32 32 0 1 1 0 64m-32 32a32 32 0 1 1-64 0 32 32 0 1 1 64 0"/></symbol><symbol id="i-image" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm64 80a48 48 0 1 1 0 96 48 48 0 1 1 0-96m144 112c8.4 0 16.1 4.4 20.5 11.5l88 144c4.5 7.4 4.7 16.7.5 24.3S368.7 416 360 416H88c-8.9 0-17.2-5-21.3-12.9s-3.5-17.5 1.6-24.8l56-80c4.5-6.4 11.8-10.2 19.7-10.2s15.2 3.8 19.7 10.2l26.4 37.8 61.4-100.5c4.4-7.1 12.1-11.5 20.5-11.5z"/></symbol><symbol id="i-print" viewBox="0 0 512 512"><path d="M64 64c0-35.3 28.7-64 64-64h213.5c17 0 33.3 6.7 45.3 18.7l42.5 42.5c12 12 18.7 28.3 18.7 45.3V144H64zM0 256c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v96c0 17.7-14.3 32-32 32h-32v64c0 35.3-28.7 64-64 64H128c-35.3 0-64-28.7-64-64v-64H32c-17.7 0-32-14.3-32-32zm128 160v32h256v-96H128zm328-144a24 24 0 1 0-48 0 24 24 0 1 0 48 0"/></symbol><symbol id="i-arrow-up-from-bracket" viewBox="0 0 448 512"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4V320c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352v64c0 53 43 96 96 96h256c53 0 96-43 96-96v-64c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32z"/></symbol><symbol id="i-link" viewBox="0 0 576 512"><path d="M419.5 96c-16.6 0-32.7 4.5-46.8 12.7-15.8-16-34.2-29.4-54.5-39.5 28.2-24 64.1-37.2 101.3-37.2C505.9 32 576 102 576 188.5c0 41.5-16.5 81.3-45.8 110.6l-71.1 71.1C429.8 399.5 390 416 348.5 416 262.1 416 192 346 192 259.5c0-1.5 0-3 .1-4.5.5-17.7 15.2-31.6 32.9-31.1s31.6 15.2 31.1 32.9v2.6c0 51.1 41.4 92.5 92.5 92.5 24.5 0 48-9.7 65.4-27.1l71.1-71.1c17.3-17.3 27.1-40.9 27.1-65.4 0-51.1-41.4-92.5-92.5-92.5zm-144.3 77.3c-1.9-.8-3.8-1.9-5.5-3.1-12.6-6.5-27-10.2-42.1-10.2-24.5 0-48 9.7-65.4 27.1l-71.1 71.1C73.8 275.5 64 299.1 64 323.6c0 51.1 41.4 92.5 92.5 92.5 16.5 0 32.6-4.4 46.7-12.6 15.8 16 34.2 29.4 54.6 39.5-28.2 23.9-64 37.2-101.3 37.2C70.1 480.2 0 410.2 0 323.7c0-41.5 16.5-81.3 45.8-110.6l71.1-71.1c29.3-29.3 69.1-45.8 110.6-45.8 86.6 0 156.5 70.6 156.5 156.9v3.9c-.4 17.7-15.1 31.6-32.8 31.2s-31.6-15.1-31.2-32.8v-2.3c0-33.7-18-63.3-44.8-79.6z"/></symbol><symbol id="i-calculator" viewBox="0 0 384 512"><path d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm32 64h192c17.7 0 32 14.3 32 32v32c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32m16 168a24 24 0 1 1-48 0 24 24 0 1 1 48 0m80 24a24 24 0 1 1 0-48 24 24 0 1 1 0 48m128-24a24 24 0 1 1-48 0 24 24 0 1 1 48 0M88 352a24 24 0 1 1 0-48 24 24 0 1 1 0 48m128-24a24 24 0 1 1-48 0 24 24 0 1 1 48 0m80 24a24 24 0 1 1 0-48 24 24 0 1 1 0 48M64 424c0-13.3 10.7-24 24-24h112c13.3 0 24 10.7 24 24s-10.7 24-24 24H88c-13.3 0-24-10.7-24-24m232-24c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24"/></symbol><symbol id="i-chalkboard-user" viewBox="0 0 640 512"><path d="M128 96c0-35.3 28.7-64 64-64h352c35.3 0 64 28.7 64 64v240h-96v-16c0-17.7-14.3-32-32-32h-64c-17.7 0-32 14.3-32 32v16H254.9c10.9-18.8 17.1-40.7 17.1-64 0-70.7-57.3-128-128-128-5.4 0-10.8.3-16 1zm205 352c-5.1-24.2-16.3-46.1-32.1-64H608c0 35.3-28.7 64-64 64zM64 272a80 80 0 1 1 160 0 80 80 0 1 1-160 0M0 480c0-53 43-96 96-96h96c53 0 96 43 96 96 0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32"/></symbol><symbol id="i-flask" viewBox="0 0 448 512"><path d="M288 0H128c-17.7 0-32 14.3-32 32s14.3 32 32 32v151.5L7.5 426.3C2.6 435 0 444.7 0 454.7 0 486.4 25.6 512 57.3 512h333.4c31.6 0 57.3-25.6 57.3-57.3 0-10-2.6-19.8-7.5-28.4L320 215.5V64c17.7 0 32-14.3 32-32S337.7 0 320 0zm-96 215.5V64h64v151.5c0 11.1 2.9 22.1 8.4 31.8L306 320H142l41.6-72.7c5.5-9.7 8.4-20.6 8.4-31.8"/></symbol><symbol id="i-pen" viewBox="0 0 512 512"><path d="M352.9 21.2 308 66.1 445.9 204l44.9-44.9c13.6-13.5 21.2-31.9 21.2-51.1s-7.6-37.6-21.2-51.1l-35.7-35.7C441.6 7.6 423.2 0 404 0s-37.6 7.6-51.1 21.2M274.1 100 58.9 315.1c-10.7 10.7-18.5 24.1-22.6 38.7L.9 481.6c-2.3 8.3 0 17.3 6.2 23.4s15.1 8.5 23.4 6.2l127.8-35.5c14.6-4.1 27.9-11.8 38.7-22.6l215-215.2z"/></symbol><symbol id="i-people-group" viewBox="0 0 512 512"><path d="M256 0a64 64 0 1 1 0 128 64 64 0 1 1 0-128m96 312c0 25-12.7 47-32 59.9V464c0 26.5-21.5 48-48 48h-32c-26.5 0-48-21.5-48-48v-92.1C172.7 359 160 337 160 312v-40c0-53 43-96 96-96s96 43 96 96zM96 32a56 56 0 1 1 0 112 56 56 0 1 1 0-112m16 240v32c0 32.5 12.1 62.1 32 84.7V464c0 1.2 0 2.5.1 3.7-8.5 7.6-19.7 12.3-32.1 12.3H80c-26.5 0-48-21.5-48-48v-56.6c-19.1-11-32-31.7-32-55.4v-32c0-53 43-96 96-96 12.7 0 24.8 2.5 35.9 6.9-12.6 21.4-19.9 46.4-19.9 73.1m256 192v-75.3c19.9-22.5 32-52.2 32-84.7v-32c0-26.7-7.3-51.6-19.9-73.1 11.1-4.5 23.2-6.9 35.9-6.9 53 0 96 43 96 96v32c0 23.7-12.9 44.4-32 55.4V432c0 26.5-21.5 48-48 48h-32c-12.3 0-23.6-4.6-32.1-12.3 0-1.2.1-2.5.1-3.7m48-432a56 56 0 1 1 0 112 56 56 0 1 1 0-112"/></symbol><symbol id="i-check" viewBox="0 0 448 512"><path d="M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z"/></symbol><symbol id="i-mug-hot" viewBox="0 0 576 512"><path d="M152-16c-13.3 0-24 10.7-24 24 0 38.9 23.4 59.4 39.1 73.1l1.1 1C184.5 96.4 192 103.9 192 120c0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C183.5 31.7 176 24.1 176 8c0-13.3-10.7-24-24-24M96 192c-17.7 0-32 14.3-32 32v192c0 53 43 96 96 96h192c41.8 0 77.4-26.7 90.5-64h5.5c70.7 0 128-57.3 128-128s-57.3-128-128-128zm352 192V256c35.3 0 64 28.7 64 64s-28.7 64-64 64M288 8c0-13.3-10.7-24-24-24S240-5.3 240 8c0 38.9 23.4 59.4 39.1 73.1l1.1 1C296.5 96.4 304 103.9 304 120c0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C295.5 31.7 288 24.1 288 8"/></symbol><symbol id="i-circle-info" viewBox="0 0 512 512"><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512m-32-352a32 32 0 1 1 64 0 32 32 0 1 1-64 0m-8 64h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24"/></symbol><symbol id="i-wifi" viewBox="0 0 576 512"><path d="M288 96c-90.9 0-173.2 36-233.7 94.6-12.7 12.3-33 12-45.2-.7s-12-33 .7-45.2C81.7 74.9 179.9 32 288 32s206.3 42.9 278.3 112.7c12.7 12.3 13 32.6.7 45.2s-32.6 13-45.2.7C461.2 132 378.9 96 288 96m-48 336a48 48 0 1 1 96 0 48 48 0 1 1-96 0m-72-105.8c-11.7 13.3-31.9 14.5-45.2 2.8s-14.5-31.9-2.8-45.2c41-46.4 101.1-75.8 168-75.8s127 29.4 168 75.8c11.7 13.3 10.4 33.5-2.8 45.2s-33.5 10.4-45.2-2.8c-29.4-33.3-72.2-54.2-120-54.2s-90.6 20.9-120 54.2"/></symbol><symbol id="r-bell" viewBox="0 0 448 512"><path d="M224 0c-13.3 0-24 10.7-24 24v9.7C118.6 45.3 56 115.4 56 200v14.5c0 37.7-10 74.7-29 107.3L5.1 359.2C1.8 365 0 371.5 0 378.2 0 399.1 16.9 416 37.8 416h372.4c20.9 0 37.8-16.9 37.8-37.8 0-6.7-1.8-13.3-5.1-19L421 321.7c-19-32.6-29-69.6-29-107.3v-14.5c0-84.6-62.6-154.7-144-166.3v-9.7c0-13.3-10.7-24-24-24zm168.4 368H55.5l12.9-22.1C91.7 306 104 260.6 104 214.5V200c0-66.3 53.7-120 120-120s120 53.7 120 120v14.5c0 46.2 12.3 91.5 35.5 131.4zm-236.3 96c9.9 28 36.6 48 67.9 48s58-20 67.9-48z"/></symbol><symbol id="r-clock" viewBox="0 0 512 512"><path d="M464 256a208 208 0 1 1-416 0 208 208 0 1 1 416 0M0 256a256 256 0 1 0 512 0 256 256 0 1 0-512 0m232-136v136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24"/></symbol></svg>
 
 
-<header class="fixed left-0 right-0 z-50" style="top:12px;">
+<header class="fixed left-0 right-0 z-50" style="top:calc(var(--sat) + 12px);">
   <div class="max-w-md mx-auto px-3">
     <div class="glass rounded-full pl-3 pr-2 py-2 flex items-center justify-between rise" style="animation-delay:.02s">
       <div class="flex items-center gap-2.5 relative z-10 min-w-0">
-        <img src="./icon.png" class="w-9 h-9 rounded-xl shrink-0" alt="C.S"/>
+        <img src="./icon-192.png" width="36" height="36" class="w-9 h-9 shrink-0" alt="C.S"/>
         <div class="leading-tight min-w-0">
           <h1 class="text-sm font-bold text-white font-head" style="direction:ltr">C.S Schedule</h1>
-          <p class="text-[10px] text-zinc-400 truncate"><span data-i18n="subtitle">Weekly Schedule</span><span id="group-chip" class="font-semibold text-zinc-300"></span><span id="weather-chip"></span></p>
+          <p class="text-[10px] text-zinc-400 truncate"><span data-i18n="subtitle">Weekly Schedule</span><span id="weather-chip"></span></p>
         </div>
       </div>
       <div class="flex items-center gap-2 relative z-10 shrink-0">
-        <button id="search-btn" aria-label="Search" class="w-9 h-9 rounded-full glass flex items-center justify-center text-zinc-200 active:scale-90 transition"><i class="fa-solid fa-magnifying-glass text-xs"></i></button>
+        <button id="group-btn" aria-label="Group" aria-haspopup="dialog" aria-expanded="false" class="w-9 h-9 rounded-full glass flex items-center justify-center text-[10px] font-bold active:scale-90 transition"><span id="group-btn-txt" style="direction:ltr">GA8</span></button>
+        <button id="search-btn" aria-label="Search" class="w-9 h-9 rounded-full glass flex items-center justify-center text-zinc-200 active:scale-90 transition"><svg class="ic text-xs"><use href="#i-magnifying-glass"/></svg></button>
         <button id="lang-btn" class="w-9 h-9 rounded-full glass flex items-center justify-center text-[11px] font-bold text-zinc-200 active:scale-90 transition">EN</button>
-        <button id="settings-btn" aria-label="Settings" class="w-9 h-9 rounded-full glass flex items-center justify-center text-zinc-200 active:scale-90 transition"><i class="fa-solid fa-sliders text-xs"></i></button>
+        <button id="settings-btn" aria-label="Settings" class="w-9 h-9 rounded-full glass flex items-center justify-center text-zinc-200 active:scale-90 transition"><svg class="ic text-xs"><use href="#i-sliders"/></svg></button>
       </div>
     </div>
     <div id="search-row" class="glass rounded-2xl mt-2 px-3 py-2 items-center gap-2" style="display:none;">
-      <i class="fa-solid fa-magnifying-glass text-zinc-400 text-xs"></i>
+      <svg class="ic text-zinc-400 text-xs"><use href="#i-magnifying-glass"/></svg>
       <input id="search-input" class="bg-transparent outline-none text-sm text-white placeholder-zinc-500 flex-1" data-i18n-ph="searchPh"/>
     </div>
   </div>
 </header>
-<div id="offline-chip" class="fixed left-1/2 -translate-x-1/2 z-50 chip glass text-amber-200" style="top:84px; display:none;"><i class="fa-solid fa-wifi-slash mr-1"></i><span data-i18n="offline">You're offline</span></div>
+<div id="offline-chip" class="fixed left-1/2 -translate-x-1/2 z-50 chip glass text-amber-200" style="top:calc(var(--sat) + 84px); display:none;"><svg class="ic mr-1" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round"><path d="M2 8.8a15 15 0 0 1 20 0M5.5 12.6a10 10 0 0 1 13 0M9 16.3a5 5 0 0 1 6 0M3 3l18 18"/><circle cx="12" cy="19.6" r=".7"/></svg><span data-i18n="offline">You're offline</span></div>
 
-<main class="max-w-md mx-auto px-4 space-y-5 relative z-10" style="padding-top:calc(var(--head-h) + 18px); padding-bottom:calc(var(--dock-h) + 28px);">
+<main class="max-w-md mx-auto px-4 space-y-5 relative z-10" style="padding-top:calc(var(--head-h) + var(--sat) + 18px); padding-bottom:calc(var(--dock-h) + var(--sab) + 28px);">
 
   <section id="pwa-install-banner" class="glass rounded-2xl p-3 rise" style="display:none; animation-delay:.08s">
     <div class="flex items-center justify-between gap-3 relative z-10">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl glass flex items-center justify-center"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <div class="w-10 h-10 rounded-xl glass flex items-center justify-center"><svg class="ic"><use href="#i-mobile-screen-button"/></svg></div>
         <div><h2 class="text-xs font-bold text-white" data-i18n="install">Install this app</h2>
         <p class="text-[11px] text-zinc-400 mt-0.5" id="install-desc" data-i18n="installDesc">Works offline with reminders before class</p></div>
       </div>
-      <button id="install-btn" class="px-3 py-1.5 rounded-full bg-white text-zinc-900 font-bold text-xs active:scale-95 transition shrink-0" data-i18n="installBtn">Install</button>
+      <button id="install-btn" class="px-3 py-1.5 rounded-full btn-acc font-bold text-xs active:scale-95 transition shrink-0" data-i18n="installBtn">Install</button>
     </div>
   </section>
 
   <section class="glass-hero rounded-3xl p-5 relative overflow-hidden rise" style="animation-delay:.14s">
     <div class="hero-sheen"></div>
     <div class="flex justify-between items-center mb-4 relative z-10">
-      <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-white live-dot"></span><span class="text-xs font-semibold text-zinc-200" data-i18n="nextClass">Next class</span></div>
+      <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full live-dot"></span><span class="text-xs font-semibold text-zinc-200" data-i18n="nextClass">Next class</span></div>
       <span class="chip glass text-zinc-200" id="next-lec-countdown">--</span>
     </div>
     <div class="flex items-start justify-between relative z-10">
@@ -127,7 +165,7 @@
 
   <section id="week-card" class="glass rounded-2xl p-3 flex items-center justify-between rise" style="animation-delay:.2s">
     <div class="flex items-center gap-2 relative z-10">
-      <i class="fa-solid fa-repeat text-zinc-300 text-sm"></i>
+      <svg class="ic text-zinc-300 text-sm"><use href="#i-repeat"/></svg>
       <div><p class="text-xs font-bold text-white" data-i18n="weekTitle">Odd / even week</p>
       <p class="text-[10px] text-zinc-400" id="week-desc" data-i18n="weekDesc">Switches Tuesday Physics between Exercise and Lab</p></div>
     </div>
@@ -143,38 +181,51 @@
   <p class="text-[10px] text-zinc-500 -mt-3" id="legend-note" data-i18n="legendNote">ODD / EVEN = session runs on odd or even weeks only</p>
 
   <section id="lecture-list" class="space-y-3.5"></section>
+  <p id="eng-note" class="glass rounded-2xl px-3.5 py-3 flex items-start gap-2.5 text-[11px] leading-relaxed text-zinc-300"><svg class="ic text-xs mt-0.5 shrink-0 text-zinc-400"><use href="#i-circle-info"/></svg><span data-i18n="engNote">English 0</span></p>
 </main>
 
-<nav class="fixed left-0 right-0 z-50 flex justify-center px-3" style="bottom:12px;">
+<nav class="fixed left-0 right-0 z-50 flex justify-center px-3" style="bottom:calc(var(--sab) + 12px);">
   <div class="dock glass rounded-full px-2 py-2 flex items-center gap-1 max-w-md w-full justify-around relative border border-white/10">
-    <button id="today-shortcut-btn" class="flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-full text-zinc-300 active:scale-90 transition relative z-10"><i class="fa-solid fa-calendar-day"></i><span class="text-[10px] font-semibold" data-i18n="today">Today</span></button>
-    <button id="share-schedule-btn" class="flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-full text-zinc-300 active:scale-90 transition relative z-10"><i class="fa-solid fa-share-nodes"></i><span class="text-[10px] font-semibold" data-i18n="share">Share</span></button>
-    <button id="dock-notify-btn" class="flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-full text-zinc-300 active:scale-90 transition relative z-10"><i class="fa-solid fa-bell"></i><span class="text-[10px] font-semibold" data-i18n="notify">Alerts</span></button>
+    <button id="today-shortcut-btn" class="flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-full text-zinc-300 active:scale-90 transition relative z-10"><svg class="ic"><use href="#i-calendar-day"/></svg><span class="text-[10px] font-semibold" data-i18n="today">Today</span></button>
+    <button id="share-schedule-btn" class="flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-full text-zinc-300 active:scale-90 transition relative z-10"><svg class="ic"><use href="#i-share-nodes"/></svg><span class="text-[10px] font-semibold" data-i18n="share">Share</span></button>
+    <button id="dock-notify-btn" class="flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-full text-zinc-300 active:scale-90 transition relative z-10"><svg class="ic"><use href="#i-bell"/></svg><span class="text-[10px] font-semibold" data-i18n="notify">Alerts</span></button>
   </div>
 </nav>
 
-<div id="toast" class="fixed left-1/2 -translate-x-1/2 z-[60] glass rounded-full px-4 py-2 text-xs font-semibold text-white opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3" style="bottom:calc(var(--dock-h) + 24px);">
+<div id="toast" class="fixed left-1/2 -translate-x-1/2 z-[60] glass rounded-full px-4 py-2 text-xs font-semibold text-white opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3" style="bottom:calc(var(--dock-h) + var(--sab) + 24px);">
   <span id="toast-msg"></span><button id="toast-action" class="underline font-bold" style="display:none"></button>
+</div>
+
+<div id="group-pop" role="dialog" aria-label="Group">
+  <div class="pop-bg" data-pop-close></div>
+  <div class="absolute left-0 right-0" style="top:calc(var(--sat) + 76px)">
+    <div class="max-w-md mx-auto px-3">
+      <div class="glass rounded-3xl p-4 pop-in">
+        <p class="text-xs font-bold text-zinc-300 mb-3" data-i18n="pickGroup">Choose your group</p>
+        <div class="grid grid-cols-4 gap-2" id="group-grid"></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="settings-sheet" class="sheet">
   <div class="sheet-bg" data-close></div>
   <div class="sheet-panel glass">
     <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold text-white" data-i18n="settingsTitle">Settings</h2>
-      <button data-close class="w-8 h-8 rounded-full glass flex items-center justify-center text-zinc-300"><i class="fa-solid fa-xmark text-xs"></i></button></div>
+      <button data-close class="w-8 h-8 rounded-full glass flex items-center justify-center text-zinc-300"><svg class="ic text-xs"><use href="#i-xmark"/></svg></button></div>
     <div class="space-y-4 text-sm">
-      <div><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="groupLabel">Group</p>
-        <div class="seg glass rounded-full p-1" id="group-seg"></div></div>
       <div><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="theme">Appearance</p>
         <div class="seg glass rounded-full p-1" id="theme-seg"><button data-v="dark" data-i18n="dark">Dark</button><button data-v="light" data-i18n="light">Light</button></div></div>
+      <div><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="wallLabel">Wallpaper theme</p>
+        <div class="wall-grid" id="wall-grid"></div></div>
       <div><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="arFont">Arabic font</p>
         <div class="seg glass rounded-full p-1" id="font-seg"><button data-v="plex">IBM Plex</button><button data-v="alt">Cairo</button></div></div>
       <div><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="reminderDefault">Default reminder time</p>
         <div class="seg glass rounded-full p-1" id="mins-seg"><button data-v="5">5m</button><button data-v="10">10m</button><button data-v="15">15m</button><button data-v="30">30m</button></div></div>
       <button id="settings-test-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200" data-i18n="testNotif">Send a test notification</button>
       <p class="text-[10px] text-zinc-500" data-i18n="bgNote">Background alerts depend on your OS/browser — most reliable when the app stays installed. Not supported on iOS Safari.</p>
-      <button id="share-tools-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><i class="fa-solid fa-share-nodes text-[11px]"></i><span data-i18n="shareExport">Share & export</span></button>
-      <button id="gpa-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><i class="fa-solid fa-calculator text-[11px]"></i><span data-i18n="gpaCalc">GPA calculator</span></button>
+      <button id="share-tools-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><svg class="ic text-[11px]"><use href="#i-share-nodes"/></svg><span data-i18n="shareExport">Share & export</span></button>
+      <button id="gpa-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><svg class="ic text-[11px]"><use href="#i-calculator"/></svg><span data-i18n="gpaCalc">GPA calculator</span></button>
       <p class="text-[10px] text-zinc-500 pt-2 border-t border-white/10" data-i18n="aboutLine">C.S Schedule · Faculty of Computers &amp; AI, May University in Cairo</p>
     </div>
   </div>
@@ -184,14 +235,14 @@
   <div class="sheet-bg" data-close></div>
   <div class="sheet-panel glass">
     <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold text-white" data-i18n="shareExport">Share & export</h2>
-      <button data-close class="w-8 h-8 rounded-full glass flex items-center justify-center text-zinc-300"><i class="fa-solid fa-xmark text-xs"></i></button></div>
+      <button data-close class="w-8 h-8 rounded-full glass flex items-center justify-center text-zinc-300"><svg class="ic text-xs"><use href="#i-xmark"/></svg></button></div>
     <div class="space-y-2 text-sm">
-      <button id="native-share-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><i class="fa-solid fa-arrow-up-from-bracket text-[11px]"></i><span data-i18n="nativeShare">Share via…</span></button>
-      <button id="copy-link-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><i class="fa-solid fa-link text-[11px]"></i><span data-i18n="copyLink">Copy link</span></button>
-      <button id="qr-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><i class="fa-solid fa-qrcode text-[11px]"></i><span data-i18n="showQr">Show QR code</span></button>
+      <button id="native-share-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><svg class="ic text-[11px]"><use href="#i-arrow-up-from-bracket"/></svg><span data-i18n="nativeShare">Share via…</span></button>
+      <button id="copy-link-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><svg class="ic text-[11px]"><use href="#i-link"/></svg><span data-i18n="copyLink">Copy link</span></button>
+      <button id="qr-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><svg class="ic text-[11px]"><use href="#i-qrcode"/></svg><span data-i18n="showQr">Show QR code</span></button>
       <div id="qr-box" class="flex justify-center py-2" style="display:none; background:#fff; border-radius:14px;"></div>
-      <button id="save-image-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><i class="fa-solid fa-image text-[11px]"></i><span data-i18n="saveImage">Save as image</span></button>
-      <button id="print-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><i class="fa-solid fa-print text-[11px]"></i><span data-i18n="printPdf">Print / Save as PDF</span></button>
+      <button id="save-image-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><svg class="ic text-[11px]"><use href="#i-image"/></svg><span data-i18n="saveImage">Save as image</span></button>
+      <button id="print-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><svg class="ic text-[11px]"><use href="#i-print"/></svg><span data-i18n="printPdf">Print / Save as PDF</span></button>
     </div>
   </div>
 </div>
@@ -200,7 +251,7 @@
   <div class="sheet-bg" data-close></div>
   <div class="sheet-panel glass">
     <div class="flex items-center justify-between mb-3"><h2 class="text-base font-bold text-white" data-i18n="gpaCalc">GPA calculator</h2>
-      <button data-close class="w-8 h-8 rounded-full glass flex items-center justify-center text-zinc-300"><i class="fa-solid fa-xmark text-xs"></i></button></div>
+      <button data-close class="w-8 h-8 rounded-full glass flex items-center justify-center text-zinc-300"><svg class="ic text-xs"><use href="#i-xmark"/></svg></button></div>
     <div id="gpa-rows" class="space-y-2 text-sm"></div>
     <button id="gpa-add" class="w-full glass rounded-xl py-2 text-xs font-bold text-zinc-200 mt-2" data-i18n="addCourse">+ Add course</button>
     <div class="glass rounded-xl p-3 mt-3 flex items-center justify-between"><span class="text-xs text-zinc-400" data-i18n="gpaResult">Estimated GPA</span><span id="gpa-total" class="text-lg font-bold text-white">0.00</span></div>
@@ -209,11 +260,11 @@
 
 <script>
 const I18N = {
-en:{subtitle:"Weekly Schedule",nextClass:"Next class",room:"Room",weekTitle:"Odd / even week",weekDesc:"Switches Tuesday Physics between Exercise and Lab",odd:"Odd",even:"Even",noClass:"No classes today",install:"Install this app",installDesc:"Works offline with reminders before class",installBtn:"Install",iosInstall:'Tap Share, then "Add to Home Screen"',today:"Today",share:"Share",notify:"Alerts",remindOn:"Reminder on",remindOff:"Remind me before",offline:"You're offline",searchPh:"Search a course or doctor",settingsTitle:"Settings",theme:"Appearance",dark:"Dark",light:"Light",arFont:"Arabic font",reminderDefault:"Default reminder time",testNotif:"Send a test notification",aboutLine:"C.S Schedule · Faculty of Computers &amp; AI, May University in Cairo",now:"Now",undo:"Undo",gap:"break",noResults:"No matches",busiest:"Busiest day",attendance:"Mark attended (resets weekly)",shareExport:"Share & export",gpaCalc:"GPA calculator",addCourse:"+ Add course",gpaResult:"Estimated GPA",copyLink:"Copy link",nativeShare:"Share via…",showQr:"Show QR code",saveImage:"Save as image",printPdf:"Print / Save as PDF",bgNote:"Background alerts depend on your OS/browser — most reliable when the app stays installed. Not supported on iOS Safari.",groupLabel:"Group",switchedTo:"Switched to",legendNote:"ODD / EVEN = session runs on odd or even weeks only"},
-ar:{subtitle:"الجدول الأسبوعي",nextClass:"المحاضرة الجاية",room:"القاعة",weekTitle:"أسبوع فردي / زوجي",weekDesc:"بيبدّل فيزيا الثلاثاء بين تمرين ومعمل",odd:"فردي",even:"زوجي",noClass:"مفيش محاضرات النهارده",install:"ثبّت التطبيق",installDesc:"يشتغل أوفلاين مع تنبيه قبل كل محاضرة",installBtn:"تثبيت",iosInstall:'دوس Share بعدين "Add to Home Screen"',today:"النهارده",share:"مشاركة",notify:"التنبيهات",remindOn:"التنبيه شغال",remindOff:"نبّهني قبلها بـ",offline:"مفيش نت دلوقتي",searchPh:"دور على مادة أو دكتور",settingsTitle:"الإعدادات",theme:"المظهر",dark:"غامق",light:"فاتح",arFont:"الخط العربي",reminderDefault:"وقت التنبيه الافتراضي",testNotif:"جرّب تنبيه تجريبي",aboutLine:"C.S Schedule · كلية الحاسبات والذكاء الاصطناعي، جامعة ماي بالقاهرة",now:"دلوقتي",undo:"تراجع",gap:"فترة راحة",noResults:"مفيش نتايج",busiest:"أزحم يوم",attendance:"سجّل حضور (بيتصفر كل أسبوع)",shareExport:"مشاركة وتصدير",gpaCalc:"حاسبة الجي بي إيه",addCourse:"+ ضيف مادة",gpaResult:"الجي بي إيه التقديري",copyLink:"انسخ الرابط",nativeShare:"شارك عبر…",showQr:"اعرض QR كود",saveImage:"احفظ كصورة",printPdf:"اطبع / احفظ PDF",bgNote:"التنبيهات في الخلفية بتعتمد على نظام التشغيل والمتصفح — بتشتغل أفضل لما التطبيق يفضل متثبت. مش مدعومة على iOS Safari.",groupLabel:"الجروب",switchedTo:"اتبدّل لجروب",legendNote:"فردي / زوجي = الحصة بتحصل في الأسابيع الفردية أو الزوجية بس"}
+en:{subtitle:"Weekly Schedule",nextClass:"Next class",room:"Room",weekTitle:"Odd / even week",weekDesc:"Switches Tuesday Physics between Exercise and Lab",odd:"Odd",even:"Even",noClass:"No classes today",install:"Install this app",installDesc:"Works offline with reminders before class",installBtn:"Install",iosInstall:'Tap Share, then "Add to Home Screen"',today:"Today",share:"Share",notify:"Alerts",remindOn:"Reminder on",remindOff:"Remind me before",offline:"You're offline",searchPh:"Search a course or doctor",settingsTitle:"Settings",theme:"Appearance",dark:"Dark",light:"Light",arFont:"Arabic font",reminderDefault:"Default reminder time",testNotif:"Send a test notification",aboutLine:"C.S Schedule · Faculty of Computers &amp; AI, May University in Cairo",now:"Now",undo:"Undo",gap:"break",noResults:"No matches",busiest:"Busiest day",attendance:"Mark attended (resets weekly)",shareExport:"Share & export",gpaCalc:"GPA calculator",addCourse:"+ Add course",gpaResult:"Estimated GPA",copyLink:"Copy link",nativeShare:"Share via…",showQr:"Show QR code",saveImage:"Save as image",printPdf:"Print / Save as PDF",bgNote:"Background alerts depend on your OS/browser — most reliable when the app stays installed. Not supported on iOS Safari.",groupLabel:"Group",switchedTo:"Switched to",legendNote:"ODD / EVEN = session runs on odd or even weeks only",pickGroup:"Choose your group",wallLabel:"Wallpaper theme",engNote:"English 0 — Wednesday &amp; Thursday, Period 4 (14:20 – 16:00). Not for everyone."},
+ar:{subtitle:"الجدول الأسبوعي",nextClass:"المحاضرة الجاية",room:"القاعة",weekTitle:"أسبوع فردي / زوجي",weekDesc:"بيبدّل فيزيا الثلاثاء بين تمرين ومعمل",odd:"فردي",even:"زوجي",noClass:"مفيش محاضرات النهارده",install:"ثبّت التطبيق",installDesc:"يشتغل أوفلاين مع تنبيه قبل كل محاضرة",installBtn:"تثبيت",iosInstall:'دوس Share بعدين "Add to Home Screen"',today:"النهارده",share:"مشاركة",notify:"التنبيهات",remindOn:"التنبيه شغال",remindOff:"نبّهني قبلها بـ",offline:"مفيش نت دلوقتي",searchPh:"دور على مادة أو دكتور",settingsTitle:"الإعدادات",theme:"المظهر",dark:"غامق",light:"فاتح",arFont:"الخط العربي",reminderDefault:"وقت التنبيه الافتراضي",testNotif:"جرّب تنبيه تجريبي",aboutLine:"C.S Schedule · كلية الحاسبات والذكاء الاصطناعي، جامعة ماي بالقاهرة",now:"دلوقتي",undo:"تراجع",gap:"فترة راحة",noResults:"مفيش نتايج",busiest:"أزحم يوم",attendance:"سجّل حضور (بيتصفر كل أسبوع)",shareExport:"مشاركة وتصدير",gpaCalc:"حاسبة الجي بي إيه",addCourse:"+ ضيف مادة",gpaResult:"الجي بي إيه التقديري",copyLink:"انسخ الرابط",nativeShare:"شارك عبر…",showQr:"اعرض QR كود",saveImage:"احفظ كصورة",printPdf:"اطبع / احفظ PDF",bgNote:"التنبيهات في الخلفية بتعتمد على نظام التشغيل والمتصفح — بتشتغل أفضل لما التطبيق يفضل متثبت. مش مدعومة على iOS Safari.",groupLabel:"الجروب",switchedTo:"اتبدّل لجروب",legendNote:"فردي / زوجي = الحصة بتحصل في الأسابيع الفردية أو الزوجية بس",pickGroup:"اختار جروبك",wallLabel:"ثيم الخلفية",engNote:"كورس English 0 — الأربع والخميس، الفترة الرابعة (14:20 – 16:00). مش لكل الطلاب."}
 };
 const DAYNAMES = { sat:{en:'Saturday',ar:'السبت'}, sun:{en:'Sunday',ar:'الأحد'}, mon:{en:'Monday',ar:'الإثنين'}, tue:{en:'Tuesday',ar:'الثلاثاء'}, wed:{en:'Wednesday',ar:'الأربعاء'}, thu:{en:'Thursday',ar:'الخميس'} };
-const CATS = { lecture:{color:'#93A6B8',icon:'fa-chalkboard-user'}, lab:{color:'#8FB89B',icon:'fa-flask'}, exercise:{color:'#C79B77',icon:'fa-pen'}, community:{color:'#B0A98E',icon:'fa-people-group'} };
+const CATS = { lecture:{color:'#93A6B8',icon:'chalkboard-user'}, lab:{color:'#8FB89B',icon:'flask'}, exercise:{color:'#C79B77',icon:'pen'}, community:{color:'#B0A98E',icon:'people-group'} };
 const TYPE_AR = {Lecture:'محاضرة',Laboratory:'معمل',Exercise:'تمرين',Section:'سكشن','Community Activity':'نشاط طلابي'};
 const PERIODS = {1:'09:00 – 10:40',2:'10:50 – 12:30',3:'12:40 – 14:20',4:'14:20 – 16:00'};
 const PMIN = {1:[540,640],2:[650,750],3:[760,860],4:[860,960]};
@@ -359,6 +410,50 @@ GC4:[
  {day:'wed',p:1,code:'BSC112',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Ramy, Dr. Naglaa',staffAr:'أ.د رامي، د.نجلاء'},
  {day:'wed',p:2,code:'BSC114',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Ramy, Dr. Marwa, Dr. Lamya',staffAr:'أ.د رامي، د.مروة، د.لمياء'},
  {day:'thu',p:1,code:'CAI115',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Rania, Dr. Yasser, Dr. Ghada',staffAr:'أ.د رانيا، د.ياسر، د.غادة'}
+],
+GA1:[
+ {day:'sun',p:1,code:'CAI115',type:'Lecture',cat:'lecture',room:'C333',staff:'Prof. Rania, Dr. Yasser, Dr. Ghada',staffAr:'أ.د رانيا، د.ياسر، د.غادة'},
+ {day:'sun',p:2,code:'BSC111',type:'Lecture',cat:'lecture',room:'C333',staff:'Prof. Hany, Dr. Kareem, Dr. Ahmed Fawzy',staffAr:'أ.د هاني، د.كريم، د.أحمد فوزي'},
+ {day:'sun',p:3,code:'BSC111',type:'Laboratory',cat:'lab',room:'Phys. Lab',staff:'L.A. Toqa, T.A. Habeba',staffAr:'م.م توقى، م.م حبيبة',alt:{type:'Exercise',cat:'exercise',room:'C432',staff:'L.A. Toqa, T.A. Habeba',staffAr:'م.م توقى، م.م حبيبة'}},
+ {day:'sun',p:4,code:'CAI115',type:'Laboratory',cat:'lab',room:'P.L.C228',staff:'T.A. Amr, T.A. Ayman',staffAr:'م.م عمرو، م.م أيمن'},
+ {day:'mon',p:1,code:'BSC114',type:'Lecture',cat:'lecture',room:'C201',staff:'Prof. Ramy, Dr. Marwa, Dr. Lamya',staffAr:'أ.د رامي، د.مروة، د.لمياء'},
+ {day:'mon',p:2,code:'BSC112',type:'Lecture',cat:'lecture',room:'C201',staff:'Prof. Ramy, Dr. Naglaa',staffAr:'أ.د رامي، د.نجلاء'},
+ {day:'mon',p:3,code:'UNI101',type:'Lecture',cat:'lecture',room:'C201',staff:'Prof. Hany, Dr. Bahaa',staffAr:'أ.د هاني، د.بهاء'},
+ {day:'mon',p:4,code:'UNI109',type:'Lecture',cat:'lecture',room:'C201',staff:'Prof. Rania, Dr. Abdullah',staffAr:'أ.د رانيا، د.عبدالله'},
+ {day:'tue',p:1,code:'BSC112',type:'Exercise',cat:'exercise',room:'C225',staff:'L.A. Andro, T.A. Heba',staffAr:'م.م أندرو، م.م هبة'},
+ {day:'tue',p:2,code:'BSC114',type:'Exercise',cat:'exercise',room:'C331',staff:'L.A. Amira, T.A. May',staffAr:'م.م أميرة، م.م مي'},
+ {day:'tue',p:3,code:'COMM',type:'Community Activity',cat:'community',room:'C333',staff:'',staffAr:''},
+ {day:'tue',p:4,code:'MATH0',type:'Section',cat:'exercise',room:'C330',staff:'T.A. Shahd Abdelsalam',staffAr:'م.م شهد عبدالسلام'},
+ {day:'thu',p:1,code:'UNI109',type:'Laboratory',cat:'lab',room:'P.L.C220',staff:'L.A. Alieldeen',staffAr:'م.م علي الدين'},
+ {day:'thu',p:3,code:'MATH0',type:'Lecture',cat:'lecture',room:'C201',staff:'Prof. Ramy, Dr. Naglaa, Dr. Marwa',staffAr:'أ.د رامي، د.نجلاء، د.مروة'}
+],
+GB2:[
+ {day:'sun',p:1,code:'BSC111',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Hany, Dr. Kareem, Dr. Ahmed Fawzy',staffAr:'أ.د هاني، د.كريم، د.أحمد فوزي'},
+ {day:'sun',p:2,code:'CAI115',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Rania, Dr. Yasser, Dr. Ghada',staffAr:'أ.د رانيا، د.ياسر، د.غادة'},
+ {day:'mon',p:1,code:'CAI115',type:'Laboratory',cat:'lab',room:'P.L.C334',staff:'L.A. Amir, T.A Nada',staffAr:'م.م أمير، م.م ندى'},
+ {day:'mon',p:2,code:'BSC111',type:'Exercise',cat:'exercise',room:'C432',staff:"T.A. Mo'men, T.A. Gana",staffAr:'م.م مؤمن، م.م جانا',alt:{type:'Laboratory',cat:'lab',room:'Phys. Lab',staff:"T.A. Mo'men, T.A. Gana",staffAr:'م.م مؤمن، م.م جانا'}},
+ {day:'mon',p:3,code:'UNI109',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Rania, Dr. Abdullah',staffAr:'أ.د رانيا، د.عبدالله'},
+ {day:'mon',p:4,code:'UNI101',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Hany, Dr. Bahaa',staffAr:'أ.د هاني، د.بهاء'},
+ {day:'tue',p:1,code:'BSC112',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Ramy, Dr. Naglaa',staffAr:'أ.د رامي، د.نجلاء'},
+ {day:'tue',p:2,code:'BSC114',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Ramy, Dr. Marwa, Dr. Lamya',staffAr:'أ.د رامي، د.مروة، د.لمياء'},
+ {day:'tue',p:3,code:'COMM',type:'Community Activity',cat:'community',room:'C209',staff:'',staffAr:''},
+ {day:'tue',p:4,code:'BSC114',type:'Exercise',cat:'exercise',room:'C222',staff:'L.A. Dina, T.A. Ziad',staffAr:'م.م دينا، م.م زياد'},
+ {day:'wed',p:1,code:'BSC112',type:'Exercise',cat:'exercise',room:'C329',staff:'T.A. M. Ayman, T.A. M. Mostafa',staffAr:'م.م أيمن، م.م مصطفى'},
+ {day:'wed',p:3,code:'UNI109',type:'Laboratory',cat:'lab',room:'P.L.C334',staff:'L.A. Ganna',staffAr:'م.م جنا'}
+],
+GC5:[
+ {day:'sun',p:1,code:'BSC112',type:'Exercise',cat:'exercise',room:'C329',staff:'T.A. M. Ayman, T.A. M. Mostafa',staffAr:'م.م أيمن، م.م مصطفى'},
+ {day:'sun',p:2,code:'UNI109',type:'Laboratory',cat:'lab',room:'P.L.C220',staff:'L.A. Mariam',staffAr:'م.م مريم'},
+ {day:'sun',p:3,code:'UNI101',type:'Lecture',cat:'lecture',room:'C135',staff:'Prof. Hany, Dr. Bahaa',staffAr:'أ.د هاني، د.بهاء'},
+ {day:'sun',p:4,code:'UNI109',type:'Lecture',cat:'lecture',room:'C135',staff:'Prof. Rania, Dr. Abdullah',staffAr:'أ.د رانيا، د.عبدالله'},
+ {day:'mon',p:1,code:'CAI115',type:'Laboratory',cat:'lab',room:'P.L.C220',staff:'L.A. Engy, T.A. M.Khaled',staffAr:'م.م إنجي، م.م خالد'},
+ {day:'mon',p:2,code:'BSC111',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Hany, Dr. Kareem, Dr. Ahmed Fawzy',staffAr:'أ.د هاني، د.كريم، د.أحمد فوزي'},
+ {day:'mon',p:4,code:'BSC114',type:'Exercise',cat:'exercise',room:'C430',staff:'T.A. Yousef, T.A. M. Esmaeel',staffAr:'م.م يوسف، م.م إسماعيل'},
+ {day:'tue',p:3,code:'COMM',type:'Community Activity',cat:'community',room:'C141',staff:'',staffAr:''},
+ {day:'wed',p:1,code:'BSC112',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Ramy, Dr. Naglaa',staffAr:'أ.د رامي، د.نجلاء'},
+ {day:'wed',p:2,code:'BSC114',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Ramy, Dr. Marwa, Dr. Lamya',staffAr:'أ.د رامي، د.مروة، د.لمياء'},
+ {day:'wed',p:3,code:'BSC111',type:'Laboratory',cat:'lab',room:'Phys. Lab',staff:"T.A. Mo'men, T.A. Gana",staffAr:'م.م مؤمن، م.م جانا',alt:{type:'Exercise',cat:'exercise',room:'C432',staff:"T.A. Mo'men, T.A. Gana",staffAr:'م.م مؤمن، م.م جانا'}},
+ {day:'thu',p:1,code:'CAI115',type:'Lecture',cat:'lecture',room:'C209',staff:'Prof. Rania, Dr. Yasser, Dr. Ghada',staffAr:'أ.د رانيا، د.ياسر، د.غادة'}
 ]
 };
 let group = localStorage.getItem('a8_group') || 'GA8';
@@ -369,12 +464,26 @@ const $ = id => document.getElementById(id);
 let lang = localStorage.getItem('a8_lang') || 'en';
 let theme = localStorage.getItem('a8_theme') || 'dark';
 let font = localStorage.getItem('a8_font') || 'plex';
+const WALLS = {
+  ocean:{file:'./bg.jpg',solid:'#0A1220',name:{en:'Ocean',ar:'المحيط'}},
+  graphite:{file:'./bg-graphite.jpg',solid:'#050608',name:{en:'Graphite',ar:'جرافيت'}},
+  wave:{file:'./bg-wave.jpg',solid:'#0A0D10',name:{en:'Great Wave',ar:'الموجة'}},
+  smoke:{file:'./bg-smoke.jpg',solid:'#0B0B0D',name:{en:'Smoke',ar:'دخان'}},
+  onyx:{file:'./bg-onyx.jpg',solid:'#000305',name:{en:'Onyx',ar:'أونيكس'}}
+};
+let wall = localStorage.getItem('a8_wall'); if(!WALLS[wall]) wall='ocean';
 let defMins = localStorage.getItem('a8_mins') || '15';
 let searching = false;
 function t(k){ return I18N[lang][k]; }
+let cairoLoaded=false;
+function loadCairo(){ if(cairoLoaded) return; cairoLoaded=true; const l=document.createElement('link'); l.rel='stylesheet'; l.href='https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap'; document.head.appendChild(l); }
 function applyChrome(){
-  document.documentElement.classList.toggle('light', theme==='light');
-  document.documentElement.classList.toggle('font-alt', font==='alt');
+  const de=document.documentElement;
+  de.classList.toggle('light', theme==='light');
+  de.classList.toggle('font-alt', font==='alt'); if(font==='alt') loadCairo();
+  de.dataset.wall = wall;
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', theme==='light' ? '#EEEFF1' : WALLS[wall].solid);
+  document.querySelectorAll('.wall-opt').forEach(b=>b.classList.toggle('on', b.dataset.wall===wall));
   document.querySelectorAll('#theme-seg button').forEach(b=>b.classList.toggle('on', b.dataset.v===theme));
   document.querySelectorAll('#font-seg button').forEach(b=>b.classList.toggle('on', b.dataset.v===font));
   document.querySelectorAll('#mins-seg button').forEach(b=>b.classList.toggle('on', b.dataset.v===defMins));
@@ -385,7 +494,7 @@ function setLang(l){
   document.querySelectorAll('[data-i18n]').forEach(el=> el.innerHTML = t(el.dataset.i18n));
   document.querySelectorAll('[data-i18n-ph]').forEach(el=> el.placeholder = t(el.dataset.i18nPh));
   $('lang-btn').textContent = l==='ar' ? 'EN' : 'AR';
-  buildTabs(); buildLegend(); updateWeekCard(); render(); calcNext();
+  buildWallGrid(); buildTabs(); buildLegend(); updateWeekCard(); render(); calcNext();
 }
 function isoWeekOdd(){ const d=new Date(); const onejan=new Date(d.getFullYear(),0,1); const wk=Math.ceil((((d-onejan)/86400000)+onejan.getDay()+1)/7); return wk%2===1; }
 // a8_week used to be one shared "odd"/"even" string for every group. It's now a {group: "odd"|"even"} map
@@ -398,7 +507,7 @@ let weekMap = (function(){
   return {};
 })();
 let week = weekMap[group] || (isoWeekOdd() ? 'odd':'even');
-function applyWeekUI(){ document.querySelectorAll('.w-switch').forEach(b=>{ const on=b.dataset.w===week; b.style.background= on?'#fff':'transparent'; b.style.color= on?'#111':'#A1A1AA'; }); }
+function applyWeekUI(){ document.querySelectorAll('.w-switch').forEach(b=> b.classList.toggle('on', b.dataset.w===week)); }
 $('week-switch').addEventListener('click', e=>{ const b=e.target.closest('.w-switch'); if(!b) return; week=b.dataset.w; weekMap[group]=week; localStorage.setItem('a8_week',JSON.stringify(weekMap)); applyWeekUI(); render(); calcNext(); });
 
 function shortTitle(code){ const full = lang==='ar'?COURSES[code].ar:COURSES[code].en; const i=full.indexOf(' – '); return i>=0?full.slice(i+3):full; }
@@ -424,7 +533,7 @@ function buildLegend(){
 }
 let activeDay = DAYS.find(d=>d.idx===new Date().getDay()) || DAYS[0];
 function buildTabs(){ $('day-tabs').innerHTML = DAYS.map(d=>{ const has=L.some(l=>l.day===d.key); return `<button data-day="${d.key}" class="day-tab shrink-0 px-3.5 py-2 rounded-full text-xs font-bold transition glass" style="${has?'':'opacity:.45'}">${DAYNAMES[d.key][lang]}</button>`; }).join(''); paintTabs(); }
-function paintTabs(){ document.querySelectorAll('.day-tab').forEach(b=>{ const on=b.dataset.day===activeDay.key; b.style.background= on?'#fff':''; b.style.color= on?'#111':'#D4D4D8'; }); }
+function paintTabs(){ document.querySelectorAll('.day-tab').forEach(b=> b.classList.toggle('on', b.dataset.day===activeDay.key)); }
 $('day-tabs').addEventListener('click', e=>{ const b=e.target.closest('.day-tab'); if(!b) return; activeDay=DAYS.find(d=>d.key===b.dataset.day); searching=false; $('search-row').style.display='none'; $('search-input').value=''; paintTabs(); render(); });
 
 const savedReminders = JSON.parse(localStorage.getItem('a8_reminders')||'{}');
@@ -447,23 +556,27 @@ function isoWeekNum(d){ const onejan=new Date(d.getFullYear(),0,1); return d.get
 function nowInfo(l){
   const d=new Date(); const today=DAYS.find(dd=>dd.idx===d.getDay());
   if(!today || today.key!==l.day) return null;
-  const cur=d.getHours()*60+d.getMinutes(); const [s,e]=PMIN[l.p];
-  if(cur<s||cur>e) return null;
-  return Math.round(((cur-s)/(e-s))*100);
+  const cur=d.getHours()*60+d.getMinutes()+d.getSeconds()/60; const [s,e]=PMIN[l.p];
+  if(cur<s||cur>=e) return null;
+  return {pct:Math.round(((cur-s)/(e-s))*100), left:Math.max(1,Math.ceil(e-cur))};
 }
+function fmtLeft(m){ const h=Math.floor(m/60), r=m%60; return lang==='ar' ? `متبقي ${h?h+'س ':''}${r}د` : `${h?h+'h ':''}${r}m left`; }
+function paintLive(){ document.querySelectorAll('.now-row').forEach(r=>{ const i=nowInfo({day:r.dataset.day,p:+r.dataset.p}); if(!i) return; r.querySelector('i').style.width=i.pct+'%'; r.querySelector('.now-left').textContent=fmtLeft(i.left); }); }
+function liveSig(){ return L.filter(l=>nowInfo(l)).map(l=>l.day+l.p).join(','); }
+let lastSig='';
 function cardHTML(l, showDay){
-  const c=CATS[l.cat]; const id=`${group}-${l.day}-${l.p}-${l.code}`; const isSet=!!savedReminders[id]; const pct=nowInfo(l); const present=savedAttendance[id]===isoWeekNum(new Date());
-  return `<article class="glass rounded-2xl p-4 relative z-10 ${pct!==null?'now-card':''}" style="${pct!==null?'border-width:1.5px':''}">
+  const c=CATS[l.cat]; const id=`${group}-${l.day}-${l.p}-${l.code}`; const isSet=!!savedReminders[id]; const live=nowInfo(l); const present=savedAttendance[id]===isoWeekNum(new Date());
+  return `<article class="glass rounded-2xl p-4 relative z-10 ${live?'now-card':''}" style="${live?'border-width:1.5px':''}">
     <div class="flex justify-between items-start relative z-10">
       <div class="flex-1">
         <div class="flex items-center gap-2 gap-y-1.5 mb-2 flex-wrap">
           <span class="chip" style="color:${c.color};background:${c.color}22">${disp(l,'type')}</span>
           <span class="text-[10px] text-zinc-500">${PERIODS[l.p]}${showDay?' · '+DAYNAMES[l.day][lang]:''}</span>
-          ${pct!==null?`<span class="chip" style="background:#fff;color:#111">${t('now')}</span>`:''}
+          ${live?`<span class="chip chip-now">${t('now')}</span>`:''}
         </div>
         <h4 class="text-sm font-bold text-white font-head">${disp(l,'title')}</h4>
-        ${l.staff?`<p class="text-[11px] text-zinc-400 flex items-center gap-1.5 mt-2"><i class="fa-solid ${c.icon} text-[10px]"></i>${disp(l,'staff')}</p>`:''}
-        ${pct!==null?`<div class="now-bar mt-2.5"><i style="width:${pct}%"></i></div>`:''}
+        ${l.staff?`<p class="text-[11px] text-zinc-400 flex items-center gap-1.5 mt-2"><svg class="ic text-[10px]"><use href="#i-${c.icon}"/></svg>${disp(l,'staff')}</p>`:''}
+        ${live?`<div class="now-row flex items-center gap-2.5 mt-2.5" data-day="${l.day}" data-p="${l.p}"><div class="now-bar flex-1"><i style="width:${live.pct}%"></i></div><span class="now-left text-[10px] font-semibold text-zinc-300 whitespace-nowrap">${fmtLeft(live.left)}</span></div>`:''}
       </div>
       <div class="text-center glass rounded-xl px-2.5 py-1.5 min-w-[58px] shrink-0">
         <span class="block text-[9px] text-zinc-400" data-i18n="room">${t('room')}</span>
@@ -472,9 +585,9 @@ function cardHTML(l, showDay){
     </div>
     <div class="mt-4 pt-3 border-t border-white/10 flex items-center gap-2.5 relative z-10">
       <button data-id="${id}" data-label="${disp(l,'title').replace(/"/g,'&quot;')}" class="reminder-btn flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold ${isSet?'text-white':'text-zinc-400'}">
-        <i class="fa-${isSet?'solid':'regular'} fa-bell text-xs"></i><span>${isSet?t('remindOn'):defMins+(lang==='ar'?' د قبلها':'m before')}</span>
+        <svg class="ic text-xs"><use href="#${isSet?'i-bell':'r-bell'}"/></svg><span>${isSet?t('remindOn'):defMins+(lang==='ar'?' د قبلها':'m before')}</span>
       </button>
-      <button data-id="${id}" title="${t('attendance')}" class="att-btn w-9 h-9 rounded-full glass flex items-center justify-center ${present?'text-emerald-300':'text-zinc-500'}"><i class="fa-solid fa-check text-xs"></i></button>
+      <button data-id="${id}" title="${t('attendance')}" class="att-btn w-9 h-9 rounded-full glass flex items-center justify-center ${present?'text-emerald-300':'text-zinc-500'}"><svg class="ic text-xs"><use href="#i-check"/></svg></button>
     </div>
   </article>`;
 }
@@ -483,6 +596,7 @@ function gapPill(a,b){
   return `<div class="flex items-center justify-center"><span class="chip glass text-zinc-500">${t('gap')} · ${g}${lang==='ar'?'د':'m'}</span></div>`;
 }
 function render(){
+  lastSig=liveSig();
   const list=$('lecture-list'); list.style.opacity=0; list.style.transform='translateY(6px)';
   setTimeout(()=>{
     let items;
@@ -492,7 +606,7 @@ function render(){
       list.innerHTML = items.length? items.map(l=>cardHTML(l,true)).join('') : `<div class="glass rounded-2xl p-8 text-center"><p class="text-sm text-zinc-300 font-semibold">${t(q?'noResults':'searchPh')}</p></div>`;
     } else {
       items = L.filter(l=>l.day===activeDay.key).sort((a,b)=>a.p-b.p).map(resolvedLecture);
-      if(items.length===0){ list.innerHTML = `<div class="glass rounded-2xl p-8 text-center"><i class="fa-solid fa-mug-hot text-2xl text-zinc-400 mb-2"></i><p class="text-sm text-zinc-300 font-semibold">${t('noClass')}</p></div>`; }
+      if(items.length===0){ list.innerHTML = `<div class="glass rounded-2xl p-8 text-center"><svg class="ic text-2xl text-zinc-400 mb-2"><use href="#i-mug-hot"/></svg><p class="text-sm text-zinc-300 font-semibold">${t('noClass')}</p></div>`; }
       else {
         let html=''; items.forEach((l,i)=>{ html+=cardHTML(l,false); if(i<items.length-1) html+=gapPill(items[i],items[i+1]); });
         list.innerHTML = html;
@@ -544,13 +658,13 @@ let nextLecCache=null;
 function calcNext(){
   const now=new Date(); const curDay=now.getDay(); const curMin=now.getHours()*60+now.getMinutes();
   let next=null, dayKey='';
-  for(let off=0; off<7; off++){
+  for(let off=0; off<=7; off++){
     const checkIdx=(curDay+off)%7; const d=DAYS.find(dd=>dd.idx===checkIdx); if(!d) continue;
     const todays = L.filter(l=>l.day===d.key).map(resolvedLecture).sort((a,b)=>a.p-b.p);
     for(const l of todays){ if(off>0 || PMIN[l.p][0]>curMin){ next=l; dayKey=d.key; nextLecCache={off,startMin:PMIN[l.p][0]}; break; } }
     if(next) break;
   }
-  if(!next){ next=resolvedLecture(L.find(l=>l.day==='sun'&&l.p===1)); dayKey='sun'; nextLecCache={off:7,startMin:PMIN[1][0]}; }
+  if(!next){ nextLecCache=null; ['next-lec-title','next-lec-doc','next-lec-hall','next-lec-meta','next-lec-countdown'].forEach(i=>$(i).textContent='--'); $('next-lec-type').textContent=''; return; }
   const c=CATS[next.cat];
   $('next-lec-title').textContent = disp(next,'title');
   $('next-lec-doc').textContent = disp(next,'staff') || '—';
@@ -563,17 +677,20 @@ function tickCountdown(){
   if(!nextLecCache) return;
   const now=new Date(); const curMin=now.getHours()*60+now.getMinutes();
   const totalMin = nextLecCache.off*1440 + nextLecCache.startMin - curMin - now.getSeconds()/60;
+  if(totalMin<=0 && !tickCountdown._re){ tickCountdown._re=true; calcNext(); tickCountdown._re=false; return; }
   const h=Math.floor(totalMin/60), m=Math.floor(totalMin%60);
-  $('next-lec-countdown').innerHTML = `<i class="fa-regular fa-clock ml-1"></i>${h>0?h+(lang==='ar'?'س ':'h '):''}${m}${lang==='ar'?'د':'m'}`;
+  $('next-lec-countdown').innerHTML = `<svg class="ic ml-1"><use href="#r-clock"/></svg>${h>0?h+(lang==='ar'?'س ':'h '):''}${m}${lang==='ar'?'د':'m'}`;
 }
-setInterval(()=>{ tickCountdown(); render(); }, 60000);
+function tick(){ tickCountdown(); const sg=liveSig(); if(sg!==lastSig) render(); else paintLive(); }
+setInterval(tick, 30000);
+document.addEventListener('visibilitychange', ()=>{ document.documentElement.classList.toggle('bg-paused', document.hidden); if(!document.hidden) tick(); });
 
 // search
 $('search-btn').addEventListener('click', ()=>{ searching=!searching; $('search-row').style.display = searching?'flex':'none'; if(searching){ $('search-input').focus(); } else { $('search-input').value=''; } render(); });
 $('search-input').addEventListener('input', render);
 
 // sheets
-function openSheet(id){ document.querySelectorAll('.sheet.open').forEach(s=>s.classList.remove('open')); $(id).classList.add('open'); }
+function openSheet(id){ openGroupPop(false); document.querySelectorAll('.sheet.open').forEach(s=>s.classList.remove('open')); $(id).classList.add('open'); }
 $('settings-btn').addEventListener('click', ()=>openSheet('settings-sheet'));
 $('share-tools-btn').addEventListener('click', ()=>openSheet('share-sheet'));
 $('gpa-btn').addEventListener('click', ()=>openSheet('gpa-sheet'));
@@ -592,23 +709,40 @@ async function fireTest(){
 }
 $('settings-test-btn').addEventListener('click', fireTest);
 
-// group switcher
-function buildGroupSeg(){ $('group-seg').innerHTML = Object.keys(GROUPS).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true})).map(g=>`<button data-g="${g}">${g}</button>`).join(''); paintGroupSeg(); }
-function paintGroupSeg(){
-  document.querySelectorAll('#group-seg button').forEach(b=> b.classList.toggle('on', b.dataset.g===group));
-  $('group-chip').textContent = ' · '+group;
+// group picker: circle in the top dock -> pick -> closes, circle shows the chosen group
+function groupKeys(){ return Object.keys(GROUPS).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true})); }
+function buildGroupPop(){ $('group-grid').innerHTML = groupKeys().map(g=>`<button data-g="${g}" class="grp-opt${g===group?' on':''}" style="direction:ltr">${g}</button>`).join(''); }
+function paintGroup(){
+  $('group-btn-txt').textContent = group;
+  document.querySelectorAll('.grp-opt').forEach(b=>b.classList.toggle('on', b.dataset.g===group));
   document.title = `C.S Schedule | ${group} Weekly Timetable`;
 }
+function openGroupPop(open){ $('group-pop').classList.toggle('open', open); $('group-btn').setAttribute('aria-expanded', String(open)); }
 function applyGroup(g, announce){
+  openGroupPop(false);
   if(!GROUPS[g] || g===group){ return; }
   group=g; localStorage.setItem('a8_group', g); L=GROUPS[g];
   week = weekMap[group] || (isoWeekOdd() ? 'odd':'even'); applyWeekUI();
-  paintGroupSeg(); searching=false; $('search-row').style.display='none';
+  paintGroup(); searching=false; $('search-row').style.display='none'; $('search-input').value='';
   buildTabs(); buildLegend(); updateWeekCard(); render(); calcNext();
   if(announce) showToast(`${t('switchedTo')} ${g}`);
 }
-$('group-seg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; applyGroup(b.dataset.g, true); });
-buildGroupSeg();
+$('group-btn').addEventListener('click', ()=>{ document.querySelectorAll('.sheet.open').forEach(x=>x.classList.remove('open')); openGroupPop(!$('group-pop').classList.contains('open')); });
+$('group-grid').addEventListener('click', e=>{ const b=e.target.closest('.grp-opt'); if(b) applyGroup(b.dataset.g, true); });
+$('group-pop').addEventListener('click', e=>{ if(e.target.hasAttribute('data-pop-close')) openGroupPop(false); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') openGroupPop(false); });
+buildGroupPop();
+
+// wallpaper themes (fixed background layer, accent colours follow the wallpaper)
+function buildWallGrid(){ $('wall-grid').innerHTML = Object.entries(WALLS).map(([id,w])=>`<button data-wall="${id}" aria-label="${w.name[lang]}" class="wall-opt${id===wall?' on':''}" style="background-image:url(./th-${id}.jpg)"><span>${w.name[lang]}</span></button>`).join(''); }
+function setWall(id){
+  if(!WALLS[id] || id===wall) return;
+  wall=id; localStorage.setItem('a8_wall', id);
+  const bg=$('bg'); bg.style.opacity=0;
+  const img=new Image(); const loaded=new Promise(r=>{ img.onload=img.onerror=r; }); img.src=WALLS[id].file;
+  Promise.all([loaded, new Promise(r=>setTimeout(r,200))]).then(()=>{ applyChrome(); requestAnimationFrame(()=>{ bg.style.opacity=1; }); });
+}
+$('wall-grid').addEventListener('click', e=>{ const b=e.target.closest('.wall-opt'); if(b) setWall(b.dataset.wall); });
 
 $('lang-btn').addEventListener('click', ()=> setLang(lang==='en'?'ar':'en'));
 $('today-shortcut-btn').addEventListener('click', ()=>{ const d=DAYS.find(dd=>dd.idx===new Date().getDay())||DAYS[0]; activeDay=d; searching=false; $('search-row').style.display='none'; paintTabs(); render(); showToast(lang==='ar'?'اتنقلت لجدول النهارده':'Jumped to today'); });
@@ -664,7 +798,7 @@ function renderGpa(){
     <input data-i="${i}" data-f="name" value="${r.name}" placeholder="${lang==='ar'?'اسم المادة':'Course'}" class="gpa-in glass rounded-lg px-2 py-1.5 text-xs flex-1 bg-transparent outline-none text-white"/>
     <input data-i="${i}" data-f="credits" type="number" min="1" max="6" value="${r.credits}" class="gpa-in glass rounded-lg px-2 py-1.5 text-xs w-12 bg-transparent outline-none text-white"/>
     <select data-i="${i}" data-f="grade" class="gpa-in glass rounded-lg px-1 py-1.5 text-xs bg-transparent outline-none text-white">${Object.keys(GRADES).map(g=>`<option value="${g}" ${g===r.grade?'selected':''}>${g}</option>`).join('')}</select>
-    <button data-i="${i}" class="gpa-del w-7 h-7 rounded-full glass flex items-center justify-center text-zinc-400 shrink-0"><i class="fa-solid fa-xmark text-[10px]"></i></button>
+    <button data-i="${i}" class="gpa-del w-7 h-7 rounded-full glass flex items-center justify-center text-zinc-400 shrink-0"><svg class="ic text-[10px]"><use href="#i-xmark"/></svg></button>
   </div>`).join('');
   const tc=gpaRows.reduce((s,r)=>s+Number(r.credits||0),0), tp=gpaRows.reduce((s,r)=>s+Number(r.credits||0)*GRADES[r.grade],0);
   $('gpa-total').textContent = tc? (tp/tc).toFixed(2) : '0.00';
@@ -677,7 +811,7 @@ $('gpa-add').addEventListener('click', ()=>{ gpaRows.push({name:'',credits:3,gra
 renderGpa();
 
 // Cairo weather (best-effort, silent on failure)
-fetch('https://api.open-meteo.com/v1/forecast?latitude=30.06&longitude=31.25&current=temperature_2m,weather_code&timezone=Africa%2FCairo')
+navigator.onLine && fetch('https://api.open-meteo.com/v1/forecast?latitude=30.06&longitude=31.25&current=temperature_2m,weather_code&timezone=Africa%2FCairo')
   .then(r=>r.json()).then(d=>{
     const tmp=Math.round(d.current.temperature_2m), code=d.current.weather_code;
     const icon = code===0?'☀️':code<=3?'⛅':code<=67?'🌧️':code<=77?'❄️':'⛈️';
@@ -688,7 +822,7 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=30.06&longitude=31.25&cur
 const qp = new URLSearchParams(location.search);
 if(qp.get('view')==='today'){ const d=DAYS.find(dd=>dd.idx===new Date().getDay()); if(d) activeDay=d; }
 
-setLang(lang); applyWeekUI(); applyChrome(); updateWeekCard();
+paintGroup(); setLang(lang); applyWeekUI(); applyChrome(); updateWeekCard();
 if(qp.get('view')==='settings') setTimeout(()=>openSheet('settings-sheet'), 250);
 </script>
 </body>
