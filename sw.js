@@ -1,5 +1,5 @@
 // C.S Schedule service worker - everything the UI needs is cached, so the app opens fully styled offline.
-const CACHE_NAME = 'cs-pwa-v5';
+const CACHE_NAME = 'cs-pwa-v11';
 const EXT_CACHE = 'cs-ext-v1'; // Google Fonts / CDN files, filled on first online visit
 const CORE = ['./', './index.html', './manifest.json', './icon.png', './icon-192.png', './bg.jpg'];
 const EXTRA = ['./bg-graphite.jpg', './bg-wave.jpg', './bg-smoke.jpg', './bg-onyx.jpg',
