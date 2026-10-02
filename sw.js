@@ -1,7 +1,7 @@
 // C.S Schedule service worker - everything the UI needs is cached, so the app opens fully styled offline.
-const CACHE_NAME = 'cs-pwa-v5';
-const EXT_CACHE = 'cs-ext-v1'; // Google Fonts / CDN files, filled on first online visit
-const CORE = ['./', './index.html', './manifest.json', './icon.png', './icon-192.png', './bg.jpg'];
+const CACHE_NAME = 'cs-pwa-v6';
+const EXT_CACHE = 'cs-ext-v1'; // Google Fonts / Supabase client library, filled on first online visit
+const CORE = ['./', './index.html', './admin.html', './manifest.json', './icon.png', './icon-192.png', './bg.jpg'];
 const EXTRA = ['./bg-graphite.jpg', './bg-wave.jpg', './bg-smoke.jpg', './bg-onyx.jpg',
   './th-ocean.jpg', './th-graphite.jpg', './th-wave.jpg', './th-smoke.jpg', './th-onyx.jpg'];
 
@@ -21,15 +21,17 @@ self.addEventListener('activate', event => {
   );
 });
 
-// pages: try the network first (so timetable updates show up), fall back to the cached copy when offline / slow
+// pages: try the network first (so timetable updates / new app versions show up), fall back
+// to that SAME page's cached copy when offline / slow — not a hardcoded page, so admin.html
+// offline still shows admin.html's own shell rather than index.html's
 async function networkFirst(req) {
   const cache = await caches.open(CACHE_NAME);
   try {
     const res = await Promise.race([fetch(req), new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 3500))]);
-    if (res && res.ok) cache.put('./index.html', res.clone());
+    if (res && res.ok) cache.put(req, res.clone());
     return res;
   } catch (e) {
-    return (await cache.match('./index.html', { ignoreSearch: true })) || (await cache.match('./', { ignoreSearch: true })) || Response.error();
+    return (await cache.match(req, { ignoreSearch: true })) || (await cache.match('./index.html', { ignoreSearch: true })) || Response.error();
   }
 }
 // own files (icons, wallpapers): cache first
@@ -41,7 +43,7 @@ async function cacheFirst(req) {
   if (res && res.ok) cache.put(req, res.clone());
   return res;
 }
-// fonts / CDN libs: serve from cache, refresh in the background
+// fonts / CDN libs (incl. the Supabase client script): serve from cache, refresh in the background
 async function staleWhileRevalidate(req) {
   const cache = await caches.open(EXT_CACHE);
   const hit = await cache.match(req);
@@ -55,7 +57,9 @@ self.addEventListener('fetch', event => {
   const url = new URL(req.url);
   if (req.mode === 'navigate') { event.respondWith(networkFirst(req)); return; }
   if (url.origin === location.origin) { event.respondWith(cacheFirst(req)); return; }
-  if (/(^|\.)(fonts\.googleapis\.com|fonts\.gstatic\.com|cdnjs\.cloudflare\.com)$/.test(url.hostname)) { event.respondWith(staleWhileRevalidate(req)); }
+  // Supabase's own REST/Auth calls (xxxx.supabase.co) are NEVER cached here — only the
+  // static CDN library script and fonts are, so account data always stays live.
+  if (/(^|\.)(fonts\.googleapis\.com|fonts\.gstatic\.com|cdnjs\.cloudflare\.com|cdn\.jsdelivr\.net)$/.test(url.hostname)) { event.respondWith(staleWhileRevalidate(req)); }
 });
 
 // إشعار وصول التنبيه المنبثق حتى لو التطبيق مقفول
