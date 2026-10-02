@@ -371,8 +371,9 @@ $('new-create').addEventListener('click', async ()=>{
 });
 
 // ---------------- Schedule ----------------
-function loadGroupsList(){
-  groups = Array.from(new Set([...(allAccounts||[]).map(a=>a.group_key).filter(Boolean)]));
+async function loadGroupsList(){
+  let lecGroups=[]; try{ const {data}=await sb.from('lectures').select('group_key'); lecGroups=(data||[]).map(r=>r.group_key); }catch(e){}
+  groups = Array.from(new Set([...lecGroups, ...(allAccounts||[]).map(a=>a.group_key).filter(Boolean)]));
   // also seed from whatever this browser's app copy already knows about, so the list isn't empty on a fresh DB
   try{ const seen = JSON.parse(localStorage.getItem('cs_known_groups')||'[]'); groups = Array.from(new Set([...groups, ...seen])); }catch(e){}
   if(profile.group_key) groups = Array.from(new Set([...groups, profile.group_key])); // a rep must always see their own group, even if the accounts list wasn't loaded
@@ -387,13 +388,13 @@ function loadGroupsList(){
   $('sch-hint').textContent = isRep ? `You can edit ${profile.group_key}'s schedule only.` : '';
   loadSchedule();
 }
-$('sch-group').addEventListener('change', ()=>{
+$('sch-group').addEventListener('change', async ()=>{
   if($('sch-group').value==='__new__'){
     const g=(prompt('New group code (e.g. GD4):')||'').trim().toUpperCase();
     if(!g){ $('sch-group').value=currentSchGroup||groups[0]; return; }
     groups.push(g); groups.sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
     localStorage.setItem('cs_known_groups', JSON.stringify(groups));
-    loadGroupsList(); currentSchGroup=g; $('sch-group').value=g; loadSchedule(); return;
+    await loadGroupsList(); currentSchGroup=g; $('sch-group').value=g; loadSchedule(); return;
   }
   currentSchGroup = $('sch-group').value; loadSchedule();
 });
