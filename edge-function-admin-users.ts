@@ -25,8 +25,8 @@
 
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!;
-const SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+const URL = Deno.env.get('URL')!;
+const KEY = Deno.env.get('SERVICE_ROLE_KEY')!;
 
 function cors(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -47,7 +47,7 @@ Deno.serve(async (req) => {
     if (!callerToken) return cors({ error: 'Not signed in' }, 401);
 
     // service-role client: full access, used only after we've verified the caller is an admin
-    const admin = createClient(SUPABASE_URL, SERVICE_KEY);
+    const admin = createClient(URL, KEY);
 
     // verify the CALLER (using their own token) is actually an admin before doing anything
     const { data: callerUser, error: callerErr } = await admin.auth.getUser(callerToken);
