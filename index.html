@@ -112,39 +112,58 @@
   .announce-bar{ border-inline-start:3px solid var(--acc); }
   .avatar-circ{ width:34px; height:34px; border-radius:999px; background:var(--acc); color:var(--on-acc); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0; }
   .personal-card{ border-color:rgba(var(--acc-rgb),.4)!important; border-style:dashed!important; }
-  #auth-sheet{ z-index:85; background:var(--solid); }
-  #auth-sheet .sheet-bg{ background:var(--solid); }
+  #auth-sheet{ z-index:85; background:var(--gb); --gb:#fff; --gt:#1b1e26; --gm:#8c8f98; --gl:#e7e8ed; --gseg:#eef0f4; --gsegt:#9397a1; --gchip:#f3f4f7; --gchipt:#4b4e57; --gchipb:#e7e8ed; --gph:#b0b3bc; --gic:#a7abb5; --gerr:#e0515a; }
+  html:not(.light) #auth-sheet{ --gb:#0f131b; --gt:#eef0f4; --gm:#9aa0ad; --gl:#283040; --gseg:#1a202b; --gsegt:#8a91a0; --gchip:#1a202b; --gchipt:#c9cfda; --gchipb:#2a3242; --gph:#677084; --gic:#6f7890; --gerr:#ff8a92; }
+  #auth-sheet .sheet-bg{ background:var(--gb); }
   .gate-scroll2{ position:relative; z-index:1; min-height:100%; min-height:100dvh; display:flex; align-items:flex-start; justify-content:center; overflow-y:auto; }
   .gate-card2{ width:100%; max-width:440px; min-height:100%; min-height:100dvh; display:flex; flex-direction:column; }
   .gate-hero{ position:relative; overflow:hidden; padding:calc(var(--sat) + 30px) 28px 46px; background:linear-gradient(160deg, var(--solid) 0%, rgba(var(--acc-rgb),.5) 55%, rgba(var(--acc-rgb),.82) 100%); }
   .gate-hero-blob1{ position:absolute; top:-50px; right:-55px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,.07); }
   .gate-hero-blob2{ position:absolute; bottom:18px; left:-60px; width:170px; height:170px; border-radius:42% 58% 53% 47%; background:rgba(255,255,255,.06); }
   .gate-hero-content{ position:relative; z-index:1; text-align:center; }
+  .gate-tools{ position:absolute; top:calc(var(--sat) + 12px); inset-inline-end:14px; z-index:3; display:flex; gap:8px; }
+  .gate-tool{ width:36px; height:36px; border-radius:999px; background:rgba(255,255,255,.16); color:#fff; border:1px solid rgba(255,255,255,.24); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; }
+  .gate-tool:active{ transform:scale(.92); }
   .gate-logo{ width:52px; height:52px; border-radius:16px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; margin:0 auto 14px; box-shadow:0 0 0 1px rgba(255,255,255,.18); }
   .gate-logo img{ width:30px; height:30px; }
   .gate-headline{ font-family:'Poppins',system-ui,sans-serif; font-size:21px; font-weight:800; color:#fff; letter-spacing:.01em; text-shadow:0 2px 12px rgba(0,0,0,.18); }
   .gate-sub{ font-size:12px; color:rgba(255,255,255,.82); margin-top:8px; line-height:1.55; max-width:270px; margin-inline:auto; }
   .gate-wave{ position:absolute; left:0; bottom:-1px; width:100%; height:42px; display:block; }
-  .gate-wave path{ fill:#fff; }
-  .gate-sheet-body{ flex:1; background:#fff; margin-top:-1px; padding:26px 26px calc(var(--sab) + 30px); position:relative; z-index:1; }
-  .seg2{ display:flex; background:#eef0f4; border-radius:999px; padding:4px; margin-bottom:24px; }
-  .seg2 button{ flex:1; padding:10px 0; border-radius:999px; font-size:12.5px; font-weight:800; color:#9397a1; border:none; background:none; transition:background .2s,color .2s; }
+  .gate-wave path{ fill:var(--gb); }
+  .gate-sheet-body{ flex:1; background:var(--gb); color:var(--gt); margin-top:-1px; padding:26px 26px calc(var(--sab) + 30px); position:relative; z-index:1; }
+  .seg2{ display:flex; background:var(--gseg); border-radius:999px; padding:4px; margin-bottom:24px; }
+  .seg2 button{ flex:1; padding:10px 0; border-radius:999px; font-size:12.5px; font-weight:800; color:var(--gsegt); border:none; background:none; transition:background .2s,color .2s; }
   .seg2 button.on{ background:var(--acc); color:var(--on-acc); box-shadow:0 8px 18px -8px rgba(var(--acc-rgb),.55); }
-  .gate-field-label{ font-size:11px; font-weight:700; color:#8c8f98; margin-bottom:7px; }
-  .uField{ position:relative; display:flex; align-items:center; gap:11px; padding:13px 2px; border-bottom:1.5px solid #e7e8ed; margin-bottom:4px; }
+  .gate-field-label{ font-size:11px; font-weight:700; color:var(--gm); margin-bottom:7px; }
+  .uField{ position:relative; display:flex; align-items:center; gap:11px; padding:13px 2px; border-bottom:1.5px solid var(--gl); margin-bottom:4px; }
   .uField:focus-within{ border-bottom-color:var(--acc); }
-  .uField .ic{ width:15px; height:15px; color:#a7abb5; flex-shrink:0; }
+  .uField .ic{ width:15px; height:15px; color:var(--gic); flex-shrink:0; }
   .uField:focus-within .ic{ color:var(--acc); }
-  .uField input{ flex:1; min-width:0; border:none; outline:none; background:transparent; font-size:14px; color:#1b1e26; font-family:inherit; }
-  .uField input::placeholder{ color:#b0b3bc; }
-  .uField-eye{ background:none; border:none; padding:2px; color:#a7abb5; cursor:pointer; flex-shrink:0; }
-  .uField-eye:hover{ color:#6d7079; }
+  .uField input{ flex:1; min-width:0; border:none; outline:none; background:transparent; font-size:14px; color:var(--gt); font-family:inherit; }
+  .uField input::placeholder{ color:var(--gph); }
+  .uField-eye{ background:none; border:none; padding:2px; color:var(--gic); cursor:pointer; flex-shrink:0; }
   .gate-submit-btn{ width:100%; padding:15px; border-radius:999px; font-weight:800; font-size:13.5px; letter-spacing:.02em; background:var(--acc); color:var(--on-acc); border:none; margin-top:18px; box-shadow:0 16px 30px -14px rgba(var(--acc-rgb),.6); }
   .gate-submit-btn:active{ transform:scale(.98); }
-  .gate-note{ font-size:10.5px; color:#9ca0a8; text-align:center; margin-top:16px; line-height:1.5; }
-  .gate-sheet-body .form-err{ color:#e0515a; }
-  .gate-sheet-body .grp-opt{ color:#4b4e57; background:#f3f4f7; border:1px solid #e7e8ed; }
+  .gate-submit-btn:disabled{ opacity:.6; }
+  .gate-note{ font-size:10.5px; color:var(--gm); text-align:center; margin-top:16px; line-height:1.5; }
+  .gate-wa-link{ display:flex; align-items:center; justify-content:center; gap:6px; margin-top:12px; font-size:11.5px; font-weight:700; color:var(--gm); }
+  .gate-wa-link .ic{ color:#25D366; }
+  .gate-sheet-body .form-err{ color:var(--gerr); }
+  .gate-sheet-body .grp-opt{ color:var(--gchipt); background:var(--gchip); border:1px solid var(--gchipb); }
   .gate-sheet-body .grp-opt.on{ background:var(--acc); color:var(--on-acc); border-color:transparent; }
+  .gate-missing{ background:var(--gchip); border:1px solid var(--gchipb); border-radius:14px; padding:12px; margin-bottom:14px; font-size:11.5px; color:var(--gt); line-height:1.6; text-align:center; }
+  .gate-missing .num{ font-weight:800; margin-top:8px; direction:ltr; }
+  .grp-missing{ grid-column:1/-1; }
+  .acc-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .acc-sep{ border-top:1px solid rgba(255,255,255,.1); padding-top:14px; }
+  html.light .acc-sep{ border-top-color:rgba(0,0,0,.08); }
+  .acc-wa{ border-color:rgba(37,211,102,.45)!important; }
+  .wa-btn{ display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:11px 14px; border-radius:12px; background:#25D366; color:#06260f; font-weight:800; font-size:12.5px; margin-top:10px; }
+  .wa-btn:active{ transform:scale(.98); }
+  .wa-btn .ic{ width:16px; height:16px; }
+  .missing-card{ border-color:rgba(37,211,102,.4)!important; }
+  .acc-pass-row{ display:flex; gap:8px; }
+  .acc-pass-row .field{ flex:1; min-width:0; }
   #print-week{ display:none; }
   @media print{
     body *{ visibility:hidden; }
@@ -160,7 +179,7 @@
 </head>
 <body class="min-h-screen relative">
 <div id="bg" aria-hidden="true"></div>
-<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true"><!-- Font Awesome Free (CC BY 4.0) - https://fontawesome.com/license/free --><symbol id="i-magnifying-glass" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7l126.6 126.7c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208M208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288"/></symbol><symbol id="i-sliders" viewBox="0 0 512 512"><path d="M32 64C14.3 64 0 78.3 0 96s14.3 32 32 32h86.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H265.3C253 35.7 224.8 16 192 16s-61 19.7-73.3 48zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h246.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32h-54.7c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h54.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H233.3c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48z"/></symbol><symbol id="i-xmark" viewBox="0 0 384 512"><path d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l137.3-137.4 137.4 137.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7z"/></symbol><symbol id="i-mobile-screen-button" viewBox="0 0 384 512"><path d="M16 64C16 28.7 44.7 0 80 0h224c35.3 0 64 28.7 64 64v384c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64zm64 0v304h224V64zm112 408c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32"/></symbol><symbol id="i-repeat" viewBox="0 0 512 512"><path d="M470.6 118.6c12.5-12.5 12.5-32.8 0-45.3l-64-64c-9.2-9.2-22.9-11.9-34.9-6.9S352 19.1 352 32v32H192C86 64 0 150 0 256c0 17.7 14.3 32 32 32s32-14.3 32-32c0-70.7 57.3-128 128-128h160v32c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l64-64zM41.4 393.4c-12.5 12.5-12.5 32.8 0 45.3l64 64c9.2 9.2 22.9 11.9 34.9 6.9S160 492.9 160 480v-32h160c106 0 192-86 192-192 0-17.7-14.3-32-32-32s-32 14.3-32 32c0 70.7-57.3 128-128 128H160v-32c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9l-64 64z"/></symbol><symbol id="i-calendar-day" viewBox="0 0 448 512"><path d="M128 0c17.7 0 32 14.3 32 32v32h128V32c0-17.7 14.3-32 32-32s32 14.3 32 32v32h32c35.3 0 64 28.7 64 64v288c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128c0-35.3 28.7-64 64-64h32V32c0-17.7 14.3-32 32-32m0 256c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32v-64c0-17.7-14.3-32-32-32z"/></symbol><symbol id="i-share-nodes" viewBox="0 0 512 512"><path d="M384 192c53 0 96-43 96-96S437 0 384 0s-96 43-96 96c0 5.4.5 10.8 1.3 16l-129.7 72.1c-16.9-15-39.2-24.1-63.6-24.1-53 0-96 43-96 96s43 96 96 96c24.4 0 46.6-9.1 63.6-24.1L289.3 400c-.9 5.2-1.3 10.5-1.3 16 0 53 43 96 96 96s96-43 96-96-43-96-96-96c-24.4 0-46.6 9.1-63.6 24.1L190.7 272c.9-5.2 1.3-10.5 1.3-16s-.5-10.8-1.3-16l129.7-72.1c16.9 15 39.2 24.1 63.6 24.1"/></symbol><symbol id="i-bell" viewBox="0 0 448 512"><path d="M224 0c-17.7 0-32 14.3-32 32v3.2C119 50 64 114.6 64 192v21.7c0 48.1-16.4 94.8-46.4 132.4l-9.8 12.2C2.7 364.6 0 372.4 0 380.5 0 400.1 15.9 416 35.5 416h376.9c19.6 0 35.5-15.9 35.5-35.5 0-8.1-2.7-15.9-7.8-22.2l-9.8-12.2c-29.9-37.6-46.3-84.3-46.3-132.4V192c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32m-62 464c7.1 27.6 32.2 48 62 48s54.9-20.4 62-48z"/></symbol><symbol id="i-qrcode" viewBox="0 0 448 512"><path d="M64 160h64V96H64zM0 80c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48zm64 336h64v-64H64zM0 336c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48zM320 96v64h64V96zm-16-64h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-96c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48m-16 320a32 32 0 1 1 0-64 32 32 0 1 1 0 64m0 64c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32m96 32c0-17.7 14.3-32 32-32s32 14.3 32 32-14.3 32-32 32-32-14.3-32-32m32-96a32 32 0 1 1 0-64 32 32 0 1 1 0 64m-32 32a32 32 0 1 1-64 0 32 32 0 1 1 64 0"/></symbol><symbol id="i-image" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm64 80a48 48 0 1 1 0 96 48 48 0 1 1 0-96m144 112c8.4 0 16.1 4.4 20.5 11.5l88 144c4.5 7.4 4.7 16.7.5 24.3S368.7 416 360 416H88c-8.9 0-17.2-5-21.3-12.9s-3.5-17.5 1.6-24.8l56-80c4.5-6.4 11.8-10.2 19.7-10.2s15.2 3.8 19.7 10.2l26.4 37.8 61.4-100.5c4.4-7.1 12.1-11.5 20.5-11.5z"/></symbol><symbol id="i-print" viewBox="0 0 512 512"><path d="M64 64c0-35.3 28.7-64 64-64h213.5c17 0 33.3 6.7 45.3 18.7l42.5 42.5c12 12 18.7 28.3 18.7 45.3V144H64zM0 256c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v96c0 17.7-14.3 32-32 32h-32v64c0 35.3-28.7 64-64 64H128c-35.3 0-64-28.7-64-64v-64H32c-17.7 0-32-14.3-32-32zm128 160v32h256v-96H128zm328-144a24 24 0 1 0-48 0 24 24 0 1 0 48 0"/></symbol><symbol id="i-arrow-up-from-bracket" viewBox="0 0 448 512"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4V320c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352v64c0 53 43 96 96 96h256c53 0 96-43 96-96v-64c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32z"/></symbol><symbol id="i-link" viewBox="0 0 576 512"><path d="M419.5 96c-16.6 0-32.7 4.5-46.8 12.7-15.8-16-34.2-29.4-54.5-39.5 28.2-24 64.1-37.2 101.3-37.2C505.9 32 576 102 576 188.5c0 41.5-16.5 81.3-45.8 110.6l-71.1 71.1C429.8 399.5 390 416 348.5 416 262.1 416 192 346 192 259.5c0-1.5 0-3 .1-4.5.5-17.7 15.2-31.6 32.9-31.1s31.6 15.2 31.1 32.9v2.6c0 51.1 41.4 92.5 92.5 92.5 24.5 0 48-9.7 65.4-27.1l71.1-71.1c17.3-17.3 27.1-40.9 27.1-65.4 0-51.1-41.4-92.5-92.5-92.5zm-144.3 77.3c-1.9-.8-3.8-1.9-5.5-3.1-12.6-6.5-27-10.2-42.1-10.2-24.5 0-48 9.7-65.4 27.1l-71.1 71.1C73.8 275.5 64 299.1 64 323.6c0 51.1 41.4 92.5 92.5 92.5 16.5 0 32.6-4.4 46.7-12.6 15.8 16 34.2 29.4 54.6 39.5-28.2 23.9-64 37.2-101.3 37.2C70.1 480.2 0 410.2 0 323.7c0-41.5 16.5-81.3 45.8-110.6l71.1-71.1c29.3-29.3 69.1-45.8 110.6-45.8 86.6 0 156.5 70.6 156.5 156.9v3.9c-.4 17.7-15.1 31.6-32.8 31.2s-31.6-15.1-31.2-32.8v-2.3c0-33.7-18-63.3-44.8-79.6z"/></symbol><symbol id="i-calculator" viewBox="0 0 384 512"><path d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm32 64h192c17.7 0 32 14.3 32 32v32c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32m16 168a24 24 0 1 1-48 0 24 24 0 1 1 48 0m80 24a24 24 0 1 1 0-48 24 24 0 1 1 0 48m128-24a24 24 0 1 1-48 0 24 24 0 1 1 48 0M88 352a24 24 0 1 1 0-48 24 24 0 1 1 0 48m128-24a24 24 0 1 1-48 0 24 24 0 1 1 48 0m80 24a24 24 0 1 1 0-48 24 24 0 1 1 0 48M64 424c0-13.3 10.7-24 24-24h112c13.3 0 24 10.7 24 24s-10.7 24-24 24H88c-13.3 0-24-10.7-24-24m232-24c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24"/></symbol><symbol id="i-chalkboard-user" viewBox="0 0 640 512"><path d="M128 96c0-35.3 28.7-64 64-64h352c35.3 0 64 28.7 64 64v240h-96v-16c0-17.7-14.3-32-32-32h-64c-17.7 0-32 14.3-32 32v16H254.9c10.9-18.8 17.1-40.7 17.1-64 0-70.7-57.3-128-128-128-5.4 0-10.8.3-16 1zm205 352c-5.1-24.2-16.3-46.1-32.1-64H608c0 35.3-28.7 64-64 64zM64 272a80 80 0 1 1 160 0 80 80 0 1 1-160 0M0 480c0-53 43-96 96-96h96c53 0 96 43 96 96 0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32"/></symbol><symbol id="i-flask" viewBox="0 0 448 512"><path d="M288 0H128c-17.7 0-32 14.3-32 32s14.3 32 32 32v151.5L7.5 426.3C2.6 435 0 444.7 0 454.7 0 486.4 25.6 512 57.3 512h333.4c31.6 0 57.3-25.6 57.3-57.3 0-10-2.6-19.8-7.5-28.4L320 215.5V64c17.7 0 32-14.3 32-32S337.7 0 320 0zm-96 215.5V64h64v151.5c0 11.1 2.9 22.1 8.4 31.8L306 320H142l41.6-72.7c5.5-9.7 8.4-20.6 8.4-31.8"/></symbol><symbol id="i-pen" viewBox="0 0 512 512"><path d="M352.9 21.2 308 66.1 445.9 204l44.9-44.9c13.6-13.5 21.2-31.9 21.2-51.1s-7.6-37.6-21.2-51.1l-35.7-35.7C441.6 7.6 423.2 0 404 0s-37.6 7.6-51.1 21.2M274.1 100 58.9 315.1c-10.7 10.7-18.5 24.1-22.6 38.7L.9 481.6c-2.3 8.3 0 17.3 6.2 23.4s15.1 8.5 23.4 6.2l127.8-35.5c14.6-4.1 27.9-11.8 38.7-22.6l215-215.2z"/></symbol><symbol id="i-people-group" viewBox="0 0 512 512"><path d="M256 0a64 64 0 1 1 0 128 64 64 0 1 1 0-128m96 312c0 25-12.7 47-32 59.9V464c0 26.5-21.5 48-48 48h-32c-26.5 0-48-21.5-48-48v-92.1C172.7 359 160 337 160 312v-40c0-53 43-96 96-96s96 43 96 96zM96 32a56 56 0 1 1 0 112 56 56 0 1 1 0-112m16 240v32c0 32.5 12.1 62.1 32 84.7V464c0 1.2 0 2.5.1 3.7-8.5 7.6-19.7 12.3-32.1 12.3H80c-26.5 0-48-21.5-48-48v-56.6c-19.1-11-32-31.7-32-55.4v-32c0-53 43-96 96-96 12.7 0 24.8 2.5 35.9 6.9-12.6 21.4-19.9 46.4-19.9 73.1m256 192v-75.3c19.9-22.5 32-52.2 32-84.7v-32c0-26.7-7.3-51.6-19.9-73.1 11.1-4.5 23.2-6.9 35.9-6.9 53 0 96 43 96 96v32c0 23.7-12.9 44.4-32 55.4V432c0 26.5-21.5 48-48 48h-32c-12.3 0-23.6-4.6-32.1-12.3 0-1.2.1-2.5.1-3.7m48-432a56 56 0 1 1 0 112 56 56 0 1 1 0-112"/></symbol><symbol id="i-check" viewBox="0 0 448 512"><path d="M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z"/></symbol><symbol id="i-mug-hot" viewBox="0 0 576 512"><path d="M152-16c-13.3 0-24 10.7-24 24 0 38.9 23.4 59.4 39.1 73.1l1.1 1C184.5 96.4 192 103.9 192 120c0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C183.5 31.7 176 24.1 176 8c0-13.3-10.7-24-24-24M96 192c-17.7 0-32 14.3-32 32v192c0 53 43 96 96 96h192c41.8 0 77.4-26.7 90.5-64h5.5c70.7 0 128-57.3 128-128s-57.3-128-128-128zm352 192V256c35.3 0 64 28.7 64 64s-28.7 64-64 64M288 8c0-13.3-10.7-24-24-24S240-5.3 240 8c0 38.9 23.4 59.4 39.1 73.1l1.1 1C296.5 96.4 304 103.9 304 120c0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C295.5 31.7 288 24.1 288 8"/></symbol><symbol id="i-lock" viewBox="0 0 384 512"><path d="M128 96v64h128V96c0-35.3-28.7-64-64-64s-64 28.7-64 64m-64 64V96c0-70.7 57.3-128 128-128S320 25.3 320 96v64c35.3 0 64 28.7 64 64v224c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64"/></symbol><symbol id="i-user" viewBox="0 0 448 512"><path d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240m-29.7 56C95.8 304 16 383.8 16 482.3c0 16.4 13.3 29.7 29.7 29.7h356.6c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3z"/></symbol><symbol id="i-eye" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6-46.8 43.5-78.1 95.4-93 131.1-3.3 7.9-3.3 16.7 0 24.6 14.9 35.7 46.2 87.7 93 131.1C142.5 443.1 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1 3.3-7.9 3.3-16.7 0-24.6-14.9-35.7-46.2-87.7-93-131.1C433.5 68.9 368.8 32 288 32M144 256a144 144 0 1 1 288 0 144 144 0 1 1-288 0m144-64c0 35.3-28.7 64-64 64-11.5 0-22.3-3-31.7-8.4-1 10.9-.1 22.1 2.9 33.2 13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-12.2-45.7-55.5-74.8-101.1-70.8 5.3 9.3 8.4 20.1 8.4 31.7"/></symbol><symbol id="i-eye-slash" viewBox="0 0 576 512"><path d="M41-24.9c-9.4-9.4-24.6-9.4-33.9 0S-2.3-.3 7 9.1l528 528c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-96.4-96.4c2.7-2.4 5.4-4.8 8-7.2 46.8-43.5 78.1-95.4 93-131.1 3.3-7.9 3.3-16.7 0-24.6-14.9-35.7-46.2-87.7-93-131.1-47.1-43.7-111.8-80.6-192.6-80.6-56.8 0-105.6 18.2-146 44.2zm163.5 163.6C228 121.9 256.9 112 288 112c79.5 0 144 64.5 144 144 0 31.1-9.9 59.9-26.7 83.5l-34.7-34.7c12.7-21.4 17-47.7 10.1-73.7-13.7-51.2-66.4-81.6-117.6-67.9-8.6 2.3-16.7 5.7-24 10l-34.7-34.7zm120.8 256.4c-11.9 3.2-24.4 4.9-37.3 4.9-79.5 0-144-64.5-144-144 0-12.9 1.7-25.4 4.9-37.3l-79.5-79.5C36.8 176 14.4 215 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6 14.9 35.7 46.2 87.7 93 131.1 47.1 43.7 111.8 80.6 192.6 80.6 37.3 0 71.2-7.9 101.5-20.6l-64.2-64.2z"/></symbol><symbol id="i-circle-info" viewBox="0 0 512 512"><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512m-32-352a32 32 0 1 1 64 0 32 32 0 1 1-64 0m-8 64h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24"/></symbol><symbol id="i-wifi" viewBox="0 0 576 512"><path d="M288 96c-90.9 0-173.2 36-233.7 94.6-12.7 12.3-33 12-45.2-.7s-12-33 .7-45.2C81.7 74.9 179.9 32 288 32s206.3 42.9 278.3 112.7c12.7 12.3 13 32.6.7 45.2s-32.6 13-45.2.7C461.2 132 378.9 96 288 96m-48 336a48 48 0 1 1 96 0 48 48 0 1 1-96 0m-72-105.8c-11.7 13.3-31.9 14.5-45.2 2.8s-14.5-31.9-2.8-45.2c41-46.4 101.1-75.8 168-75.8s127 29.4 168 75.8c11.7 13.3 10.4 33.5-2.8 45.2s-33.5 10.4-45.2-2.8c-29.4-33.3-72.2-54.2-120-54.2s-90.6 20.9-120 54.2"/></symbol><symbol id="r-bell" viewBox="0 0 448 512"><path d="M224 0c-13.3 0-24 10.7-24 24v9.7C118.6 45.3 56 115.4 56 200v14.5c0 37.7-10 74.7-29 107.3L5.1 359.2C1.8 365 0 371.5 0 378.2 0 399.1 16.9 416 37.8 416h372.4c20.9 0 37.8-16.9 37.8-37.8 0-6.7-1.8-13.3-5.1-19L421 321.7c-19-32.6-29-69.6-29-107.3v-14.5c0-84.6-62.6-154.7-144-166.3v-9.7c0-13.3-10.7-24-24-24zm168.4 368H55.5l12.9-22.1C91.7 306 104 260.6 104 214.5V200c0-66.3 53.7-120 120-120s120 53.7 120 120v14.5c0 46.2 12.3 91.5 35.5 131.4zm-236.3 96c9.9 28 36.6 48 67.9 48s58-20 67.9-48z"/></symbol><symbol id="r-clock" viewBox="0 0 512 512"><path d="M464 256a208 208 0 1 1-416 0 208 208 0 1 1 416 0M0 256a256 256 0 1 0 512 0 256 256 0 1 0-512 0m232-136v136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24"/></symbol></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true"><!-- Font Awesome Free (CC BY 4.0) - https://fontawesome.com/license/free --><symbol id="i-magnifying-glass" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7l126.6 126.7c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208M208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288"/></symbol><symbol id="i-sliders" viewBox="0 0 512 512"><path d="M32 64C14.3 64 0 78.3 0 96s14.3 32 32 32h86.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H265.3C253 35.7 224.8 16 192 16s-61 19.7-73.3 48zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h246.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32h-54.7c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h54.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H233.3c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48z"/></symbol><symbol id="i-xmark" viewBox="0 0 384 512"><path d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l137.3-137.4 137.4 137.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7z"/></symbol><symbol id="i-mobile-screen-button" viewBox="0 0 384 512"><path d="M16 64C16 28.7 44.7 0 80 0h224c35.3 0 64 28.7 64 64v384c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64zm64 0v304h224V64zm112 408c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32"/></symbol><symbol id="i-repeat" viewBox="0 0 512 512"><path d="M470.6 118.6c12.5-12.5 12.5-32.8 0-45.3l-64-64c-9.2-9.2-22.9-11.9-34.9-6.9S352 19.1 352 32v32H192C86 64 0 150 0 256c0 17.7 14.3 32 32 32s32-14.3 32-32c0-70.7 57.3-128 128-128h160v32c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l64-64zM41.4 393.4c-12.5 12.5-12.5 32.8 0 45.3l64 64c9.2 9.2 22.9 11.9 34.9 6.9S160 492.9 160 480v-32h160c106 0 192-86 192-192 0-17.7-14.3-32-32-32s-32 14.3-32 32c0 70.7-57.3 128-128 128H160v-32c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9l-64 64z"/></symbol><symbol id="i-calendar-day" viewBox="0 0 448 512"><path d="M128 0c17.7 0 32 14.3 32 32v32h128V32c0-17.7 14.3-32 32-32s32 14.3 32 32v32h32c35.3 0 64 28.7 64 64v288c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128c0-35.3 28.7-64 64-64h32V32c0-17.7 14.3-32 32-32m0 256c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32v-64c0-17.7-14.3-32-32-32z"/></symbol><symbol id="i-share-nodes" viewBox="0 0 512 512"><path d="M384 192c53 0 96-43 96-96S437 0 384 0s-96 43-96 96c0 5.4.5 10.8 1.3 16l-129.7 72.1c-16.9-15-39.2-24.1-63.6-24.1-53 0-96 43-96 96s43 96 96 96c24.4 0 46.6-9.1 63.6-24.1L289.3 400c-.9 5.2-1.3 10.5-1.3 16 0 53 43 96 96 96s96-43 96-96-43-96-96-96c-24.4 0-46.6 9.1-63.6 24.1L190.7 272c.9-5.2 1.3-10.5 1.3-16s-.5-10.8-1.3-16l129.7-72.1c16.9 15 39.2 24.1 63.6 24.1"/></symbol><symbol id="i-bell" viewBox="0 0 448 512"><path d="M224 0c-17.7 0-32 14.3-32 32v3.2C119 50 64 114.6 64 192v21.7c0 48.1-16.4 94.8-46.4 132.4l-9.8 12.2C2.7 364.6 0 372.4 0 380.5 0 400.1 15.9 416 35.5 416h376.9c19.6 0 35.5-15.9 35.5-35.5 0-8.1-2.7-15.9-7.8-22.2l-9.8-12.2c-29.9-37.6-46.3-84.3-46.3-132.4V192c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32m-62 464c7.1 27.6 32.2 48 62 48s54.9-20.4 62-48z"/></symbol><symbol id="i-qrcode" viewBox="0 0 448 512"><path d="M64 160h64V96H64zM0 80c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48zm64 336h64v-64H64zM0 336c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48zM320 96v64h64V96zm-16-64h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-96c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48m-16 320a32 32 0 1 1 0-64 32 32 0 1 1 0 64m0 64c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32m96 32c0-17.7 14.3-32 32-32s32 14.3 32 32-14.3 32-32 32-32-14.3-32-32m32-96a32 32 0 1 1 0-64 32 32 0 1 1 0 64m-32 32a32 32 0 1 1-64 0 32 32 0 1 1 64 0"/></symbol><symbol id="i-image" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm64 80a48 48 0 1 1 0 96 48 48 0 1 1 0-96m144 112c8.4 0 16.1 4.4 20.5 11.5l88 144c4.5 7.4 4.7 16.7.5 24.3S368.7 416 360 416H88c-8.9 0-17.2-5-21.3-12.9s-3.5-17.5 1.6-24.8l56-80c4.5-6.4 11.8-10.2 19.7-10.2s15.2 3.8 19.7 10.2l26.4 37.8 61.4-100.5c4.4-7.1 12.1-11.5 20.5-11.5z"/></symbol><symbol id="i-print" viewBox="0 0 512 512"><path d="M64 64c0-35.3 28.7-64 64-64h213.5c17 0 33.3 6.7 45.3 18.7l42.5 42.5c12 12 18.7 28.3 18.7 45.3V144H64zM0 256c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v96c0 17.7-14.3 32-32 32h-32v64c0 35.3-28.7 64-64 64H128c-35.3 0-64-28.7-64-64v-64H32c-17.7 0-32-14.3-32-32zm128 160v32h256v-96H128zm328-144a24 24 0 1 0-48 0 24 24 0 1 0 48 0"/></symbol><symbol id="i-arrow-up-from-bracket" viewBox="0 0 448 512"><path d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4V320c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352v64c0 53 43 96 96 96h256c53 0 96-43 96-96v-64c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32z"/></symbol><symbol id="i-link" viewBox="0 0 576 512"><path d="M419.5 96c-16.6 0-32.7 4.5-46.8 12.7-15.8-16-34.2-29.4-54.5-39.5 28.2-24 64.1-37.2 101.3-37.2C505.9 32 576 102 576 188.5c0 41.5-16.5 81.3-45.8 110.6l-71.1 71.1C429.8 399.5 390 416 348.5 416 262.1 416 192 346 192 259.5c0-1.5 0-3 .1-4.5.5-17.7 15.2-31.6 32.9-31.1s31.6 15.2 31.1 32.9v2.6c0 51.1 41.4 92.5 92.5 92.5 24.5 0 48-9.7 65.4-27.1l71.1-71.1c17.3-17.3 27.1-40.9 27.1-65.4 0-51.1-41.4-92.5-92.5-92.5zm-144.3 77.3c-1.9-.8-3.8-1.9-5.5-3.1-12.6-6.5-27-10.2-42.1-10.2-24.5 0-48 9.7-65.4 27.1l-71.1 71.1C73.8 275.5 64 299.1 64 323.6c0 51.1 41.4 92.5 92.5 92.5 16.5 0 32.6-4.4 46.7-12.6 15.8 16 34.2 29.4 54.6 39.5-28.2 23.9-64 37.2-101.3 37.2C70.1 480.2 0 410.2 0 323.7c0-41.5 16.5-81.3 45.8-110.6l71.1-71.1c29.3-29.3 69.1-45.8 110.6-45.8 86.6 0 156.5 70.6 156.5 156.9v3.9c-.4 17.7-15.1 31.6-32.8 31.2s-31.6-15.1-31.2-32.8v-2.3c0-33.7-18-63.3-44.8-79.6z"/></symbol><symbol id="i-calculator" viewBox="0 0 384 512"><path d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm32 64h192c17.7 0 32 14.3 32 32v32c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32m16 168a24 24 0 1 1-48 0 24 24 0 1 1 48 0m80 24a24 24 0 1 1 0-48 24 24 0 1 1 0 48m128-24a24 24 0 1 1-48 0 24 24 0 1 1 48 0M88 352a24 24 0 1 1 0-48 24 24 0 1 1 0 48m128-24a24 24 0 1 1-48 0 24 24 0 1 1 48 0m80 24a24 24 0 1 1 0-48 24 24 0 1 1 0 48M64 424c0-13.3 10.7-24 24-24h112c13.3 0 24 10.7 24 24s-10.7 24-24 24H88c-13.3 0-24-10.7-24-24m232-24c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24"/></symbol><symbol id="i-chalkboard-user" viewBox="0 0 640 512"><path d="M128 96c0-35.3 28.7-64 64-64h352c35.3 0 64 28.7 64 64v240h-96v-16c0-17.7-14.3-32-32-32h-64c-17.7 0-32 14.3-32 32v16H254.9c10.9-18.8 17.1-40.7 17.1-64 0-70.7-57.3-128-128-128-5.4 0-10.8.3-16 1zm205 352c-5.1-24.2-16.3-46.1-32.1-64H608c0 35.3-28.7 64-64 64zM64 272a80 80 0 1 1 160 0 80 80 0 1 1-160 0M0 480c0-53 43-96 96-96h96c53 0 96 43 96 96 0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32"/></symbol><symbol id="i-flask" viewBox="0 0 448 512"><path d="M288 0H128c-17.7 0-32 14.3-32 32s14.3 32 32 32v151.5L7.5 426.3C2.6 435 0 444.7 0 454.7 0 486.4 25.6 512 57.3 512h333.4c31.6 0 57.3-25.6 57.3-57.3 0-10-2.6-19.8-7.5-28.4L320 215.5V64c17.7 0 32-14.3 32-32S337.7 0 320 0zm-96 215.5V64h64v151.5c0 11.1 2.9 22.1 8.4 31.8L306 320H142l41.6-72.7c5.5-9.7 8.4-20.6 8.4-31.8"/></symbol><symbol id="i-pen" viewBox="0 0 512 512"><path d="M352.9 21.2 308 66.1 445.9 204l44.9-44.9c13.6-13.5 21.2-31.9 21.2-51.1s-7.6-37.6-21.2-51.1l-35.7-35.7C441.6 7.6 423.2 0 404 0s-37.6 7.6-51.1 21.2M274.1 100 58.9 315.1c-10.7 10.7-18.5 24.1-22.6 38.7L.9 481.6c-2.3 8.3 0 17.3 6.2 23.4s15.1 8.5 23.4 6.2l127.8-35.5c14.6-4.1 27.9-11.8 38.7-22.6l215-215.2z"/></symbol><symbol id="i-people-group" viewBox="0 0 512 512"><path d="M256 0a64 64 0 1 1 0 128 64 64 0 1 1 0-128m96 312c0 25-12.7 47-32 59.9V464c0 26.5-21.5 48-48 48h-32c-26.5 0-48-21.5-48-48v-92.1C172.7 359 160 337 160 312v-40c0-53 43-96 96-96s96 43 96 96zM96 32a56 56 0 1 1 0 112 56 56 0 1 1 0-112m16 240v32c0 32.5 12.1 62.1 32 84.7V464c0 1.2 0 2.5.1 3.7-8.5 7.6-19.7 12.3-32.1 12.3H80c-26.5 0-48-21.5-48-48v-56.6c-19.1-11-32-31.7-32-55.4v-32c0-53 43-96 96-96 12.7 0 24.8 2.5 35.9 6.9-12.6 21.4-19.9 46.4-19.9 73.1m256 192v-75.3c19.9-22.5 32-52.2 32-84.7v-32c0-26.7-7.3-51.6-19.9-73.1 11.1-4.5 23.2-6.9 35.9-6.9 53 0 96 43 96 96v32c0 23.7-12.9 44.4-32 55.4V432c0 26.5-21.5 48-48 48h-32c-12.3 0-23.6-4.6-32.1-12.3 0-1.2.1-2.5.1-3.7m48-432a56 56 0 1 1 0 112 56 56 0 1 1 0-112"/></symbol><symbol id="i-check" viewBox="0 0 448 512"><path d="M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z"/></symbol><symbol id="i-mug-hot" viewBox="0 0 576 512"><path d="M152-16c-13.3 0-24 10.7-24 24 0 38.9 23.4 59.4 39.1 73.1l1.1 1C184.5 96.4 192 103.9 192 120c0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C183.5 31.7 176 24.1 176 8c0-13.3-10.7-24-24-24M96 192c-17.7 0-32 14.3-32 32v192c0 53 43 96 96 96h192c41.8 0 77.4-26.7 90.5-64h5.5c70.7 0 128-57.3 128-128s-57.3-128-128-128zm352 192V256c35.3 0 64 28.7 64 64s-28.7 64-64 64M288 8c0-13.3-10.7-24-24-24S240-5.3 240 8c0 38.9 23.4 59.4 39.1 73.1l1.1 1C296.5 96.4 304 103.9 304 120c0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C295.5 31.7 288 24.1 288 8"/></symbol><symbol id="i-lock" viewBox="0 0 384 512"><path d="M128 96v64h128V96c0-35.3-28.7-64-64-64s-64 28.7-64 64m-64 64V96c0-70.7 57.3-128 128-128S320 25.3 320 96v64c35.3 0 64 28.7 64 64v224c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64"/></symbol><symbol id="i-user" viewBox="0 0 448 512"><path d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240m-29.7 56C95.8 304 16 383.8 16 482.3c0 16.4 13.3 29.7 29.7 29.7h356.6c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3z"/></symbol><symbol id="i-eye" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6-46.8 43.5-78.1 95.4-93 131.1-3.3 7.9-3.3 16.7 0 24.6 14.9 35.7 46.2 87.7 93 131.1C142.5 443.1 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1 3.3-7.9 3.3-16.7 0-24.6-14.9-35.7-46.2-87.7-93-131.1C433.5 68.9 368.8 32 288 32M144 256a144 144 0 1 1 288 0 144 144 0 1 1-288 0m144-64c0 35.3-28.7 64-64 64-11.5 0-22.3-3-31.7-8.4-1 10.9-.1 22.1 2.9 33.2 13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-12.2-45.7-55.5-74.8-101.1-70.8 5.3 9.3 8.4 20.1 8.4 31.7"/></symbol><symbol id="i-eye-slash" viewBox="0 0 576 512"><path d="M41-24.9c-9.4-9.4-24.6-9.4-33.9 0S-2.3-.3 7 9.1l528 528c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-96.4-96.4c2.7-2.4 5.4-4.8 8-7.2 46.8-43.5 78.1-95.4 93-131.1 3.3-7.9 3.3-16.7 0-24.6-14.9-35.7-46.2-87.7-93-131.1-47.1-43.7-111.8-80.6-192.6-80.6-56.8 0-105.6 18.2-146 44.2zm163.5 163.6C228 121.9 256.9 112 288 112c79.5 0 144 64.5 144 144 0 31.1-9.9 59.9-26.7 83.5l-34.7-34.7c12.7-21.4 17-47.7 10.1-73.7-13.7-51.2-66.4-81.6-117.6-67.9-8.6 2.3-16.7 5.7-24 10l-34.7-34.7zm120.8 256.4c-11.9 3.2-24.4 4.9-37.3 4.9-79.5 0-144-64.5-144-144 0-12.9 1.7-25.4 4.9-37.3l-79.5-79.5C36.8 176 14.4 215 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6 14.9 35.7 46.2 87.7 93 131.1 47.1 43.7 111.8 80.6 192.6 80.6 37.3 0 71.2-7.9 101.5-20.6l-64.2-64.2z"/></symbol><symbol id="i-circle-info" viewBox="0 0 512 512"><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512m-32-352a32 32 0 1 1 64 0 32 32 0 1 1-64 0m-8 64h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24"/></symbol><symbol id="i-wifi" viewBox="0 0 576 512"><path d="M288 96c-90.9 0-173.2 36-233.7 94.6-12.7 12.3-33 12-45.2-.7s-12-33 .7-45.2C81.7 74.9 179.9 32 288 32s206.3 42.9 278.3 112.7c12.7 12.3 13 32.6.7 45.2s-32.6 13-45.2.7C461.2 132 378.9 96 288 96m-48 336a48 48 0 1 1 96 0 48 48 0 1 1-96 0m-72-105.8c-11.7 13.3-31.9 14.5-45.2 2.8s-14.5-31.9-2.8-45.2c41-46.4 101.1-75.8 168-75.8s127 29.4 168 75.8c11.7 13.3 10.4 33.5-2.8 45.2s-33.5 10.4-45.2-2.8c-29.4-33.3-72.2-54.2-120-54.2s-90.6 20.9-120 54.2"/></symbol><symbol id="r-bell" viewBox="0 0 448 512"><path d="M224 0c-13.3 0-24 10.7-24 24v9.7C118.6 45.3 56 115.4 56 200v14.5c0 37.7-10 74.7-29 107.3L5.1 359.2C1.8 365 0 371.5 0 378.2 0 399.1 16.9 416 37.8 416h372.4c20.9 0 37.8-16.9 37.8-37.8 0-6.7-1.8-13.3-5.1-19L421 321.7c-19-32.6-29-69.6-29-107.3v-14.5c0-84.6-62.6-154.7-144-166.3v-9.7c0-13.3-10.7-24-24-24zm168.4 368H55.5l12.9-22.1C91.7 306 104 260.6 104 214.5V200c0-66.3 53.7-120 120-120s120 53.7 120 120v14.5c0 46.2 12.3 91.5 35.5 131.4zm-236.3 96c9.9 28 36.6 48 67.9 48s58-20 67.9-48z"/></symbol><symbol id="r-clock" viewBox="0 0 512 512"><path d="M464 256a208 208 0 1 1-416 0 208 208 0 1 1 416 0M0 256a256 256 0 1 0 512 0 256 256 0 1 0-512 0m232-136v136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24"/></symbol><symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2.5a9.5 9.5 0 0 0-8.1 14.4L2.5 21.5l4.7-1.2A9.5 9.5 0 1 0 12 2.5z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M16.6 14.2c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1l-.7.9c-.1.1-.3.2-.5.1-.7-.3-2-1-3-2.6-.1-.2 0-.3.1-.4l.4-.5.2-.5-.7-1.7c-.2-.4-.4-.4-.5-.4h-.4c-.2 0-.4.1-.6.3s-.8.8-.8 1.9.8 2.2.9 2.3c.1.2 1.6 2.5 3.9 3.5 1.4.6 2 .7 2.7.6.4-.1 1.4-.6 1.6-1.2s.2-1.1.1-1.2z"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 1.8v2.6M12 19.6v2.6M1.8 12h2.6M19.6 12h2.6M4.8 4.8l1.8 1.8M17.4 17.4l1.8 1.8M4.8 19.2l1.8-1.8M17.4 6.6l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.6 8.6 0 1 0 10.7 10.7z"/></symbol></svg>
 
 
 <header class="fixed left-0 right-0 z-50" style="top:calc(var(--sat) + 12px);">
@@ -242,8 +261,6 @@
 
   <section id="lecture-list" class="space-y-3.5"></section>
   <button id="add-personal-btn" class="w-full glass rounded-2xl py-3 text-xs font-bold text-zinc-300 flex items-center justify-center gap-2 personal-card"><svg class="ic text-[11px]"><use href="#i-pen"/></svg><span data-i18n="addPersonal">+ Add a personal item to this day</span></button>
-  <p id="eng-note" class="glass rounded-2xl px-3.5 py-3 flex items-start gap-2.5 text-[11px] leading-relaxed text-zinc-300"><svg class="ic text-xs mt-0.5 shrink-0 text-zinc-400"><use href="#i-circle-info"/></svg><span data-i18n="engNote">English 0</span></p>
-
   <section id="links-card" class="glass rounded-2xl p-4" style="display:none">
     <h3 class="text-xs font-bold text-white mb-1 flex items-center gap-1.5"><svg class="ic text-[11px]"><use href="#i-link"/></svg><span data-i18n="linksTitle">Links & resources</span></h3>
     <div id="links-list"></div>
@@ -334,6 +351,10 @@
       <div class="gate-hero">
         <div class="gate-hero-blob1"></div>
         <div class="gate-hero-blob2"></div>
+        <div class="gate-tools">
+          <button type="button" id="gate-lang-btn" class="gate-tool" aria-label="Language">AR</button>
+          <button type="button" id="gate-theme-btn" class="gate-tool" aria-label="Theme"><svg class="ic"><use href="#i-sun"/></svg></button>
+        </div>
         <div class="gate-hero-content">
           <div class="gate-logo"><img src="./icon-192.png" alt="C.S"/></div>
           <h1 class="gate-headline" id="auth-title" data-i18n="gateTitle">Welcome back</h1>
@@ -356,6 +377,19 @@
             <p class="gate-field-label" data-i18n="pickGroupField">Your group</p>
             <div class="grid grid-cols-4 gap-1.5 mb-3.5" id="auth-group-grid"></div>
           </div>
+          <div id="auth-missing-note" class="gate-missing" style="display:none">
+            <p data-i18n="missingSignupNote">You can still create the account.</p>
+            <p class="num">01119634679</p>
+            <a id="auth-wa-btn" class="wa-btn" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg><span data-i18n="waBtn">Message on WhatsApp</span></a>
+          </div>
+          <div id="auth-eng-row" style="display:none">
+            <p class="gate-field-label" data-i18n="accEng">English course</p>
+            <div class="seg2" id="auth-eng-seg" style="margin-bottom:14px">
+              <button type="button" data-v="wed" data-i18n="engWed">Wed</button>
+              <button type="button" data-v="thu" data-i18n="engThu">Thu</button>
+              <button type="button" data-v="none" data-i18n="engNone">None</button>
+            </div>
+          </div>
           <div class="uField">
             <svg class="ic"><use href="#i-mobile-screen-button"/></svg>
             <input id="auth-phone" type="tel" inputmode="tel" dir="ltr" data-i18n-ph="phonePh" placeholder="01xxxxxxxxx" autocomplete="tel"/>
@@ -369,7 +403,42 @@
           <button id="auth-submit" type="submit" class="gate-submit-btn" data-i18n="loginBtn">Log in</button>
         </form>
         <p class="gate-note" data-i18n="authNote">Your number is only used to sign in — no SMS is sent.</p>
+        <a id="gate-wa-link" class="gate-wa-link" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg><span data-i18n="gateWaLink">Schedule missing? Message me on WhatsApp</span></a>
       </div>
+    </div>
+  </div>
+</div>
+
+<div id="account-sheet" class="sheet">
+  <div class="sheet-bg" data-close></div>
+  <div class="sheet-panel glass">
+    <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold text-white" data-i18n="accSettings">Account settings</h2>
+      <button data-close class="w-8 h-8 rounded-full glass flex items-center justify-center text-zinc-300"><svg class="ic text-xs"><use href="#i-xmark"/></svg></button></div>
+    <div class="space-y-4 text-sm">
+      <div id="acc-head" class="glass rounded-xl p-3"></div>
+      <div><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="accName">Name</p>
+        <input id="acc-name" class="field" autocomplete="name"/></div>
+      <div id="acc-group-wrap"><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="accGroup">Group</p>
+        <div class="acc-grid" id="acc-group-grid"></div></div>
+      <div><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="accEng">English course</p>
+        <div class="seg glass rounded-full p-1" id="acc-eng-seg">
+          <button type="button" data-v="wed" data-i18n="engWed">Wed</button>
+          <button type="button" data-v="thu" data-i18n="engThu">Thu</button>
+          <button type="button" data-v="none" data-i18n="engNone">None</button></div>
+        <p class="text-[10px] text-zinc-500 mt-1.5" data-i18n="engHint"></p></div>
+      <p class="form-err" id="acc-err"></p>
+      <button id="acc-save" type="button" class="w-full rounded-xl py-2.5 text-xs font-bold btn-acc" data-i18n="accSave">Save changes</button>
+      <div id="acc-wa-card" class="glass rounded-xl p-3 acc-wa">
+        <p class="text-xs font-bold text-white" data-i18n="waHelpTitle">Schedule missing or wrong?</p>
+        <p class="text-[11px] text-zinc-400 mt-1 leading-relaxed"><span data-i18n="waHelpText">Message me on WhatsApp:</span> <b style="direction:ltr;display:inline-block">01119634679</b></p>
+        <a id="acc-wa-btn" class="wa-btn" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg><span data-i18n="waBtn">Message on WhatsApp</span></a>
+      </div>
+      <div class="acc-sep"><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="accPassTitle">Change password</p>
+        <div class="acc-pass-row">
+          <input id="acc-pass" type="password" dir="ltr" class="field" autocomplete="new-password" data-i18n-ph="accPassPh"/>
+          <button id="acc-pass-save" type="button" class="px-3 rounded-xl glass text-[11px] font-bold text-zinc-200 shrink-0" data-i18n="accPassSave">Update</button>
+        </div></div>
+      <button id="acc-logout" type="button" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200" data-i18n="logoutBtn">Log out</button>
     </div>
   </div>
 </div>
@@ -416,12 +485,12 @@
 
 <script>
 const I18N = {
-en:{subtitle:"Weekly Schedule",nextClass:"Next class",room:"Room",weekTitle:"Odd / even week",weekDesc:"Switches Tuesday Physics between Exercise and Lab",odd:"Odd",even:"Even",noClass:"No classes today",install:"Install this app",installDesc:"Works offline with reminders before class",installBtn:"Install",iosInstall:'Tap Share, then "Add to Home Screen"',today:"Today",share:"Share",notify:"Alerts",remindOn:"Reminder on",remindOff:"Remind me before",offline:"You're offline",searchPh:"Search a course or doctor",settingsTitle:"Settings",theme:"Appearance",dark:"Dark",light:"Light",arFont:"Arabic font",reminderDefault:"Default reminder time",testNotif:"Send a test notification",aboutLine:"C.S Schedule · Faculty of Computers &amp; AI, May University in Cairo",now:"Now",undo:"Undo",gap:"break",noResults:"No matches",busiest:"Busiest day",attendance:"Mark attended (resets weekly)",shareExport:"Share & export",gpaCalc:"GPA calculator",addCourse:"+ Add course",gpaResult:"Estimated GPA",copyLink:"Copy link",nativeShare:"Share via…",showQr:"Show QR code",weekImage:"Full week as image",saveImage:"Save as image",printPdf:"Print / Save as PDF",bgNote:"Background alerts depend on your OS/browser — most reliable when the app stays installed. Not supported on iOS Safari.",groupLabel:"Group",switchedTo:"Switched to",legendNote:"ODD / EVEN = session runs on odd or even weeks only",pickGroup:"Choose your group",wallLabel:"Wallpaper theme",engNote:"English 0 — Wednesday &amp; Thursday, Period 4 (14:20 – 16:00). Not for everyone.",
+en:{subtitle:"Weekly Schedule",nextClass:"Next class",room:"Room",weekTitle:"Odd / even week",weekDesc:"Switches Tuesday Physics between Exercise and Lab",odd:"Odd",even:"Even",noClass:"No classes today",install:"Install this app",installDesc:"Works offline with reminders before class",installBtn:"Install",iosInstall:'Tap Share, then "Add to Home Screen"',today:"Today",share:"Share",notify:"Alerts",remindOn:"Reminder on",remindOff:"Remind me before",offline:"You're offline",searchPh:"Search a course or doctor",settingsTitle:"Settings",theme:"Appearance",dark:"Dark",light:"Light",arFont:"Arabic font",reminderDefault:"Default reminder time",testNotif:"Send a test notification",aboutLine:"C.S Schedule · Faculty of Computers &amp; AI, May University in Cairo",now:"Now",undo:"Undo",gap:"break",noResults:"No matches",busiest:"Busiest day",attendance:"Mark attended (resets weekly)",shareExport:"Share & export",gpaCalc:"GPA calculator",addCourse:"+ Add course",gpaResult:"Estimated GPA",copyLink:"Copy link",nativeShare:"Share via…",showQr:"Show QR code",weekImage:"Full week as image",saveImage:"Save as image",printPdf:"Print / Save as PDF",bgNote:"Background alerts depend on your OS/browser — most reliable when the app stays installed. Not supported on iOS Safari.",groupLabel:"Group",switchedTo:"Switched to",legendNote:"ODD / EVEN = session runs on odd or even weeks only",pickGroup:"Choose your group",wallLabel:"Wallpaper theme",accSettings:"Account settings",accName:"Name",accGroup:"Group",accEng:"English course",engWed:"Wednesday",engThu:"Thursday",engNone:"None",engHint:"Shows in your schedule on that day, period 4 (14:20 – 16:00).",schedMissing:"My schedule isn't listed",missingTitle:"Your schedule isn't here yet",missingText:"Message me on WhatsApp and tell me your schedule is missing — I'll add it.",waBtn:"Message on WhatsApp",waHelpTitle:"Schedule missing or wrong?",waHelpText:"Message me on WhatsApp:",accSave:"Save changes",accSaved:"Saved",accPassTitle:"Change password",accPassPh:"New password (6+ characters)",accPassSave:"Update",accPassDone:"Password updated",errRate:"Too many attempts, wait a minute and try again",errExists:"This number already has an account — log in instead",errService:"Sign-in service is unavailable right now, try again shortly",offlineNoAccount:"You're offline — the app works without signing in.",gateWaLink:"Schedule missing? Message me on WhatsApp",missingSignupNote:"You can still create the account — message me on WhatsApp and I'll add your schedule.",errNeedNet:"This needs an internet connection",errNameEmpty:"Name can't be empty",errAccSave:"Could not save, try again",
 accountLabel:"Account",loginTitle:"Log in",gateTitle:"Welcome back",gateSub:"Sign in to sync your attendance, notes and personal items across every device.",gateTitleSignup:"Create your account",gateSubSignup:"One quick sign-up and your schedule, notes and attendance follow you everywhere.",loginTab:"Log in",signupTab:"Sign up",namePh:"Full name",pickGroupField:"Your group",phonePh:"01xxxxxxxxx",passPh:"Password (6+ characters)",loginBtn:"Log in",signupBtn:"Create account",authNote:"Your number is only used to sign in — no SMS is sent.",logoutBtn:"Log out",notLoggedIn:"Log in to sync your attendance, notes and personal items across devices.",loginCta:"Log in / Sign up",openAdmin:"Open admin page",errFill:"Please fill in every field",errPhone:"Enter a valid phone number",errPassShort:"Password must be at least 6 characters",errPickGroup:"Pick your group",errLogin:"Wrong phone number or password",errSignup:"Could not create the account — the number may already be registered",errGeneric:"Something went wrong, try again",errOffline:"No connection — check your internet and try again",
 noteTitle:"Your note",notePh:"e.g. bring the lab report, seat near the door…",saveBtn:"Save",deleteBtn:"Delete",noteSaved:"Note saved",noteDeleted:"Note deleted",loginFirst:"Log in first",
 addPersonal:"+ Add a personal item to this day",eventTitle:"Personal item",eventTitlePh:"Title (e.g. private tutoring)",eventRoomPh:"Location (optional)",eventSaved:"Personal item added",eventDeleted:"Removed",personal:"Personal",
 linksTitle:"Links & resources",noLinks:"Nothing here yet",dismiss:"Dismiss",syncingNote:"Live schedule connected for this group ✓"},
-ar:{subtitle:"الجدول الأسبوعي",nextClass:"المحاضرة الجاية",room:"القاعة",weekTitle:"أسبوع فردي / زوجي",weekDesc:"بيبدّل فيزيا الثلاثاء بين تمرين ومعمل",odd:"فردي",even:"زوجي",noClass:"مفيش محاضرات النهارده",install:"ثبّت التطبيق",installDesc:"يشتغل أوفلاين مع تنبيه قبل كل محاضرة",installBtn:"تثبيت",iosInstall:'دوس Share بعدين "Add to Home Screen"',today:"النهارده",share:"مشاركة",notify:"التنبيهات",remindOn:"التنبيه شغال",remindOff:"نبّهني قبلها بـ",offline:"مفيش نت دلوقتي",searchPh:"دور على مادة أو دكتور",settingsTitle:"الإعدادات",theme:"المظهر",dark:"غامق",light:"فاتح",arFont:"الخط العربي",reminderDefault:"وقت التنبيه الافتراضي",testNotif:"جرّب تنبيه تجريبي",aboutLine:"C.S Schedule · كلية الحاسبات والذكاء الاصطناعي، جامعة ماي بالقاهرة",now:"دلوقتي",undo:"تراجع",gap:"فترة راحة",noResults:"مفيش نتايج",busiest:"أزحم يوم",attendance:"سجّل حضور (بيتصفر كل أسبوع)",shareExport:"مشاركة وتصدير",gpaCalc:"حاسبة الجي بي إيه",addCourse:"+ ضيف مادة",gpaResult:"الجي بي إيه التقديري",copyLink:"انسخ الرابط",nativeShare:"شارك عبر…",showQr:"اعرض QR كود",weekImage:"الجدول الأسبوعي كصورة",saveImage:"احفظ كصورة",printPdf:"اطبع / احفظ PDF",bgNote:"التنبيهات في الخلفية بتعتمد على نظام التشغيل والمتصفح — بتشتغل أفضل لما التطبيق يفضل متثبت. مش مدعومة على iOS Safari.",groupLabel:"الجروب",switchedTo:"اتبدّل لجروب",legendNote:"فردي / زوجي = الحصة بتحصل في الأسابيع الفردية أو الزوجية بس",pickGroup:"اختار جروبك",wallLabel:"ثيم الخلفية",engNote:"كورس English 0 — الأربع والخميس، الفترة الرابعة (14:20 – 16:00). مش لكل الطلاب.",
+ar:{subtitle:"الجدول الأسبوعي",nextClass:"المحاضرة الجاية",room:"القاعة",weekTitle:"أسبوع فردي / زوجي",weekDesc:"بيبدّل فيزيا الثلاثاء بين تمرين ومعمل",odd:"فردي",even:"زوجي",noClass:"مفيش محاضرات النهارده",install:"ثبّت التطبيق",installDesc:"يشتغل أوفلاين مع تنبيه قبل كل محاضرة",installBtn:"تثبيت",iosInstall:'دوس Share بعدين "Add to Home Screen"',today:"النهارده",share:"مشاركة",notify:"التنبيهات",remindOn:"التنبيه شغال",remindOff:"نبّهني قبلها بـ",offline:"مفيش نت دلوقتي",searchPh:"دور على مادة أو دكتور",settingsTitle:"الإعدادات",theme:"المظهر",dark:"غامق",light:"فاتح",arFont:"الخط العربي",reminderDefault:"وقت التنبيه الافتراضي",testNotif:"جرّب تنبيه تجريبي",aboutLine:"C.S Schedule · كلية الحاسبات والذكاء الاصطناعي، جامعة ماي بالقاهرة",now:"دلوقتي",undo:"تراجع",gap:"فترة راحة",noResults:"مفيش نتايج",busiest:"أزحم يوم",attendance:"سجّل حضور (بيتصفر كل أسبوع)",shareExport:"مشاركة وتصدير",gpaCalc:"حاسبة الجي بي إيه",addCourse:"+ ضيف مادة",gpaResult:"الجي بي إيه التقديري",copyLink:"انسخ الرابط",nativeShare:"شارك عبر…",showQr:"اعرض QR كود",weekImage:"الجدول الأسبوعي كصورة",saveImage:"احفظ كصورة",printPdf:"اطبع / احفظ PDF",bgNote:"التنبيهات في الخلفية بتعتمد على نظام التشغيل والمتصفح — بتشتغل أفضل لما التطبيق يفضل متثبت. مش مدعومة على iOS Safari.",groupLabel:"الجروب",switchedTo:"اتبدّل لجروب",legendNote:"فردي / زوجي = الحصة بتحصل في الأسابيع الفردية أو الزوجية بس",pickGroup:"اختار جروبك",wallLabel:"ثيم الخلفية",accSettings:"إعدادات الحساب",accName:"الاسم",accGroup:"الجروب",accEng:"كورس الإنجليزي",engWed:"الأربع",engThu:"الخميس",engNone:"مفيش",engHint:"بيظهر في جدولك في اليوم ده، الفترة الرابعة (14:20 – 16:00).",schedMissing:"جدولي مش موجود",missingTitle:"جدولك مش موجود لسه",missingText:"كلمني واتساب وابعتلي إن جدولك مش موجود وهضيفهولك.",waBtn:"كلمني واتساب",waHelpTitle:"جدولك مش موجود أو فيه غلط؟",waHelpText:"كلمني واتساب على:",accSave:"احفظ التعديلات",accSaved:"اتحفظ",accPassTitle:"تغيير الباسورد",accPassPh:"الباسورد الجديد (٦ حروف على الأقل)",accPassSave:"حدّث",accPassDone:"الباسورد اتغيّر",errRate:"محاولات كتير، استنى دقيقة وجرب تاني",errExists:"الرقم ده عليه حساب بالفعل — سجّل دخول",errService:"خدمة الدخول مش شغالة دلوقتي، جرب كمان شوية",offlineNoAccount:"مفيش نت — التطبيق شغال من غير تسجيل دخول.",gateWaLink:"جدولي مش موجود؟ كلمني واتساب",missingSignupNote:"تقدر تعمل الحساب عادي — كلمني واتساب وهضيف جدولك.",errNeedNet:"ده محتاج نت",errNameEmpty:"الاسم مينفعش يبقى فاضي",errAccSave:"محصلش حفظ، جرب تاني",
 accountLabel:"الحساب",loginTitle:"تسجيل الدخول",gateTitle:"أهلاً بيك تاني",gateSub:"سجّل دخول عشان الحضور والنوتس والحاجات الشخصية تتزامن على كل أجهزتك.",gateTitleSignup:"اعمل حسابك",gateSubSignup:"حساب واحد بسيط وهتلاقي جدولك ونوتسك وحضورك معاك في أي مكان.",loginTab:"دخول",signupTab:"حساب جديد",namePh:"الاسم بالكامل",pickGroupField:"جروبك",phonePh:"01xxxxxxxxx",passPh:"الباسورد (٦ حروف على الأقل)",loginBtn:"دخول",signupBtn:"إنشاء حساب",authNote:"رقمك بيتستخدم بس للدخول — مفيش أي SMS هيتبعت.",logoutBtn:"تسجيل خروج",notLoggedIn:"سجّل دخول عشان الحضور والنوتس والحاجات الشخصية تتزامن على كل أجهزتك.",loginCta:"دخول / حساب جديد",openAdmin:"افتح صفحة الأدمن",errFill:"لازم تملأ كل الخانات",errPhone:"اكتب رقم موبايل صحيح",errPassShort:"الباسورد لازم يبقى ٦ حروف على الأقل",errPickGroup:"اختار جروبك",errLogin:"رقم الموبايل أو الباسورد غلط",errSignup:"الحساب متعملش — ممكن الرقم مسجل قبل كده",errGeneric:"حصل خطأ، جرب تاني",errOffline:"مفيش نت — اتأكد من الاتصال وجرب تاني",
 noteTitle:"نوتة المحاضرة",notePh:"مثلاً: هات تقرير المعمل، اقعد جنب الباب…",saveBtn:"احفظ",deleteBtn:"امسح",noteSaved:"اتحفظت النوتة",noteDeleted:"اتمسحت النوتة",loginFirst:"سجّل دخول الأول",
 addPersonal:"+ ضيف حاجة شخصية لليوم ده",eventTitle:"حاجة شخصية",eventTitlePh:"العنوان (مثلاً: درس خصوصي)",eventRoomPh:"المكان (اختياري)",eventSaved:"اتضافت الحاجة الشخصية",eventDeleted:"اتشالت",personal:"شخصي",
@@ -429,7 +498,7 @@ linksTitle:"لينكات ومصادر",noLinks:"لسه مفيش حاجة هنا"
 };
 const DAYNAMES = { sat:{en:'Saturday',ar:'السبت'}, sun:{en:'Sunday',ar:'الأحد'}, mon:{en:'Monday',ar:'الإثنين'}, tue:{en:'Tuesday',ar:'الثلاثاء'}, wed:{en:'Wednesday',ar:'الأربعاء'}, thu:{en:'Thursday',ar:'الخميس'} };
 const CATS = { lecture:{color:'#93A6B8',icon:'chalkboard-user'}, lab:{color:'#8FB89B',icon:'flask'}, exercise:{color:'#C79B77',icon:'pen'}, community:{color:'#B0A98E',icon:'people-group'}, personal:{color:'#C9A7E0',icon:'pen'} };
-const TYPE_AR = {Lecture:'محاضرة',Laboratory:'معمل',Exercise:'تمرين',Section:'سكشن','Community Activity':'نشاط طلابي'};
+const TYPE_AR = {Lecture:'محاضرة',Laboratory:'معمل',Exercise:'تمرين',Section:'سكشن','Community Activity':'نشاط طلابي','Language Course':'كورس لغة'};
 const PERIODS = {1:'09:00 – 10:40',2:'10:50 – 12:30',3:'12:40 – 14:20',4:'14:20 – 16:00'};
 const PMIN = {1:[540,640],2:[650,750],3:[760,860],4:[860,960]};
 const DAYS = [{key:'sat',idx:6},{key:'sun',idx:0},{key:'mon',idx:1},{key:'tue',idx:2},{key:'wed',idx:3},{key:'thu',idx:4}];
@@ -441,8 +510,10 @@ const COURSES = {
  UNI101:{en:'UNI101 – Professional Ethics and Legal Aspects',ar:'UNI101 – أخلاقيات المهنة والجوانب القانونية'},
  UNI109:{en:'UNI109 – Critical Thinking and Problem-Solving',ar:'UNI109 – التفكير الناقد وحل المشكلات'},
  MATH0:{en:'Math 0 – Mathematics 0',ar:'Math 0 – رياضيات صفر'},
- COMM:{en:'Community Activities',ar:'الأنشطة الطلابية'}
+ COMM:{en:'Community Activities',ar:'الأنشطة الطلابية'},
+ ENG0:{en:'English 0',ar:'إنجليزي 0'}
 };
+function course(code){ return COURSES[code] || { en:code, ar:code }; }
 const GROUPS = {
 GA8:[
  {day:'sun',p:1,code:'CAI115',type:'Lecture',cat:'lecture',room:'C333',staff:'Prof. Rania, Dr. Yasser, Dr. Ghada',staffAr:'أ.د رانيا، د.ياسر، د.غادة'},
@@ -692,64 +763,192 @@ function rowToLecture(row){
   if(alt) l.alt = alt;
   return l;
 }
+const WA_NUM = '201119634679', WA_LOCAL = '01119634679';
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
+function esc(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function jget(k, d){ try{ const v = JSON.parse(localStorage.getItem(k)); return v==null ? d : v; }catch(e){ return d; } }
+function jset(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+function normDigits(v){ return (v||'').replace(/[\u0660-\u0669]/g, d=>'\u0660\u0661\u0662\u0663\u0664\u0665\u0666\u0667\u0668\u0669'.indexOf(d)).replace(/[\u06F0-\u06F9]/g, d=>'\u06F0\u06F1\u06F2\u06F3\u06F4\u06F5\u06F6\u06F7\u06F8\u06F9'.indexOf(d)); }
+function cleanPhone(v){ return normDigits(v||'').replace(/[\s\-()]/g,''); }
 function e164(local){
-  let d = (local||'').replace(/[^\d+]/g,'');
+  const d = cleanPhone(local);
   if(d.startsWith('+')) return d;
-  if(d.startsWith('0')) d = d.slice(1);
-  if(d.startsWith('20')) return '+'+d;
+  if(d.startsWith('00')) return '+'+d.slice(2);
+  if(d.startsWith('0')) return '+20'+d.slice(1);
+  if(d.startsWith('20') && d.length===12) return '+'+d;
   return '+20'+d;
 }
-function localPhone(p){ return (p||'').replace('+20','0'); }
+function localPhone(p){ const d=(p||'').replace(/\D/g,''); if(!d) return ''; if(d.startsWith('20') && d.length===12) return '0'+d.slice(2); return d.startsWith('0') ? d : '0'+d; }
+function validPhone(v){ const d=cleanPhone(v); return /^01[0-9]{9}$/.test(d) || /^(\+|00)?20[0-9]{10}$/.test(d); }
+function isNetErr(e){ const m=((e&&e.message)||'').toLowerCase(); return !navigator.onLine || !!(e && (e.status===0 || e.name==='AuthRetryableFetchError')) || /network|failed to fetch|load failed|timeout/.test(m); }
 
-// hard sign-in gate: nothing in the app is usable until someone is logged in.
-// Shown synchronously the instant we know an account is required, so there's
-// no flash of the schedule before the gate appears; hidden the moment a
-// session is confirmed (or re-shown immediately on logout).
+// cached state so the app keeps working with no connection
+profile = jget('cs_profile', null);
+let authChecked = false, sessionNetErr = false, explicitLogout = false, pickedGroup = false, netRetries = 0, authGroup = '', authEng = 'none';
+(function loadCachedData(){
+  try{
+    Object.keys(localStorage).forEach(k=>{ if(k.indexOf('cs_lectures_')===0){ const rows=jget(k,null); if(rows && rows.length){ GROUPS[k.slice(12)] = rows; liveGroups[k.slice(12)] = true; } } });
+    const c = jget('cs_courses', null); if(c) Object.assign(COURSES, c);
+    const saved = localStorage.getItem('a8_group'); if(saved && GROUPS[saved]) group = saved;
+    L = GROUPS[group];
+  }catch(e){}
+})();
+
+function ucKey(){ return profile ? 'cs_ud_'+profile.id+'_'+group : null; }
+function loadUserCache(){ const k=ucKey(); if(!k) return; const c=jget(k,null); if(c){ notesMap=c.notes||{}; attMap=c.att||{}; personalEvents=c.events||[]; } }
+function saveUserCache(){ const k=ucKey(); if(!k) return; jset(k,{notes:notesMap, att:attMap, events:personalEvents}); }
+if(profile) loadUserCache();
+
+function engDay(){ const d = (profile && profile.eng_day) || localStorage.getItem('cs_eng_day') || 'none'; return d; }
+function engLectures(day){
+  if(engDay()!==day) return [];
+  return [{ day:day, p:4, code:'ENG0', type:'Language Course', cat:'community', room:'—', staff:'', staffAr:'', isEng:true }];
+}
+function scheduleMissing(){ return !!(profile && profile.role==='student' && !profile.group_key); }
+function missingView(){ return scheduleMissing() && !pickedGroup; }
+function setL(){ L = missingView() ? [] : (GROUPS[group]||[]); paintGroup(); refreshView(); }
+function adoptProfileGroup(force){
+  if(!profile || profile.role!=='student') return;
+  if(profile.group_key && GROUPS[profile.group_key]){
+    if(force || !localStorage.getItem('a8_group')) applyGroup(profile.group_key, false);
+  } else if(!profile.group_key){ pickedGroup = false; }
+  setL();
+}
+
+function waHref(name, phone, grp){
+  const ar = lang==='ar';
+  const msg = ar
+    ? `السلام عليكم، جدولي مش موجود على C.S Schedule.\nالاسم: ${name||'—'}\nالرقم: ${phone||'—'}\nالجروب: ${grp||'مش محدد'}`
+    : `Hi, my schedule isn't on C.S Schedule.\nName: ${name||'—'}\nPhone: ${phone||'—'}\nGroup: ${grp||'not set'}`;
+  return `https://wa.me/${WA_NUM}?text=${encodeURIComponent(msg)}`;
+}
+function waHrefProfile(){ const p=profile||{}; return waHref(p.name, localPhone(p.phone), p.group_key); }
+function missingCardHTML(){
+  return `<div class="glass rounded-2xl p-5 text-center missing-card">
+    <p class="text-sm font-bold text-white mb-1">${t('missingTitle')}</p>
+    <p class="text-[11px] text-zinc-400 leading-relaxed">${t('missingText')}</p>
+    <p class="text-sm font-bold text-white mt-2" style="direction:ltr">${WA_LOCAL}</p>
+    <a class="wa-btn" href="${waHrefProfile()}" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg><span>${t('waBtn')}</span></a>
+  </div>`;
+}
+
+// ---- sign-in gate -----------------------------------------------------------
+// The gate only ever blocks the app while ONLINE. Offline (or when the sign-in service
+// can't be reached but a stored login exists) the app stays fully usable.
+function hasStoredSession(){ try{ return Object.keys(localStorage).some(k=> /^sb-.*-auth-token/.test(k) && localStorage.getItem(k)); }catch(e){ return false; } }
+function gateNeeded(){
+  if(!BACKEND_ON || session) return false;
+  if(!navigator.onLine) return false;
+  if(!authChecked) return !hasStoredSession() && !profile;
+  if(sessionNetErr && hasStoredSession()) return false;
+  return true;
+}
 function updateGate(){
   const el = $('auth-sheet'); if(!el) return;
-  const mustGate = BACKEND_ON && !session;
-  const wasGated = el.classList.contains('open');
-  el.classList.toggle('open', mustGate);
-  // reset to the login tab each time the gate freshly appears (first load, or right
-  // after logout) rather than whatever tab was left selected last time
-  if(mustGate && !wasGated) setAuthMode('login');
+  const must = gateNeeded(), was = el.classList.contains('open');
+  el.classList.toggle('open', must);
+  if(must && !was) setAuthMode('login');
 }
-async function initBackend(){
+function uid(){ return (session && session.user && session.user.id) || (profile && profile.id) || null; }
+function requireAuth(){
+  if(uid()) return true;
+  if(!navigator.onLine){ showToast(t('errOffline')); return false; }
+  if(BACKEND_ON) openAuthSheet('login');
+  return false;
+}
+
+let sbPromise = null;
+function injectScript(src){ return new Promise((res,rej)=>{ const el=document.createElement('script'); el.src=src; el.onload=res; el.onerror=rej; document.head.appendChild(el); }); }
+function ensureSb(){
+  if(sb) return Promise.resolve(sb);
+  if(sbPromise) return sbPromise;
+  sbPromise = (async ()=>{
+    for(let i=0;i<30 && !window.supabase;i++) await sleep(100);
+    if(!window.supabase && navigator.onLine){
+      try{ await injectScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2'); }catch(e){}
+      for(let i=0;i<20 && !window.supabase;i++) await sleep(100);
+    }
+    if(!window.supabase){ sbPromise = null; return null; }
+    sb = window.supabase.createClient(window.CS_CONFIG.SUPABASE_URL, window.CS_CONFIG.SUPABASE_ANON_KEY, {
+      auth: { autoRefreshToken:true, persistSession:true, detectSessionInUrl:false }
+    });
+    sb.auth.onAuthStateChange(onAuthEvent);
+    return sb;
+  })();
+  return sbPromise;
+}
+// never await supabase calls inside the auth callback itself (can deadlock) — defer them
+function onAuthEvent(event, s){
+  setTimeout(async ()=>{
+    if(event==='SIGNED_OUT'){
+      session = null;
+      if(explicitLogout || navigator.onLine){ profile = null; try{ localStorage.removeItem('cs_profile'); }catch(e){} }
+    } else if(s){
+      session = s; sessionNetErr = false;
+      if(!profile || profile.id!==s.user.id) await loadProfile();
+    } else return;
+    renderAccountBox(); setL();
+  }, 0);
+}
+async function checkSession(){
+  sessionNetErr = false;
+  try{
+    const { data, error } = await sb.auth.getSession();
+    if(data && data.session){ session = data.session; netRetries = 0; return; }
+    if(error && isNetErr(error)) sessionNetErr = true;
+  }catch(e){ if(isNetErr(e)) sessionNetErr = true; }
+  if(!navigator.onLine && hasStoredSession()) sessionNetErr = true;
+  session = null;
+  if(sessionNetErr && netRetries<6){ netRetries++; setTimeout(recheckSession, 5000*netRetries); }
+}
+async function recheckSession(){
+  if(!sb || session) return;
+  await checkSession();
+  if(session){ await loadProfile(); renderAccountBox(); setL(); syncAll(); }
+  else updateGate();
+}
+function syncAll(){ syncCourses(); syncGroup(group); syncLinksAndAnnouncements(); syncNotesAttendanceEvents(); }
+async function bootAuth(){
   if(!BACKEND_ON) return;
-  for(let i=0;i<40 && !window.supabase;i++) await new Promise(r=>setTimeout(r,100));
-  if(!window.supabase){ $('auth-err').textContent = t('errOffline'); return; }
-  // explicit session options: auto-refresh keeps a signed-in user logged in without
-  // silent drop-outs, persistSession keeps them logged in across app restarts
-  sb = window.supabase.createClient(window.CS_CONFIG.SUPABASE_URL, window.CS_CONFIG.SUPABASE_ANON_KEY, {
-    auth: { autoRefreshToken:true, persistSession:true, detectSessionInUrl:false }
-  });
-
-  try{
-    const { data } = await sb.auth.getSession();
-    session = data && data.session ? data.session : null;
-    if(session) await loadProfile();
-  }catch(e){}
-  renderAccountBox();
-
-  sb.auth.onAuthStateChange(async (event, s)=>{
-    session = s || null;
-    if(session && !profile) await loadProfile();
-    if(!session) profile = null;
-    renderAccountBox();
-  });
-
-  syncCourses();
-  syncGroup(group);
-  syncLinksAndAnnouncements();
-  flushOutbox();
-  window.addEventListener('online', flushOutbox);
+  const c = await ensureSb();
+  if(!c){
+    sessionNetErr = true; authChecked = true; updateGate(); renderAccountBox();
+    if(navigator.onLine && netRetries<6){ netRetries++; setTimeout(bootAuth, 6000); }
+    return;
+  }
+  if(!session) await checkSession();
+  if(session && (!profile || profile.id!==session.user.id)) await loadProfile();
+  authChecked = true;
+  adoptProfileGroup(false);
+  renderAccountBox(); updateGate();
+  syncAll(); flushOutbox();
 }
+window.addEventListener('online', ()=>{
+  netRetries = 0;
+  if(sb && authChecked){ recheckSession().then(()=>{ if(session) syncAll(); }); } else bootAuth();
+  updateGate(); renderAccountBox();
+});
+window.addEventListener('offline', ()=>{ updateGate(); renderAccountBox(); });
 
-async function loadProfile(){
-  try{
-    const { data, error } = await sb.from('profiles').select('*').eq('id', session.user.id).single();
-    if(!error) profile = data;
-  }catch(e){}
+async function loadProfile(fb){
+  if(!sb || !session) return;
+  let row = null;
+  for(let i=0;i<3 && !row;i++){
+    try{
+      const r = await sb.from('profiles').select('*').eq('id', session.user.id).maybeSingle();
+      if(r && r.data) row = r.data; else if(r && r.error && isNetErr(r.error)) break;
+    }catch(e){ if(isNetErr(e)) break; }
+    if(!row) await sleep(600*(i+1));
+  }
+  const meta = session.user.user_metadata || {};
+  if(row){ if(row.eng_day==null) row.eng_day = meta.eng_day || 'none'; profile = row; }
+  else {
+    const cached = (profile && profile.id===session.user.id) ? profile : null;
+    profile = Object.assign({ id:session.user.id, name:meta.name||'', phone:session.user.phone||'', group_key:meta.group_key||null, role:'student', eng_day:meta.eng_day||'none' }, cached||{}, fb||{});
+  }
+  jset('cs_profile', profile);
+  try{ localStorage.setItem('cs_eng_day', engDay()); }catch(e){}
+  loadUserCache();
 }
 
 // ---- data sync (lectures / courses / links / announcements) --------------
@@ -759,22 +958,18 @@ async function syncCourses(){
     const { data, error } = await sb.from('courses').select('*');
     if(error || !data) return;
     data.forEach(r=>{ COURSES[r.code] = { en:r.title_en, ar:r.title_ar }; });
+    const saved = {}; data.forEach(r=>{ saved[r.code] = COURSES[r.code]; }); jset('cs_courses', saved);
   }catch(e){}
 }
 async function syncGroup(g){
-  const cacheKey = 'cs_lectures_'+g;
-  try{
-    const cached = JSON.parse(localStorage.getItem(cacheKey)||'null');
-    if(cached && cached.length){ GROUPS[g] = cached; liveGroups[g] = true; if(g===group){ L=GROUPS[g]; refreshView(); } }
-  }catch(e){}
   if(!navigator.onLine || !sb) return;
   try{
     const { data, error } = await sb.from('lectures').select('*').eq('group_key', g).order('day').order('period');
     if(error || !data || !data.length) return; // keep whatever we had (DB/seed not run yet for this group)
     const rows = data.map(rowToLecture);
     GROUPS[g] = rows; liveGroups[g] = true;
-    localStorage.setItem(cacheKey, JSON.stringify(rows));
-    if(g===group){ L=GROUPS[g]; refreshView(); }
+    jset('cs_lectures_'+g, rows);
+    if(g===group){ setL(); }
     if(session) syncNotesAttendanceEvents();
   }catch(e){}
 }
@@ -810,37 +1005,58 @@ function renderAnnouncements(list){
 }
 
 // ---- auth ------------------------------------------------------------------
-function validPhone(v){ return /^(01)[0-9]{9}$/.test((v||'').replace(/\s/g,'')) || /^\+20[0-9]{10}$/.test(v||''); }
-async function doSignUp(name, phoneLocal, pass, g){
-  const { data, error } = await sb.auth.signUp({ phone:e164(phoneLocal), password:pass, options:{ data:{ name, group_key:g } } });
+async function startSession(s, fb){
+  session = s; sessionNetErr = false; authChecked = true; netRetries = 0;
+  profile = null;
+  await loadProfile(fb);
+}
+async function doSignUp(name, phoneLocal, pass, g, eng){
+  const phone = e164(phoneLocal);
+  const { data, error } = await sb.auth.signUp({ phone, password:pass, options:{ data:{ name, group_key:g||'', eng_day:eng } } });
   if(error) throw error;
-  session = data.session; await loadProfile();
+  let s = data && data.session;
+  if(!s){
+    const r = await sb.auth.signInWithPassword({ phone, password:pass });
+    if(r.error) throw r.error;
+    s = r.data.session;
+  }
+  await startSession(s, { name, group_key:g||null, eng_day:eng });
 }
 async function doLogIn(phoneLocal, pass){
   const { data, error } = await sb.auth.signInWithPassword({ phone:e164(phoneLocal), password:pass });
   if(error) throw error;
-  session = data.session; await loadProfile();
+  await startSession(data.session);
   try{ await sb.from('profiles').update({ last_login_at:new Date().toISOString() }).eq('id', session.user.id); }catch(e){}
 }
-async function doLogOut(){ try{ await sb.auth.signOut(); }catch(e){} session=null; profile=null; notesMap={}; attMap={}; personalEvents=[]; renderAccountBox(); render(); showToast(lang==='ar'?'خرجت من الحساب':'Logged out'); }
+async function doLogOut(){
+  explicitLogout = true;
+  try{ if(sb) await sb.auth.signOut({ scope:'local' }); }catch(e){}
+  try{ Object.keys(localStorage).forEach(k=>{ if(/^sb-.*-auth-token/.test(k) || k==='cs_profile' || k==='cs_eng_day' || k==='cs_outbox' || k.indexOf('cs_ud_')===0) localStorage.removeItem(k); }); }catch(e){}
+  session = null; profile = null; notesMap = {}; attMap = {}; personalEvents = []; pickedGroup = false;
+  document.querySelectorAll('.sheet.open').forEach(x=>x.classList.remove('open'));
+  renderAccountBox(); setL();
+  explicitLogout = false;
+  showToast(lang==='ar'?'خرجت من الحساب':'Logged out');
+}
 
 function renderAccountBox(){
   updateGate();
   const box = $('account-box'); if(!box) return;
-  if(session && profile){
+  if(profile){
+    const grp = profile.role!=='student' ? profile.role : (profile.group_key || '—');
     box.innerHTML = `<div class="flex items-center gap-2.5">
-      <div class="avatar-circ">${(profile.name||'?').trim().charAt(0).toUpperCase()}</div>
-      <div class="flex-1 min-w-0"><p class="text-xs font-bold text-white truncate">${profile.name||''}</p>
-      <p class="text-[10px] text-zinc-400" style="direction:ltr">${localPhone(profile.phone)} · ${profile.group_key||'—'}${profile.role!=='student'?' · '+profile.role:''}</p></div>
-      <button id="logout-btn" class="px-3 py-1.5 rounded-full glass text-[11px] font-bold text-zinc-200 shrink-0">${t('logoutBtn')}</button>
+      <div class="avatar-circ">${esc((profile.name||'?').trim().charAt(0).toUpperCase())}</div>
+      <div class="flex-1 min-w-0"><p class="text-xs font-bold text-white truncate">${esc(profile.name)}</p>
+      <p class="text-[10px] text-zinc-400" style="direction:ltr">${esc(localPhone(profile.phone))} · ${esc(grp)}${profile.role==='rep'&&profile.group_key?' · '+esc(profile.group_key):''}</p></div>
+      <button id="acc-open-btn" class="px-3 py-1.5 rounded-full btn-acc text-[11px] font-bold shrink-0">${t('accSettings')}</button>
     </div>`;
-    $('logout-btn').onclick = doLogOut;
-  } else if(BACKEND_ON){
+    $('acc-open-btn').onclick = openAccountSheet;
+  } else if(BACKEND_ON && navigator.onLine){
     box.innerHTML = `<p class="text-[11px] text-zinc-400 mb-2">${t('notLoggedIn')}</p>
       <button id="open-login-btn" class="w-full rounded-xl py-2.5 text-xs font-bold btn-acc">${t('loginCta')}</button>`;
     $('open-login-btn').onclick = ()=> openAuthSheet('login');
   } else {
-    box.innerHTML = `<p class="text-[11px] text-zinc-500">—</p>`;
+    box.innerHTML = `<p class="text-[11px] text-zinc-500">${t('offlineNoAccount')}</p>`;
   }
   renderAdminLink();
 }
@@ -856,17 +1072,107 @@ function renderAdminLink(){
   } else if(a){ a.remove(); }
 }
 
-function openAuthSheet(mode){ setAuthMode(mode||'login'); $('auth-err').textContent=''; $('auth-form').reset(); openSheet('auth-sheet'); }
+// ---- account settings sheet ---------------------------------------------------
+let accGroup = '', accEng = 'none';
+function renderAccHead(){
+  $('acc-head').innerHTML = `<div class="flex items-center gap-2.5">
+    <div class="avatar-circ">${esc((profile.name||'?').trim().charAt(0).toUpperCase())}</div>
+    <div class="flex-1 min-w-0"><p class="text-xs font-bold text-white truncate">${esc(profile.name)}</p>
+    <p class="text-[10px] text-zinc-400" style="direction:ltr">${esc(localPhone(profile.phone))}${profile.role!=='student'?' · '+esc(profile.role):''}</p></div></div>`;
+}
+function buildAccGroup(){
+  $('acc-group-grid').innerHTML = groupKeys().map(g=>`<button type="button" data-g="${g}" class="grp-opt${accGroup===g?' on':''}" style="direction:ltr">${g}</button>`).join('')
+    + `<button type="button" data-g="" class="grp-opt grp-missing${accGroup===''?' on':''}">${t('schedMissing')}</button>`;
+}
+function paintAccEng(){ document.querySelectorAll('#acc-eng-seg button').forEach(b=>b.classList.toggle('on', b.dataset.v===accEng)); }
+function openAccountSheet(){
+  if(!profile){ if(navigator.onLine) openAuthSheet('login'); else showToast(t('errOffline')); return; }
+  $('acc-name').value = profile.name||'';
+  accGroup = profile.group_key||''; accEng = engDay();
+  $('acc-err').textContent = ''; $('acc-pass').value = '';
+  renderAccHead(); buildAccGroup(); paintAccEng();
+  $('acc-group-wrap').style.display = profile.role==='student' ? 'block' : 'none';
+  $('acc-wa-btn').href = waHrefProfile();
+  openSheet('account-sheet');
+}
+$('acc-group-grid').addEventListener('click', e=>{ const b=e.target.closest('.grp-opt'); if(!b) return; accGroup=b.dataset.g; buildAccGroup(); });
+$('acc-eng-seg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; accEng=b.dataset.v; paintAccEng(); });
+async function pushProfile(f){
+  if(!sb || !session || !navigator.onLine) return false;
+  try{
+    const base = { name:f.name };
+    if(f.group_key!==undefined) base.group_key = f.group_key;
+    const r = await sb.from('profiles').update(base).eq('id', session.user.id);
+    if(r && r.error) return false;
+    try{ await sb.from('profiles').update({ eng_day:f.eng_day }).eq('id', session.user.id); }catch(e){}
+    try{ await sb.auth.updateUser({ data:{ name:f.name, group_key:(f.group_key!==undefined ? f.group_key : (profile&&profile.group_key)) || '', eng_day:f.eng_day } }); }catch(e){}
+    return true;
+  }catch(e){ return false; }
+}
+$('acc-save').addEventListener('click', async ()=>{
+  const btn = $('acc-save'); if(btn.disabled || !profile) return;
+  const name = $('acc-name').value.trim();
+  if(!name){ $('acc-err').textContent = t('errNameEmpty'); return; }
+  btn.disabled = true; setTimeout(()=>{ btn.disabled=false; }, 800);
+  const f = { name, eng_day:accEng };
+  const isStudent = profile.role==='student';
+  if(isStudent) f.group_key = accGroup || null;
+  const ok = await pushProfile(f);
+  if(!ok) queueMutation({ table:'profile', fields:f });
+  Object.assign(profile, f);
+  jset('cs_profile', profile);
+  try{ localStorage.setItem('cs_eng_day', accEng); }catch(e){}
+  document.querySelectorAll('.sheet.open').forEach(x=>x.classList.remove('open'));
+  renderAccountBox();
+  if(isStudent && f.group_key){ pickedGroup = false; applyGroup(f.group_key, false); }
+  setL();
+  showToast(t('accSaved'));
+});
+$('acc-pass-save').addEventListener('click', async ()=>{
+  const p = $('acc-pass').value, err = $('acc-err'); err.textContent = '';
+  if(p.length<6){ err.textContent = t('errPassShort'); return; }
+  if(!navigator.onLine || !sb || !session){ err.textContent = t('errNeedNet'); return; }
+  try{
+    const { error } = await sb.auth.updateUser({ password:p });
+    if(error) throw error;
+    $('acc-pass').value = ''; showToast(t('accPassDone'));
+  }catch(e){ err.textContent = authErrMsg(e, 'login'); }
+});
+$('acc-logout').addEventListener('click', doLogOut);
+
+// ---- gate UI --------------------------------------------------------------------
+function openAuthSheet(mode){ authGroup=''; authEng='none'; setAuthMode(mode||'login'); $('auth-err').textContent=''; $('auth-form').reset(); openSheet('auth-sheet'); }
+function buildAuthGroups(){
+  $('auth-group-grid').innerHTML = groupKeys().map(g=>`<button type="button" data-g="${g}" class="grp-opt${authGroup===g?' on':''}" style="direction:ltr">${g}</button>`).join('')
+    + `<button type="button" data-g="NONE" class="grp-opt grp-missing${authGroup==='NONE'?' on':''}">${t('schedMissing')}</button>`;
+}
+function paintAuthEng(){ document.querySelectorAll('#auth-eng-seg button').forEach(b=>b.classList.toggle('on', b.dataset.v===authEng)); }
+function updateAuthWa(){ $('auth-wa-btn').href = waHref($('auth-name').value.trim(), normDigits($('auth-phone').value.trim()), ''); }
+function paintAuthMissing(){
+  const show = ($('auth-form').dataset.mode==='signup') && authGroup==='NONE';
+  $('auth-missing-note').style.display = show ? 'block' : 'none';
+  if(show) updateAuthWa();
+}
 function setAuthMode(mode){
+  mode = mode || 'login';
   document.querySelectorAll('#auth-mode-seg button').forEach(b=>b.classList.toggle('on', b.dataset.v===mode));
   const isSignup = mode==='signup';
   $('auth-name-row').style.display = isSignup?'flex':'none';
   $('auth-group-row').style.display = isSignup?'block':'none';
+  $('auth-eng-row').style.display = isSignup?'block':'none';
   $('auth-submit').textContent = t(isSignup?'signupBtn':'loginBtn');
   $('auth-title').textContent = t(isSignup?'gateTitleSignup':'gateTitle');
   $('auth-sheet').querySelector('.gate-sub').textContent = t(isSignup?'gateSubSignup':'gateSub');
+  $('auth-pass').autocomplete = isSignup ? 'new-password' : 'current-password';
   $('auth-form').dataset.mode = mode;
-  if(isSignup) $('auth-group-grid').innerHTML = groupKeys().map(g=>`<button type="button" data-g="${g}" class="grp-opt" style="direction:ltr">${g}</button>`).join('');
+  if(isSignup){ buildAuthGroups(); paintAuthEng(); }
+  paintAuthMissing();
+}
+function refreshAuthTexts(){
+  if(!$('auth-form')) return;
+  setAuthMode($('auth-form').dataset.mode || 'login');
+  $('gate-wa-link').href = waHref('', '', '');
+  $('gate-lang-btn').textContent = lang==='ar' ? 'EN' : 'AR';
 }
 $('auth-mode-seg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(b) setAuthMode(b.dataset.v); });
 $('auth-pass-eye').addEventListener('click', ()=>{
@@ -874,83 +1180,120 @@ $('auth-pass-eye').addEventListener('click', ()=>{
   inp.type = show?'text':'password';
   $('auth-pass-eye').innerHTML = `<svg class="ic"><use href="#${show?'i-eye-slash':'i-eye'}"/></svg>`;
 });
-$('auth-group-grid').addEventListener('click', e=>{ const b=e.target.closest('.grp-opt'); if(!b) return; $('auth-group-grid').querySelectorAll('button').forEach(x=>x.classList.toggle('on', x===b)); });
+$('auth-group-grid').addEventListener('click', e=>{ const b=e.target.closest('.grp-opt'); if(!b) return; authGroup=b.dataset.g; buildAuthGroups(); paintAuthMissing(); });
+$('auth-eng-seg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; authEng=b.dataset.v; paintAuthEng(); });
+$('auth-name').addEventListener('input', updateAuthWa);
+$('auth-phone').addEventListener('input', updateAuthWa);
 $('auth-form').addEventListener('submit', async ev=>{
   ev.preventDefault();
+  const btn = $('auth-submit'); if(btn.disabled) return;
   const mode = $('auth-form').dataset.mode || 'login';
-  const phone = $('auth-phone').value.trim(), pass = $('auth-pass').value;
-  const errEl = $('auth-err'); errEl.textContent='';
+  const phone = normDigits($('auth-phone').value.trim()), pass = $('auth-pass').value;
+  const errEl = $('auth-err'); errEl.textContent = '';
   if(!validPhone(phone)){ errEl.textContent=t('errPhone'); return; }
   if((pass||'').length<6){ errEl.textContent=t('errPassShort'); return; }
+  let name = '';
   if(mode==='signup'){
-    const name = $('auth-name').value.trim();
-    const gBtn = $('auth-group-grid').querySelector('.grp-opt.on');
+    name = $('auth-name').value.trim();
     if(!name){ errEl.textContent=t('errFill'); return; }
-    if(!gBtn){ errEl.textContent=t('errPickGroup'); return; }
-    if($('auth-submit').disabled) return;
-    $('auth-submit').disabled = true; const prevLbl=$('auth-submit').textContent; $('auth-submit').textContent='…';
-    try{ await doSignUp(name, phone, pass, gBtn.dataset.g); document.querySelectorAll('.sheet.open').forEach(s=>s.classList.remove('open')); renderAccountBox(); showToast(lang==='ar'?'اتعمل الحساب، أهلاً بيك':'Account created, welcome'); applyGroup(gBtn.dataset.g, false); syncNotesAttendanceEvents(); }
-    catch(e){ errEl.textContent = authErrMsg(e, 'signup'); }
-    finally{ $('auth-submit').disabled = false; $('auth-submit').textContent=prevLbl; }
-  } else {
-    if($('auth-submit').disabled) return;
-    $('auth-submit').disabled = true; const prevLbl=$('auth-submit').textContent; $('auth-submit').textContent='…';
-    try{ await doLogIn(phone, pass); document.querySelectorAll('.sheet.open').forEach(s=>s.classList.remove('open')); renderAccountBox(); showToast(lang==='ar'?'أهلاً بيك تاني':'Welcome back'); syncGroup(group); syncNotesAttendanceEvents(); }
-    catch(e){ errEl.textContent = authErrMsg(e, 'login'); }
-    finally{ $('auth-submit').disabled = false; $('auth-submit').textContent=prevLbl; }
+    if(!authGroup){ errEl.textContent=t('errPickGroup'); return; }
   }
+  if(!navigator.onLine){ errEl.textContent=t('errOffline'); return; }
+  btn.disabled = true; const prevLbl = btn.textContent; btn.textContent = '…';
+  try{
+    if(!(await ensureSb())){ errEl.textContent = t('errService'); return; }
+    if(mode==='signup'){
+      await doSignUp(name, phone, pass, authGroup==='NONE' ? '' : authGroup, authEng);
+      document.querySelectorAll('.sheet.open').forEach(x=>x.classList.remove('open'));
+      renderAccountBox(); adoptProfileGroup(true); syncAll();
+      showToast(lang==='ar'?'اتعمل الحساب، أهلاً بيك':'Account created, welcome');
+    } else {
+      await doLogIn(phone, pass);
+      document.querySelectorAll('.sheet.open').forEach(x=>x.classList.remove('open'));
+      renderAccountBox(); adoptProfileGroup(true); syncAll();
+      showToast(lang==='ar'?'أهلاً بيك تاني':'Welcome back');
+    }
+  }catch(e){ errEl.textContent = authErrMsg(e, mode); }
+  finally{ btn.disabled = false; btn.textContent = prevLbl; }
 });
-// tell a real "wrong password / number taken" apart from a network hiccup so the
-// message people see actually matches what went wrong
+// pick the message that matches what really went wrong
 function authErrMsg(e, kind){
-  const status = e && (e.status || e.code);
-  if(!navigator.onLine || status===0 || /network|fetch/i.test(e&&e.message||'')) return t('errOffline');
+  const msg = ((e&&e.message)||'').toLowerCase(), code = (e&&e.code)||'', status = e && e.status;
+  if(isNetErr(e)) return t('errOffline');
+  if(code==='over_request_rate_limit' || code==='over_sms_send_rate_limit' || status===429 || /rate limit|too many/.test(msg)) return t('errRate');
+  if(kind==='signup'){
+    if(code==='user_already_exists' || code==='phone_exists' || /already (been )?registered|already exists/.test(msg)) return t('errExists');
+    if(code==='weak_password' || /password/.test(msg)) return t('errPassShort');
+    if(code==='phone_provider_disabled' || code==='sms_send_failed' || /provider|sms|twilio/.test(msg)) return t('errService');
+    if(status>=500) return t('errGeneric');
+    return t('errSignup');
+  }
+  if(code==='invalid_credentials' || /invalid login|invalid credentials/.test(msg)) return t('errLogin');
+  if(code==='phone_not_confirmed' || /not confirmed/.test(msg)) return t('errService');
   if(status>=500) return t('errGeneric');
-  return t(kind==='signup' ? 'errSignup' : 'errLogin');
+  return t('errLogin');
 }
 
-// ---- offline outbox (attendance / notes / personal events queued while offline) ----
-function outbox(){ return JSON.parse(localStorage.getItem('cs_outbox')||'[]'); }
-function queueMutation(job){ const q=outbox(); q.push(job); localStorage.setItem('cs_outbox', JSON.stringify(q)); if(navigator.onLine) flushOutbox(); }
+// ---- offline outbox (attendance / notes / personal events / profile edits queued while offline) ----
+function outbox(){ return jget('cs_outbox', []); }
+function queueMutation(job){
+  let q = outbox();
+  if(job.table==='profile') q = q.filter(j=>j.table!=='profile');
+  q.push(job); jset('cs_outbox', q);
+  if(navigator.onLine) flushOutbox();
+}
+let flushing = false;
 async function flushOutbox(){
-  if(!sb || !session || !navigator.onLine) return;
-  let q = outbox(); if(!q.length) return;
+  if(flushing || !sb || !session || !navigator.onLine) return;
+  const q = outbox(); if(!q.length) return;
+  flushing = true;
   const remaining = [];
+  const netFail = r => r && r.error && isNetErr(r.error);
   for(const job of q){
     try{
+      let r = null;
       if(job.table==='attendance'){
-        if(job.op==='upsert') await sb.from('attendance').upsert({ user_id:session.user.id, lecture_id:job.lecture_id, week_num:job.week_num, present:true }, {onConflict:'user_id,lecture_id,week_num'});
-        else await sb.from('attendance').delete().match({ user_id:session.user.id, lecture_id:job.lecture_id, week_num:job.week_num });
+        if(job.op==='upsert') r = await sb.from('attendance').upsert({ user_id:session.user.id, lecture_id:job.lecture_id, week_num:job.week_num, present:true }, {onConflict:'user_id,lecture_id,week_num'});
+        else r = await sb.from('attendance').delete().match({ user_id:session.user.id, lecture_id:job.lecture_id, week_num:job.week_num });
       } else if(job.table==='notes'){
-        if(job.op==='upsert') await sb.from('notes').upsert({ user_id:session.user.id, lecture_id:job.lecture_id, text:job.text, updated_at:new Date().toISOString() }, {onConflict:'user_id,lecture_id'});
-        else await sb.from('notes').delete().match({ user_id:session.user.id, lecture_id:job.lecture_id });
+        if(job.op==='upsert') r = await sb.from('notes').upsert({ user_id:session.user.id, lecture_id:job.lecture_id, text:job.text, updated_at:new Date().toISOString() }, {onConflict:'user_id,lecture_id'});
+        else r = await sb.from('notes').delete().match({ user_id:session.user.id, lecture_id:job.lecture_id });
       } else if(job.table==='personal_events'){
-        await sb.from('personal_events').insert({ user_id:session.user.id, day:job.day, period:job.period, title:job.title, room:job.room, note:job.note });
+        if(job.op==='delete') r = await sb.from('personal_events').delete().eq('id', job.id);
+        else r = await sb.from('personal_events').insert({ user_id:session.user.id, day:job.day, period:job.period, title:job.title, room:job.room, note:job.note });
+      } else if(job.table==='profile'){
+        const ok = await pushProfile(job.fields);
+        if(!ok){ job.tries = (job.tries||0)+1; if(job.tries<3) remaining.push(job); }
       }
+      if(netFail(r)) remaining.push(job);
     }catch(e){ remaining.push(job); }
   }
-  localStorage.setItem('cs_outbox', JSON.stringify(remaining));
+  const sig = j=>JSON.stringify(j), seen = new Set(q.map(sig));
+  const added = outbox().filter(j=>!seen.has(sig(j)));
+  jset('cs_outbox', remaining.concat(added));
+  flushing = false;
 }
 
 // ---- notes / attendance / personal events: pull the signed-in user's own rows for this group
 async function syncNotesAttendanceEvents(){
   if(!session || !sb || !navigator.onLine) return;
+  await flushOutbox();
   try{
     const ids = (GROUPS[group]||[]).map(l=>l.id).filter(Boolean);
     if(ids.length){
-      const { data:notes } = await sb.from('notes').select('lecture_id,text').eq('user_id', session.user.id).in('lecture_id', ids);
-      (notes||[]).forEach(n=> notesMap[n.lecture_id]=n.text);
-      const { data:att } = await sb.from('attendance').select('lecture_id,week_num').eq('user_id', session.user.id).in('lecture_id', ids);
-      attMap = {}; (att||[]).forEach(a=> attMap[`${a.lecture_id}-${a.week_num}`]=true);
+      const n = await sb.from('notes').select('lecture_id,text').eq('user_id', session.user.id).in('lecture_id', ids);
+      const a = await sb.from('attendance').select('lecture_id,week_num').eq('user_id', session.user.id).in('lecture_id', ids);
+      if(!n.error && n.data){ notesMap = {}; n.data.forEach(x=> notesMap[x.lecture_id]=x.text); }
+      if(!a.error && a.data){ attMap = {}; a.data.forEach(x=> attMap[`${x.lecture_id}-${x.week_num}`]=true); }
     }
-    const { data:events } = await sb.from('personal_events').select('*').eq('user_id', session.user.id);
-    personalEvents = events||[];
+    const ev = await sb.from('personal_events').select('*').eq('user_id', session.user.id);
+    if(!ev.error && ev.data) personalEvents = ev.data;
     render();
   }catch(e){}
 }
 let noteTargetId = null;
 function openNoteSheet(l){
-  if(!session){ openAuthSheet('login'); return; }
+  if(!requireAuth()) return;
   if(!l.id){ showToast(lang==='ar'?'استنى ثانية، بنزامن الجدول...':'One sec, syncing the schedule…'); return; }
   noteTargetId = l.id;
   $('note-for').textContent = disp(l,'title') + ' · ' + PERIODS[l.p];
@@ -974,7 +1317,7 @@ $('note-delete').addEventListener('click', ()=>{ $('note-text').value=''; $('not
 
 // ---- personal events -----------------------------------------------------
 function openEventSheet(){
-  if(!session){ openAuthSheet('login'); return; }
+  if(!requireAuth()) return;
   $('event-title').value=''; $('event-room').value=''; $('event-note').value=''; $('event-err').textContent='';
   $('event-day').innerHTML = DAYS.map(d=>`<option value="${d.key}" ${d.key===activeDay.key?'selected':''}>${DAYNAMES[d.key][lang]}</option>`).join('');
   openSheet('event-sheet');
@@ -985,8 +1328,8 @@ $('event-save').addEventListener('click', async ()=>{
   const title=$('event-title').value.trim(), day=$('event-day').value, period=+$('event-period').value, room=$('event-room').value.trim(), note=$('event-note').value.trim();
   if(!title){ $('event-err').textContent=t('errFill'); return; }
   $('event-save').disabled = true; setTimeout(()=>$('event-save').disabled=false, 800);
-  const row = { user_id:session.user.id, day, period, title, room, note };
-  if(sb && navigator.onLine){
+  const row = { user_id:uid(), day, period, title, room, note };
+  if(sb && session && navigator.onLine){
     try{ const { data, error } = await sb.from('personal_events').insert(row).select().single(); personalEvents.push(error?{...row,id:'local-'+Date.now()}:data); if(error) queueMutation({table:'personal_events', day, period, title, room, note}); }
     catch(e){ queueMutation({table:'personal_events', day, period, title, room, note}); personalEvents.push({...row, id:'local-'+Date.now()}); }
   } else { queueMutation({table:'personal_events', day, period, title, room, note}); personalEvents.push({...row, id:'local-'+Date.now()}); }
@@ -1015,7 +1358,10 @@ document.body.addEventListener('click', async e=>{
   const b=e.target.closest('.personal-del'); if(!b) return;
   const id=b.dataset.id;
   personalEvents = personalEvents.filter(x=>x.id!==id);
-  if(sb && session && !String(id).startsWith('local-')){ try{ await sb.from('personal_events').delete().eq('id', id); }catch(e){} }
+  if(!String(id).startsWith('local-')){
+    if(sb && session && navigator.onLine){ try{ const r = await sb.from('personal_events').delete().eq('id', id); if(r && r.error && isNetErr(r.error)) queueMutation({table:'personal_events', op:'delete', id}); }catch(e){ queueMutation({table:'personal_events', op:'delete', id}); } }
+    else queueMutation({table:'personal_events', op:'delete', id});
+  }
   render(); showToast(t('eventDeleted'));
 });
 document.body.addEventListener('click', e=>{
@@ -1047,6 +1393,7 @@ function applyChrome(){
   de.dataset.wall = wall;
   document.querySelector('meta[name="theme-color"]').setAttribute('content', theme==='light' ? '#EEEFF1' : WALLS[wall].solid);
   document.querySelectorAll('.wall-opt').forEach(b=>b.classList.toggle('on', b.dataset.wall===wall));
+  const gt = $('gate-theme-btn'); if(gt) gt.innerHTML = `<svg class="ic"><use href="#i-${theme==='light'?'moon':'sun'}"/></svg>`;
   document.querySelectorAll('#theme-seg button').forEach(b=>b.classList.toggle('on', b.dataset.v===theme));
   document.querySelectorAll('#font-seg button').forEach(b=>b.classList.toggle('on', b.dataset.v===font));
   document.querySelectorAll('#mins-seg button').forEach(b=>b.classList.toggle('on', b.dataset.v===defMins));
@@ -1058,6 +1405,7 @@ function setLang(l){
   document.querySelectorAll('[data-i18n-ph]').forEach(el=> el.placeholder = t(el.dataset.i18nPh));
   $('lang-btn').textContent = l==='ar' ? 'EN' : 'AR';
   buildWallGrid(); buildTabs(); buildLegend(); updateWeekCard(); render(); calcNext();
+  refreshAuthTexts(); renderAccountBox();
 }
 function isoWeekOdd(){ const d=new Date(); const onejan=new Date(d.getFullYear(),0,1); const wk=Math.ceil((((d-onejan)/86400000)+onejan.getDay()+1)/7); return wk%2===1; }
 // a8_week used to be one shared "odd"/"even" string for every group. It's now a {group: "odd"|"even"} map
@@ -1073,7 +1421,7 @@ let week = weekMap[group] || (isoWeekOdd() ? 'odd':'even');
 function applyWeekUI(){ document.querySelectorAll('.w-switch').forEach(b=> b.classList.toggle('on', b.dataset.w===week)); }
 $('week-switch').addEventListener('click', e=>{ const b=e.target.closest('.w-switch'); if(!b) return; week=b.dataset.w; weekMap[group]=week; localStorage.setItem('a8_week',JSON.stringify(weekMap)); applyWeekUI(); render(); calcNext(); });
 
-function shortTitle(code){ const full = lang==='ar'?COURSES[code].ar:COURSES[code].en; const i=full.indexOf(' – '); return i>=0?full.slice(i+3):full; }
+function shortTitle(code){ const cc = course(code); const full = lang==='ar'?cc.ar:cc.en; const i=full.indexOf(' – '); return i>=0?full.slice(i+3):full; }
 function updateWeekCard(){
   const alts = L.filter(l=>l.alt);
   const has = alts.length>0;
@@ -1086,7 +1434,7 @@ function updateWeekCard(){
     : `Switches ${DAYNAMES[l.day].en} ${shortTitle(l.code)} between ${tn(l.type)} and ${tn(l.alt.type)}`).join(' · ');
 }
 function resolvedLecture(l){ return (l.alt && week==='even') ? {...l, type:l.alt.type, cat:l.alt.cat, room:l.alt.room, staff:l.alt.staff, staffAr:l.alt.staffAr} : l; }
-function disp(l,f){ if(f==='title') return lang==='ar'?COURSES[l.code].ar:COURSES[l.code].en; if(f==='staff') return lang==='ar'?l.staffAr:l.staff; return lang==='ar'?(TYPE_AR[l.type]||l.type):l.type; }
+function disp(l,f){ if(f==='title'){ const cc = course(l.code); return lang==='ar'?cc.ar:cc.en; } if(f==='staff') return lang==='ar'?l.staffAr:l.staff; return lang==='ar'?(TYPE_AR[l.type]||l.type):l.type; }
 
 function buildLegend(){
   $('legend').innerHTML = Object.entries(CATS).map(([k,v])=>{
@@ -1154,7 +1502,7 @@ function cardHTML(l, showDay){
       <button data-id="${id}" data-label="${disp(l,'title').replace(/"/g,'&quot;')}" class="reminder-btn flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold ${isSet?'text-white':'text-zinc-400'}">
         <svg class="ic text-xs"><use href="#${isSet?'i-bell':'r-bell'}"/></svg><span>${isSet?t('remindOn'):defMins+(lang==='ar'?' د قبلها':'m before')}</span>
       </button>
-      <button data-lid="${l.id||''}" title="${t('noteTitle')}" class="note-btn w-9 h-9 rounded-full glass flex items-center justify-center relative ${note?'text-white':'text-zinc-500'}"><svg class="ic text-xs"><use href="#i-pen"/></svg>${note?'<span class="badge-dot"></span>':''}</button>
+      ${l.isEng?'':`<button data-lid="${l.id||''}" title="${t('noteTitle')}" class="note-btn w-9 h-9 rounded-full glass flex items-center justify-center relative ${note?'text-white':'text-zinc-500'}"><svg class="ic text-xs"><use href="#i-pen"/></svg>${note?'<span class="badge-dot"></span>':''}</button>`}
       <button data-id="${id}" data-lid="${l.id||''}" title="${t('attendance')}" class="att-btn w-9 h-9 rounded-full glass flex items-center justify-center ${present?'text-emerald-300':'text-zinc-500'}"><svg class="ic text-xs"><use href="#i-check"/></svg></button>
     </div>
   </article>`;
@@ -1170,18 +1518,20 @@ function render(){
     let items;
     if(searching){
       const q=$('search-input').value.trim().toLowerCase();
-      items = q ? L.map(resolvedLecture).filter(l=> (COURSES[l.code].en+COURSES[l.code].ar+l.staff+(l.staffAr||'')).toLowerCase().includes(q)) : [];
+      items = q ? L.map(resolvedLecture).filter(l=> (course(l.code).en+course(l.code).ar+l.staff+(l.staffAr||'')).toLowerCase().includes(q)) : [];
       list.innerHTML = items.length? items.map(l=>cardHTML(l,true)).join('') : `<div class="glass rounded-2xl p-8 text-center"><p class="text-sm text-zinc-300 font-semibold">${t(q?'noResults':'searchPh')}</p></div>`;
     } else {
       const official = L.filter(l=>l.day===activeDay.key).map(resolvedLecture);
+      const eng = engLectures(activeDay.key);
       // personal items are tied to the user's own group view, so they don't bleed
       // into another group's schedule when someone is just browsing it
       const showPersonal = !profile || !profile.group_key || profile.group_key===group;
       const personal = showPersonal ? personalEvents.filter(e=>e.day===activeDay.key).map(e=>({...e, p:e.period, isPersonal:true})) : [];
-      items = [...official, ...personal].sort((a,b)=>a.p-b.p);
-      if(items.length===0){ list.innerHTML = `<div class="glass rounded-2xl p-8 text-center"><svg class="ic text-2xl text-zinc-400 mb-2"><use href="#i-mug-hot"/></svg><p class="text-sm text-zinc-300 font-semibold">${t('noClass')}</p></div>`; }
+      items = [...official, ...eng, ...personal].sort((a,b)=>a.p-b.p);
+      const miss = missingView();
+      if(items.length===0){ list.innerHTML = miss ? missingCardHTML() : `<div class="glass rounded-2xl p-8 text-center"><svg class="ic text-2xl text-zinc-400 mb-2"><use href="#i-mug-hot"/></svg><p class="text-sm text-zinc-300 font-semibold">${t('noClass')}</p></div>`; }
       else {
-        let html=''; items.forEach((l,i)=>{
+        let html = miss ? missingCardHTML() : ''; items.forEach((l,i)=>{
           html += l.isPersonal ? personalCardHTML(l) : cardHTML(l,false);
           if(i<items.length-1 && !l.isPersonal && !items[i+1].isPersonal) html+=gapPill(items[i],items[i+1]);
         });
@@ -1189,6 +1539,7 @@ function render(){
       }
       buildStats();
     }
+    saveUserCache();
     requestAnimationFrame(()=>{ list.style.opacity=1; list.style.transform='translateY(0)'; });
   }, 100);
 }
@@ -1198,7 +1549,8 @@ function buildStats(){
   const hrs = (mins/60).toFixed(1).replace('.0','');
   let busiest={key:null,cnt:-1};
   DAYS.forEach(d=>{ const n=L.filter(l=>l.day===d.key).length; if(n>busiest.cnt){busiest={key:d.key,cnt:n};} });
-  const hoursLabel = lang==='ar' ? `${DAYNAMES[activeDay.key].ar}: ${hrs} ساعة` : `${DAYNAMES[activeDay.key].en}: ${hrs}h`;
+  const hoursLabel = !busiest.key ? '' : lang==='ar' ? `${DAYNAMES[activeDay.key].ar}: ${hrs} ساعة` : `${DAYNAMES[activeDay.key].en}: ${hrs}h`;
+  if(!busiest.key){ $('stats-line').textContent=''; return; }
   $('stats-line').textContent = items.length ? `${hoursLabel}  ·  ${t('busiest')}: ${DAYNAMES[busiest.key][lang]}` : `${t('busiest')}: ${DAYNAMES[busiest.key][lang]}`;
 }
 
@@ -1207,17 +1559,19 @@ document.body.addEventListener('click', e=>{
   b.dataset.busy='1'; setTimeout(()=>delete b.dataset.busy, 600);
   const id=b.dataset.id, lid=b.dataset.lid, wk=isoWeekNum(new Date());
   if(lid){
+    if(!requireAuth()) return;
     const key=`${lid}-${wk}`; const willBePresent=!attMap[key];
     if(willBePresent) attMap[key]=true; else delete attMap[key];
-    if(!session){ showToast(t('loginFirst')); openAuthSheet('login'); return; }
-    if(sb && navigator.onLine){
+    const job = {table:'attendance', op:willBePresent?'upsert':'delete', lecture_id:lid, week_num:wk};
+    if(sb && session && navigator.onLine){
       (async ()=>{
         try{
-          if(willBePresent) await sb.from('attendance').upsert({user_id:session.user.id, lecture_id:lid, week_num:wk, present:true}, {onConflict:'user_id,lecture_id,week_num'});
-          else await sb.from('attendance').delete().match({user_id:session.user.id, lecture_id:lid, week_num:wk});
-        }catch(e){ queueMutation({table:'attendance', op:willBePresent?'upsert':'delete', lecture_id:lid, week_num:wk}); }
+          const r = willBePresent ? await sb.from('attendance').upsert({user_id:session.user.id, lecture_id:lid, week_num:wk, present:true}, {onConflict:'user_id,lecture_id,week_num'})
+                                  : await sb.from('attendance').delete().match({user_id:session.user.id, lecture_id:lid, week_num:wk});
+          if(r && r.error && isNetErr(r.error)) queueMutation(job);
+        }catch(e){ queueMutation(job); }
       })();
-    } else queueMutation({table:'attendance', op:willBePresent?'upsert':'delete', lecture_id:lid, week_num:wk});
+    } else queueMutation(job);
   } else {
     if(savedAttendance[id]===wk) delete savedAttendance[id]; else savedAttendance[id]=wk;
     localStorage.setItem('a8_att', JSON.stringify(savedAttendance));
@@ -1258,7 +1612,7 @@ function calcNext(){
   let next=null, dayKey='';
   for(let off=0; off<=7; off++){
     const checkIdx=(curDay+off)%7; const d=DAYS.find(dd=>dd.idx===checkIdx); if(!d) continue;
-    const todays = L.filter(l=>l.day===d.key).map(resolvedLecture).sort((a,b)=>a.p-b.p);
+    const todays = [...L.filter(l=>l.day===d.key), ...engLectures(d.key)].map(resolvedLecture).sort((a,b)=>a.p-b.p);
     for(const l of todays){ if(off>0 || PMIN[l.p][0]>curMin){ next=l; dayKey=d.key; nextLecCache={off,startMin:PMIN[l.p][0]}; break; } }
     if(next) break;
   }
@@ -1290,7 +1644,7 @@ $('search-input').addEventListener('input', render);
 // sheets
 function openSheet(id){
   openGroupPop(false);
-  if(BACKEND_ON && !session && id!=='auth-sheet') return;
+  if(gateNeeded() && id!=='auth-sheet') return;
   document.querySelectorAll('.sheet.open').forEach(s=>{ if(s.id!=='auth-sheet' || id==='auth-sheet') s.classList.remove('open'); });
   $(id).classList.add('open');
 }
@@ -1298,6 +1652,8 @@ $('settings-btn').addEventListener('click', ()=>openSheet('settings-sheet'));
 $('share-tools-btn').addEventListener('click', ()=>openSheet('share-sheet'));
 $('gpa-btn').addEventListener('click', ()=>openSheet('gpa-sheet'));
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click', e=> e.target.closest('.sheet').classList.remove('open')));
+$('gate-theme-btn').addEventListener('click', ()=>{ theme = theme==='light' ? 'dark' : 'light'; localStorage.setItem('a8_theme',theme); applyChrome(); });
+$('gate-lang-btn').addEventListener('click', ()=> setLang(lang==='en'?'ar':'en'));
 $('theme-seg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; theme=b.dataset.v; localStorage.setItem('a8_theme',theme); applyChrome(); });
 $('font-seg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; font=b.dataset.v; localStorage.setItem('a8_font',font); applyChrome(); });
 $('mins-seg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; defMins=b.dataset.v; localStorage.setItem('a8_mins',defMins); applyChrome(); render(); });
@@ -1316,19 +1672,21 @@ $('settings-test-btn').addEventListener('click', fireTest);
 function groupKeys(){ return Object.keys(GROUPS).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true})); }
 function buildGroupPop(){ $('group-grid').innerHTML = groupKeys().map(g=>`<button data-g="${g}" class="grp-opt${g===group?' on':''}" style="direction:ltr">${g}</button>`).join(''); }
 function paintGroup(){
-  $('group-btn-txt').textContent = group;
+  $('group-btn-txt').textContent = missingView() ? '—' : group;
   document.querySelectorAll('.grp-opt').forEach(b=>b.classList.toggle('on', b.dataset.g===group));
   document.title = `C.S Schedule | ${group} Weekly Timetable`;
 }
 function openGroupPop(open){ $('group-pop').classList.toggle('open', open); $('group-btn').setAttribute('aria-expanded', String(open)); }
 function applyGroup(g, announce){
   openGroupPop(false);
-  if(!GROUPS[g] || g===group){ return; }
-  group=g; localStorage.setItem('a8_group', g); L=GROUPS[g];
+  if(!GROUPS[g]) return;
+  pickedGroup = true;
+  if(g===group){ setL(); return; }
+  group=g; localStorage.setItem('a8_group', g);
   week = weekMap[group] || (isoWeekOdd() ? 'odd':'even'); applyWeekUI();
-  notesMap={}; attMap={}; personalEvents=[];
-  paintGroup(); searching=false; $('search-row').style.display='none'; $('search-input').value='';
-  buildTabs(); buildLegend(); updateWeekCard(); render(); calcNext();
+  notesMap={}; attMap={}; personalEvents=[]; loadUserCache();
+  searching=false; $('search-row').style.display='none'; $('search-input').value='';
+  setL();
   if(announce) showToast(`${t('switchedTo')} ${g}`);
   if(BACKEND_ON && sb){ syncGroup(g); syncLinksAndAnnouncements(); if(session) syncNotesAttendanceEvents(); }
 }
@@ -1498,7 +1856,7 @@ if(qp.get('view')==='today'){ const d=DAYS.find(dd=>dd.idx===new Date().getDay()
 
 paintGroup(); setLang(lang); applyWeekUI(); applyChrome(); updateWeekCard();
 if(BACKEND_ON) updateGate();
-initBackend();
+bootAuth();
 if(qp.get('view')==='settings') setTimeout(()=>openSheet('settings-sheet'), 250);
 </script>
 </body>

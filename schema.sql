@@ -20,6 +20,8 @@ create table if not exists public.profiles (
   last_login_at  timestamptz,
   last_active_at timestamptz
 );
+-- English course day chosen at sign-up: 'wed' | 'thu' | 'none'
+alter table public.profiles add column if not exists eng_day text not null default 'none';
 
 -- true if the CURRENT logged-in user is an admin
 create or replace function public.is_admin() returns boolean
@@ -55,18 +57,34 @@ create policy "admins delete profile"    on public.profiles for delete using (is
 create or replace function public.handle_new_user() returns trigger
 language plpgsql security definer set search_path = public as $$
 begin
-  insert into public.profiles (id, name, phone, group_key)
+  insert into public.profiles (id, name, phone, group_key, eng_day)
   values (
     new.id,
     coalesce(new.raw_user_meta_data->>'name', ''),
     coalesce(new.phone, ''),
-    new.raw_user_meta_data->>'group_key'
+    nullif(new.raw_user_meta_data->>'group_key', ''),
+    case when new.raw_user_meta_data->>'eng_day' in ('wed','thu') then new.raw_user_meta_data->>'eng_day' else 'none' end
   );
   return new;
 end; $$;
 drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created after insert on auth.users
   for each row execute function public.handle_new_user();
+
+-- block privilege escalation: a normal user may edit their own profile, but never their
+-- role, and a rep may not move themselves to another group
+create or replace function public.protect_profile() returns trigger
+language plpgsql security definer set search_path = public as $$
+begin
+  if auth.uid() is not null and not public.is_admin() then
+    if new.role is distinct from old.role then raise exception 'role change not allowed'; end if;
+    if old.role = 'rep' and new.group_key is distinct from old.group_key then raise exception 'reps cannot change group'; end if;
+  end if;
+  return new;
+end; $$;
+drop trigger if exists protect_profile_trg on public.profiles;
+create trigger protect_profile_trg before update on public.profiles
+  for each row execute function public.protect_profile();
 
 -- ---------------------------------------------------------------------------
 -- 2) lectures — the ONE official timetable per group (replaces the old

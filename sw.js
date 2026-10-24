@@ -1,5 +1,5 @@
 // C.S Schedule service worker - everything the UI needs is cached, so the app opens fully styled offline.
-const CACHE_NAME = 'cs-pwa-v7';
+const CACHE_NAME = 'cs-pwa-v8';
 const EXT_CACHE = 'cs-ext-v1'; // Google Fonts / Supabase client library, filled on first online visit
 const CORE = ['./', './index.html', './admin.html', './manifest.json', './icon.png', './icon-192.png', './bg.jpg'];
 const EXTRA = ['./bg-graphite.jpg', './bg-wave.jpg', './bg-smoke.jpg', './bg-onyx.jpg',
@@ -10,6 +10,13 @@ self.addEventListener('install', event => {
     const cache = await caches.open(CACHE_NAME);
     await cache.addAll(CORE);
     await Promise.allSettled(EXTRA.map(u => cache.add(u)));
+    // pre-cache the Supabase client so sign-in code loads even if the first visit after install is offline
+    try {
+      const ext = await caches.open(EXT_CACHE);
+      const u = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+      const r = await fetch(u, { mode: 'no-cors' });
+      await ext.put(u, r);
+    } catch (e) {}
   })());
   self.skipWaiting();
 });
