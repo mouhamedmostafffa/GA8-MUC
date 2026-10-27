@@ -252,3 +252,20 @@ create trigger touch_active_evt after insert on public.personal_events
 --   update public.profiles set role = 'admin' where phone = '+20XXXXXXXXXX';
 -- in the SQL editor.
 -- ============================================================================
+
+-- ---------------------------------------------------------------------------
+-- 9) links page extras + site-wide settings (all admin-managed)
+-- ---------------------------------------------------------------------------
+alter table public.links add column if not exists description text not null default '';
+alter table public.links add column if not exists category    text not null default '';
+
+create table if not exists public.site_settings (
+  key         text primary key,
+  value       text not null default '',
+  updated_at  timestamptz not null default now()
+);
+alter table public.site_settings enable row level security;
+drop policy if exists "read settings"         on public.site_settings;
+drop policy if exists "admin writes settings" on public.site_settings;
+create policy "read settings"         on public.site_settings for select using (true);
+create policy "admin writes settings" on public.site_settings for all using (is_admin()) with check (is_admin());

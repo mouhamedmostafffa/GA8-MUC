@@ -58,17 +58,25 @@ Deno.serve(async (req) => {
     const body = await req.json();
 
     if (body.action === 'create') {
-      const { name, phone, password, group_key, role } = body;
+      const { name, phone, password, group_key, role, eng_day } = body;
       if (!name || !phone || !password) return cors({ error: 'name, phone and password are required' }, 400);
       const { data, error } = await admin.auth.admin.createUser({
         phone, password, phone_confirm: true,
-        user_metadata: { name, group_key: group_key || null },
+        user_metadata: { name, group_key: group_key || '', eng_day: eng_day || 'none' },
       });
       if (error) return cors({ error: error.message }, 400);
       if (role && role !== 'student') {
         await admin.from('profiles').update({ role }).eq('id', data.user!.id);
       }
       return cors({ ok: true, id: data.user!.id });
+    }
+
+    if (body.action === 'password') {
+      const { id, password } = body;
+      if (!id || !password || String(password).length < 6) return cors({ error: 'id and a 6+ character password are required' }, 400);
+      const { error } = await admin.auth.admin.updateUserById(id, { password });
+      if (error) return cors({ error: error.message }, 400);
+      return cors({ ok: true });
     }
 
     if (body.action === 'delete') {
