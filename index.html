@@ -174,6 +174,8 @@
     #col-side>*{ margin:0!important; }
     #lecture-list{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; align-items:start; }
     #lecture-list>*{ margin:0!important; }
+    #lecture-list>.gap-pill{ display:none; }
+    #lecture-list{ align-items:stretch; }
     #lecture-list>.missing-card, #lecture-list>.no-class{ grid-column:1/-1; }
     #day-tabs{ flex-wrap:wrap; overflow:visible; }
     .sheet-panel{ max-width:520px; bottom:4vh; border-radius:28px; max-height:88vh; }
@@ -1655,7 +1657,7 @@ function cardHTML(l, showDay){
 }
 function gapPill(a,b){
   const ea=PMIN[a.p][1], sb=PMIN[b.p][0]; const g=sb-ea; if(g<=0) return '';
-  return `<div class="flex items-center justify-center"><span class="chip glass text-zinc-500">${t('gap')} · ${g}${lang==='ar'?'د':'m'}</span></div>`;
+  return `<div class="gap-pill flex items-center justify-center"><span class="chip glass text-zinc-500">${t('gap')} · ${g}${lang==='ar'?'د':'m'}</span></div>`;
 }
 function render(){
   lastSig=liveSig();
