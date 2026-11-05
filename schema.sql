@@ -269,3 +269,26 @@ drop policy if exists "read settings"         on public.site_settings;
 drop policy if exists "admin writes settings" on public.site_settings;
 create policy "read settings"         on public.site_settings for select using (true);
 create policy "admin writes settings" on public.site_settings for all using (is_admin()) with check (is_admin());
+
+-- ---------------------------------------------------------------------------
+-- 10) exams — admin-managed exam dates (midterm / final / quiz / oral).
+--     group_key null = every group. Everyone can read, only admins write.
+-- ---------------------------------------------------------------------------
+create table if not exists public.exams (
+  id            uuid primary key default gen_random_uuid(),
+  group_key     text,
+  course_code   text not null default '',
+  title         text not null default '',
+  kind          text not null default 'midterm',
+  starts_at     timestamptz not null,
+  duration_min  int  not null default 120,
+  room          text not null default '',
+  note          text not null default '',
+  created_by    uuid references public.profiles(id),
+  created_at    timestamptz not null default now()
+);
+alter table public.exams enable row level security;
+drop policy if exists "read exams"         on public.exams;
+drop policy if exists "admin writes exams" on public.exams;
+create policy "read exams"         on public.exams for select using (true);
+create policy "admin writes exams" on public.exams for all using (is_admin()) with check (is_admin());

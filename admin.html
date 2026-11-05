@@ -241,6 +241,7 @@
       <button data-t="accounts" class="cp-tab admin-only"><span>👥</span><b>Accounts</b></button>
       <button data-t="schedule" class="cp-tab"><span>🗓️</span><b>Schedule</b></button>
       <button data-t="courses" class="cp-tab admin-only"><span>📚</span><b>Courses</b></button>
+      <button data-t="exams" class="cp-tab admin-only"><span>📝</span><b>Exams</b></button>
       <button data-t="links" class="cp-tab admin-only"><span>🔗</span><b>Links</b></button>
       <button data-t="announce" class="cp-tab admin-only"><span>📣</span><b>Announcements</b></button>
       <button data-t="settings" class="cp-tab admin-only"><span>⚙️</span><b>Settings</b></button>
@@ -305,6 +306,15 @@
         <div id="crs-list" class="cp-two"></div>
       </section>
 
+      <section id="tab-exams" style="display:none">
+        <div class="glass rounded-2xl p-4 mb-4">
+          <h3 class="cp-h">+ New exam</h3>
+          <div id="exm-new"></div>
+        </div>
+        <p class="text-[11px] text-zinc-500 mb-2">Students see the next exam with a live countdown on the home screen, and exams are included in their calendar export. Leave group empty to show it to everyone.</p>
+        <div id="exm-list" class="cp-two"></div>
+      </section>
+
       <section id="tab-links" style="display:none">
         <div class="glass rounded-2xl p-4 mb-4">
           <h3 class="cp-h">+ New link</h3>
@@ -339,6 +349,15 @@
             <label class="cp-check"><input type="checkbox" id="st-banner-on"/> Show banner on top of the app</label>
             <p class="cp-lab">English</p><textarea id="st-banner-en" rows="2" class="field mb-2"></textarea>
             <p class="cp-lab">Arabic</p><textarea id="st-banner-ar" rows="2" class="field"></textarea>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <h3 class="cp-h">Backup &amp; restore</h3>
+            <p class="text-[11px] text-zinc-500 mb-3 leading-relaxed">Download everything as one JSON file. Restoring puts back schedules, courses, links, announcements, exams and settings. It never deletes anything and never touches accounts.</p>
+            <div class="flex flex-wrap gap-2">
+              <button id="bk-export" type="button" class="px-4 py-2.5 rounded-xl btn-acc text-xs font-bold">Download backup</button>
+              <label class="px-4 py-2.5 rounded-xl glass text-xs font-bold text-zinc-200 cursor-pointer">Restore from file<input id="bk-file" type="file" accept="application/json,.json" style="display:none"/></label>
+            </div>
+            <p id="bk-status" class="text-[11px] text-zinc-400 mt-2 leading-relaxed"></p>
           </div>
           <div class="glass rounded-2xl p-4">
             <h3 class="cp-h">Sign-ups</h3>
@@ -425,7 +444,7 @@ applyThemeIcon();
 function setTab(t){
   if(!isAdmin() && t!=='schedule') t='schedule';
   document.querySelectorAll('#cp-nav button').forEach(b=>b.classList.toggle('on', b.dataset.t===t));
-  ['overview','accounts','schedule','courses','links','announce','settings'].forEach(id=> $('tab-'+id).style.display = id===t?'block':'none');
+  ['overview','accounts','schedule','courses','exams','links','announce','settings'].forEach(id=> $('tab-'+id).style.display = id===t?'block':'none');
   if(isAdmin()) localStorage.setItem('ad_tab', t);
   window.scrollTo({top:0});
 }
@@ -439,7 +458,7 @@ async function loadAll(){
   await safe(loadLecGroups);
   await safe(()=>{ rebuildGroups(); paintAll(); });
   safe(loadSchedule);
-  if(isAdmin()){ safe(loadCourses); safe(loadLinks); safe(loadAnn); safe(loadSettings); }
+  if(isAdmin()){ safe(loadCourses); safe(loadExams); safe(loadLinks); safe(loadAnn); safe(loadSettings); }
 }
 async function loadAccounts(){
   const {data,error} = await sb.from('profiles').select('*').order('created_at',{ascending:false});
@@ -466,7 +485,7 @@ function paintAll(){
   $('new-group').innerHTML = opts(groups,'','No group');
   const fg = $('acc-f-group'), prev = fg.value;
   fg.innerHTML = '<option value="">All groups</option><option value="__none__">No group</option>' + groups.map(g=>`<option value="${esc(g)}">${esc(g)}</option>`).join(''); fg.value = prev;
-  if(isAdmin()){ paintOverview(); paintAccounts(); paintLinkNew(); paintAnnNew(); }
+  if(isAdmin()){ paintOverview(); paintAccounts(); paintLinkNew(); paintAnnNew(); paintExamNew(); }
 }
 
 // ---------------- Overview ----------------
@@ -668,7 +687,7 @@ document.body.addEventListener('click', e=>{
 
 // ---------------- Courses ----------------
 let courses=[];
-async function loadCourses(){ const {data,error}=await sb.from('courses').select('*').order('code'); if(error) return fail(error,'Could not load courses'); courses=data||[]; paintCourses(); }
+async function loadCourses(){ const {data,error}=await sb.from('courses').select('*').order('code'); if(error) return fail(error,'Could not load courses'); courses=data||[]; paintCourses(); paintExamNew(true); paintExamsAdmin(); }
 function paintCourses(){
   const q=($('crs-search').value||'').trim().toLowerCase();
   $('crs-list').innerHTML = courses.filter(c=>!q||(c.code+c.title_en+c.title_ar).toLowerCase().includes(q)).map(c=>`<div class="glass rounded-2xl p-3" data-code="${esc(c.code)}">
@@ -690,6 +709,99 @@ document.body.addEventListener('click', async e=>{
   const s=e.target.closest('.crs-save'), d=e.target.closest('.crs-del');
   if(s){ const b=s.closest('[data-code]'); const r=await sb.from('courses').update({title_en:b.querySelector('.c-en').value.trim(), title_ar:b.querySelector('.c-ar').value.trim()}).eq('code', b.dataset.code); r.error?fail(r.error,'Could not save'):showToast('Saved'); }
   if(d){ const b=d.closest('[data-code]'); if(!confirm(`Delete ${b.dataset.code}?`)) return; const r=await sb.from('courses').delete().eq('code', b.dataset.code); if(r.error) return fail(r.error,'Could not delete'); loadCourses(); }
+});
+
+
+// ---------------- Exams ----------------
+let exams=[];
+const EXAM_KINDS=[['midterm','Midterm'],['final','Final'],['quiz','Quiz'],['oral','Oral'],['other','Other']];
+function toLocalInput(iso){ if(!iso) return ''; const d=new Date(iso), p=n=>String(n).padStart(2,'0'); return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`; }
+function examFormHTML(e){
+  const codes = courses.map(c=>c.code);
+  return `<div data-exam="${e.id||''}">
+    <div class="cp-form3">
+      <select class="field x-course"><option value="">Course (optional)</option>${codes.map(c=>`<option value="${esc(c)}" ${e.course_code===c?'selected':''}>${esc(c)}</option>`).join('')}</select>
+      <input class="field x-title" placeholder="Custom title (optional)" value="${esc(e.title)}"/>
+      <select class="field x-kind">${EXAM_KINDS.map(k=>`<option value="${k[0]}" ${(e.kind||'midterm')===k[0]?'selected':''}>${k[1]}</option>`).join('')}</select>
+    </div>
+    <div class="cp-form3 mt-2">
+      <input class="field x-start" type="datetime-local" value="${toLocalInput(e.starts_at)}"/>
+      <input class="field x-dur" type="number" min="15" step="5" placeholder="Duration (min)" value="${e.duration_min||120}"/>
+      <input class="field x-room" placeholder="Room" dir="ltr" value="${esc(e.room)}"/>
+    </div>
+    <div class="grid grid-cols-2 gap-2 mt-2">
+      <select class="field x-group">${opts(groups, e.group_key||'', 'Everyone')}</select>
+      <input class="field x-note" placeholder="Note (optional)" value="${esc(e.note)}"/>
+    </div>
+    <div class="flex gap-2 mt-2"><button class="exm-save flex-1 rounded-xl py-2 text-[11px] font-bold btn-acc">${e.id?'Save':'Add exam'}</button>${e.id?'<button class="exm-del px-4 rounded-xl py-2 text-[11px] font-bold glass text-red-300">Delete</button>':''}</div>
+  </div>`;
+}
+function paintExamNew(force){ const el=$('exm-new'); if(!el) return; if(force || !el.dataset.init){ el.innerHTML = examFormHTML({}); el.dataset.init='1'; } }
+function paintExamsAdmin(){
+  const now=Date.now(), end=e=>new Date(e.starts_at).getTime()+(e.duration_min||120)*60000;
+  const up=exams.filter(e=>end(e)>=now), past=exams.filter(e=>end(e)<now).reverse();
+  const card=(e,old)=>`<div class="glass rounded-2xl p-3" ${old?'style="opacity:.55"':''}>${old?'<p class="text-[10px] text-zinc-400 mb-1.5">Finished — hidden from students</p>':''}${examFormHTML(e)}</div>`;
+  $('exm-list').innerHTML = up.map(e=>card(e,false)).concat(past.map(e=>card(e,true))).join('') || '<p class="text-xs text-zinc-500 text-center py-6" style="grid-column:1/-1">No exams yet.</p>';
+}
+async function loadExams(){
+  const {data,error}=await sb.from('exams').select('*').order('starts_at');
+  if(error) return fail(error,'Could not load exams (run the updated schema.sql?)');
+  exams=data||[]; paintExamsAdmin();
+}
+document.body.addEventListener('click', async e=>{
+  const s=e.target.closest('.exm-save'), d=e.target.closest('.exm-del');
+  if(s){
+    const b=s.closest('[data-exam]'), id=b.dataset.exam, v=c=>b.querySelector(c).value.trim();
+    if(!v('.x-start')){ showToast('Pick the exam date and time'); return; }
+    if(!v('.x-course') && !v('.x-title')){ showToast('Choose a course or write a title'); return; }
+    const row={ course_code:v('.x-course'), title:v('.x-title'), kind:v('.x-kind'), starts_at:new Date(v('.x-start')).toISOString(), duration_min:parseInt(v('.x-dur'))||120, room:v('.x-room'), note:v('.x-note'), group_key:v('.x-group')||null };
+    let r; if(id) r=await sb.from('exams').update(row).eq('id',id); else r=await sb.from('exams').insert({...row, created_by:session.user.id});
+    if(r.error) return fail(r.error,'Could not save (run the updated schema.sql?)');
+    showToast(id?'Saved':'Exam added'); if(!id) paintExamNew(true); loadExams();
+  }
+  if(d){ const id=d.closest('[data-exam]').dataset.exam; if(!confirm('Delete this exam?')) return; const r=await sb.from('exams').delete().eq('id',id); if(r.error) return fail(r.error,'Could not delete'); loadExams(); }
+});
+
+// ---------------- Backup & restore ----------------
+const BK_PK={ profiles:'id', lectures:'id', courses:'code', links:'id', announcements:'id', exams:'id', site_settings:'key' };
+const BK_RESTORE=['courses','lectures','links','announcements','exams','site_settings'];
+async function fetchAll(table){
+  const out=[];
+  for(let from=0;;from+=1000){
+    const {data,error}=await sb.from(table).select('*').order(BK_PK[table]).range(from,from+999);
+    if(error) throw error;
+    out.push(...(data||[])); if(!data || data.length<1000) break;
+  }
+  return out;
+}
+$('bk-export').addEventListener('click', async ()=>{
+  const st=$('bk-status'); st.textContent='Exporting…';
+  const tables={}, skipped=[];
+  for(const t of Object.keys(BK_PK)){ try{ tables[t]=await fetchAll(t); }catch(e){ skipped.push(t); } }
+  const blob=new Blob([JSON.stringify({ app:'cs-schedule', version:1, exported_at:new Date().toISOString(), tables }, null, 1)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`cs-backup-${new Date().toISOString().slice(0,10)}.json`; document.body.appendChild(a); a.click(); a.remove();
+  st.textContent = 'Saved: ' + Object.entries(tables).map(([k,v])=>`${k} ${v.length}`).join(' · ') + (skipped.length?` — skipped (missing table?): ${skipped.join(', ')}`:'');
+});
+$('bk-file').addEventListener('change', async ev=>{
+  const file=ev.target.files[0]; ev.target.value=''; if(!file) return;
+  const st=$('bk-status');
+  let data; try{ data=JSON.parse(await file.text()); }catch(e){ st.textContent='That file is not valid JSON.'; return; }
+  if(!data || data.app!=='cs-schedule' || !data.tables){ st.textContent='This is not a C.S Schedule backup file.'; return; }
+  const plan=BK_RESTORE.filter(t=>Array.isArray(data.tables[t]) && data.tables[t].length);
+  if(!plan.length){ st.textContent='The backup has nothing to restore.'; return; }
+  if(!confirm('Restore '+plan.map(t=>`${t} (${data.tables[t].length})`).join(', ')+'?\nExisting rows with the same id are overwritten. Nothing is deleted.')) return;
+  const res=[];
+  for(const t of plan){
+    const rows=data.tables[t].map(r=>{ const c={...r}; delete c.created_by; delete c.updated_by; return c; });
+    let ok=0, err=null;
+    for(let i=0;i<rows.length;i+=200){
+      const r=await sb.from(t).upsert(rows.slice(i,i+200),{onConflict:BK_PK[t]});
+      if(r.error){ err=r.error.message; break; } ok+=Math.min(200,rows.length-i);
+    }
+    res.push(`${t}: ${ok}/${rows.length}${err?' — '+err:''}`);
+    st.textContent='Restoring… '+res.join(' · ');
+  }
+  st.textContent='Done. '+res.join(' · '); await loadLecGroups(); rebuildGroups(); paintAll(); loadSchedule(); loadCourses(); loadExams(); loadLinks(); loadAnn(); loadSettings();
 });
 
 // ---------------- Links ----------------

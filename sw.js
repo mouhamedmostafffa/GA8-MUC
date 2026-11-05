@@ -1,14 +1,14 @@
 // C.S Schedule service worker - everything the UI needs is cached, so the app opens fully styled offline.
-const CACHE_NAME = 'cs-pwa-v9';
+const CACHE_NAME = 'cs-pwa-v11';
 const EXT_CACHE = 'cs-ext-v1'; // Google Fonts / Supabase client library, filled on first online visit
-const CORE = ['./', './index.html', './admin.html', './manifest.json', './icon.png', './icon-192.png', './bg.jpg'];
+const CORE = ['./', './index.html', './app.css', './app.js', './admin.html', './manifest.json', './icon.png', './icon-192.png', './bg.jpg'];
 const EXTRA = ['./bg-graphite.jpg', './bg-wave.jpg', './bg-smoke.jpg', './bg-onyx.jpg',
   './th-ocean.jpg', './th-graphite.jpg', './th-wave.jpg', './th-smoke.jpg', './th-onyx.jpg'];
 
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
-    await cache.addAll(CORE);
+    await cache.addAll(CORE.map(u => new Request(u, { cache: 'reload' })));
     await Promise.allSettled(EXTRA.map(u => cache.add(u)));
     // pre-cache the Supabase client so sign-in code loads even if the first visit after install is offline
     try {
@@ -31,14 +31,14 @@ self.addEventListener('activate', event => {
 // pages: try the network first (so timetable updates / new app versions show up), fall back
 // to that SAME page's cached copy when offline / slow — not a hardcoded page, so admin.html
 // offline still shows admin.html's own shell rather than index.html's
-async function networkFirst(req) {
+async function networkFirst(req, isPage) {
   const cache = await caches.open(CACHE_NAME);
   try {
     const res = await Promise.race([fetch(req), new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 3500))]);
     if (res && res.ok) cache.put(req, res.clone());
     return res;
   } catch (e) {
-    return (await cache.match(req, { ignoreSearch: true })) || (await cache.match('./index.html', { ignoreSearch: true })) || Response.error();
+    return (await cache.match(req, { ignoreSearch: true })) || (isPage ? await cache.match('./index.html', { ignoreSearch: true }) : null) || Response.error();
   }
 }
 // own files (icons, wallpapers): cache first
@@ -62,7 +62,9 @@ self.addEventListener('fetch', event => {
   const req = event.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
-  if (req.mode === 'navigate') { event.respondWith(networkFirst(req)); return; }
+  if (req.mode === 'navigate') { event.respondWith(networkFirst(req, true)); return; }
+  // app code (js/css) follows the network first too, so a new version shows up on the next open
+  if (url.origin === location.origin && /\.(js|css)$/.test(url.pathname)) { event.respondWith(networkFirst(req, false)); return; }
   if (url.origin === location.origin) { event.respondWith(cacheFirst(req)); return; }
   // Supabase's own REST/Auth calls (xxxx.supabase.co) are NEVER cached here — only the
   // static CDN library script and fonts are, so account data always stays live.
