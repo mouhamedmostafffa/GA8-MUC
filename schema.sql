@@ -292,3 +292,27 @@ drop policy if exists "read exams"         on public.exams;
 drop policy if exists "admin writes exams" on public.exams;
 create policy "read exams"         on public.exams for select using (true);
 create policy "admin writes exams" on public.exams for all using (is_admin()) with check (is_admin());
+
+-- ---------------------------------------------------------------------------
+-- 11) push_subscriptions — one row per device. The app uploads the next ~10 days of
+--     ready-to-send alerts in "schedule"; the send-push Edge Function (run every minute)
+--     delivers whatever is due. Users only ever touch their own rows.
+-- ---------------------------------------------------------------------------
+create table if not exists public.push_subscriptions (
+  id          uuid primary key default gen_random_uuid(),
+  user_id     uuid not null references auth.users(id) on delete cascade,
+  endpoint    text not null unique,
+  p256dh      text not null,
+  auth        text not null,
+  schedule    jsonb not null default '[]'::jsonb,
+  next_at     timestamptz,
+  last_run    timestamptz,
+  created_at  timestamptz not null default now(),
+  updated_at  timestamptz not null default now()
+);
+create index if not exists push_subscriptions_next_at_idx on public.push_subscriptions (next_at);
+alter table public.push_subscriptions enable row level security;
+drop policy if exists "own push subs"    on public.push_subscriptions;
+drop policy if exists "admin reads subs" on public.push_subscriptions;
+create policy "own push subs"    on public.push_subscriptions for all using (user_id = auth.uid()) with check (user_id = auth.uid());
+create policy "admin reads subs" on public.push_subscriptions for select using (is_admin());

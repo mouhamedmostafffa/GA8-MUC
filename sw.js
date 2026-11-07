@@ -1,5 +1,5 @@
 // C.S Schedule service worker - everything the UI needs is cached, so the app opens fully styled offline.
-const CACHE_NAME = 'cs-pwa-v11';
+const CACHE_NAME = 'cs-pwa-v12';
 const EXT_CACHE = 'cs-ext-v1'; // Google Fonts / Supabase client library, filled on first online visit
 const CORE = ['./', './index.html', './app.css', './app.js', './admin.html', './manifest.json', './icon.png', './icon-192.png', './bg.jpg'];
 const EXTRA = ['./bg-graphite.jpg', './bg-wave.jpg', './bg-smoke.jpg', './bg-onyx.jpg',
@@ -71,18 +71,25 @@ self.addEventListener('fetch', event => {
   if (/(^|\.)(fonts\.googleapis\.com|fonts\.gstatic\.com|cdnjs\.cloudflare\.com|cdn\.jsdelivr\.net)$/.test(url.hostname)) { event.respondWith(staleWhileRevalidate(req)); }
 });
 
-// إشعار وصول التنبيه المنبثق حتى لو التطبيق مقفول
+// Web Push: payload is JSON {title, body, tag, url}
 self.addEventListener('push', event => {
-  const options = {
-    body: event.data ? event.data.text() : 'تبدأ إحدى محاضراتك خلال 15 دقيقة',
+  let d = {};
+  try { d = event.data ? event.data.json() : {}; } catch (e) { d = { body: event.data ? event.data.text() : '' }; }
+  event.waitUntil(self.registration.showNotification(d.title || 'C.S Schedule', {
+    body: d.body || '',
+    tag: d.tag || undefined,
     icon: './icon-192.png',
     badge: './icon-192.png',
-    vibrate: [200, 100, 200, 100, 200],
-  };
-  event.waitUntil(self.registration.showNotification('تنبيه محاضرة ⏰', options));
+    vibrate: [200, 100, 200],
+    data: { url: d.url || './index.html' },
+  }));
 });
 
 self.addEventListener('notificationclick', event => {
   event.notification.close();
-  event.waitUntil(clients.openWindow('./index.html'));
+  const url = (event.notification.data && event.notification.data.url) || './index.html';
+  event.waitUntil(clients.matchAll({ type: 'window', includeUncontrolled: true }).then(list => {
+    for (const c of list) { if ('focus' in c) return c.focus(); }
+    return clients.openWindow(url);
+  }));
 });

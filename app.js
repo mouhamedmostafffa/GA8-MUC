@@ -3,6 +3,7 @@ const I18N = {
 en:{subtitle:"Weekly Schedule",nextClass:"Next class",room:"Room",weekTitle:"Odd / even week",weekDesc:"Switches Tuesday Physics between Exercise and Lab",odd:"Odd",even:"Even",noClass:"No classes today",install:"Install this app",installDesc:"Works offline with reminders before class",installBtn:"Install",iosInstall:'Tap Share, then "Add to Home Screen"',today:"Today",share:"Share",notify:"Alerts",remindOn:"Reminder on",remindOff:"Remind me before",offline:"You're offline",searchPh:"Search a course or doctor",settingsTitle:"Settings",theme:"Appearance",dark:"Dark",light:"Light",arFont:"Arabic font",reminderDefault:"Default reminder time",testNotif:"Send a test notification",aboutLine:"C.S Schedule · Faculty of Computers &amp; AI, May University in Cairo",now:"Now",undo:"Undo",gap:"break",noResults:"No matches",busiest:"Busiest day",attendance:"Mark attended (resets weekly)",shareExport:"Share & export",gpaCalc:"GPA calculator",addCourse:"+ Add course",gpaResult:"Estimated GPA",copyLink:"Copy link",nativeShare:"Share via…",showQr:"Show QR code",weekImage:"Full week as image",saveImage:"Save as image",printPdf:"Print / Save as PDF",bgNote:"Background alerts depend on your OS/browser — most reliable when the app stays installed. Not supported on iOS Safari.",groupLabel:"Group",switchedTo:"Switched to",legendNote:"ODD / EVEN = session runs on odd or even weeks only",pickGroup:"Choose your group",wallLabel:"Wallpaper theme",accSettings:"Account settings",accName:"Name",accGroup:"Group",accEng:"English course",engWed:"Wednesday",engThu:"Thursday",engNone:"None",engHint:"Shows in your schedule on that day, period 4 (14:20 – 16:00).",schedMissing:"My schedule isn't listed",missingTitle:"Your schedule isn't here yet",missingText:"Message me on WhatsApp and tell me your schedule is missing — I'll add it.",waBtn:"Message on WhatsApp",waHelpTitle:"Schedule missing or wrong?",waHelpText:"Message me on WhatsApp:",accSave:"Save changes",accSaved:"Saved",accPassTitle:"Change password",accPassPh:"New password (6+ characters)",accPassSave:"Update",accPassDone:"Password updated",errRate:"Too many attempts, wait a minute and try again",errExists:"This number already has an account — log in instead",errService:"Sign-in service is unavailable right now, try again shortly",offlineNoAccount:"You're offline — the app works without signing in.",gateWaLink:"Schedule missing? Message me on WhatsApp",missingSignupNote:"You can still create the account — message me on WhatsApp and I'll add your schedule.",errNeedNet:"This needs an internet connection",errNameEmpty:"Name can't be empty",errAccSave:"Could not save, try again",
 linksNav:"Links",searchLinksPh:"Search links…",linksEmpty:"No links yet",allCats:"All",openLink:"Open",
 examNext:"Next exam",examsTitle:"Exams",noExams:"No upcoming exams",examNow:"Now",examFinished:"Finished",icsBtn:"Add to my calendar (.ics)",icsDone:"Calendar file ready — open it to add the events",icsEmpty:"Nothing to export yet",obTitle:"Quick setup",obText:"Confirm your group and English course day so your schedule is exactly right.",obSave:"Save and continue",obSkip:"Later",
+briefToday:"Today",briefTomorrow:"Tomorrow",briefDismiss:"Got it",notifTitle:"Notifications",notifClassAll:"Remind me before every class",notifMorning:"Morning summary",notifPrayerShow:"Show prayer times",notifPrayerPush:"Prayer time alerts",notifExam:"Exam reminders (1 day + 2 hours before)",notifBrief:"Daily summary card on the home screen",notifPushOn:"Push is on — alerts reach you even when the app is closed.",notifPushEnable:"Turn on push alerts",notifPushDisable:"Turn off push alerts",notifLocalOnly:"Alerts work while the app is open. Turn on push to get them when it is closed.",notifUnsupported:"This browser does not support notifications.",notifIosHint:"On iPhone: add the app to your Home Screen first (Share, then Add to Home Screen), then turn this on.",notifDenied:"Notifications are blocked — allow them in your browser settings.",notifNoServer:"Push is not set up yet — ask the admin.",notifLoginFirst:"Log in first to turn on push alerts.",notifSaved:"Alerts updated",openNotify:"Notifications & alerts",nowTitle:"Now",nowTag:"NOW",nowNextTag:"NEXT",nowRest:"Rest of today",nowNone:"No classes coming up",nowOpenApp:"Open the full app",nowOpen:"Open the \"Now\" screen",nowNextPrayer:"Next prayer",nowNextExam:"Next exam",nowIn:"in",nowHelp:"Add this screen to your home screen so one tap shows what is on right now. Android: browser menu, then Add to Home screen. iPhone: Share, then Add to Home Screen. Do it while this screen is open.",prayerApprox:"Prayer times are calculated for Cairo and can differ by 1-2 minutes from the mosque timetable.",
 accountLabel:"Account",loginTitle:"Log in",gateTitle:"Welcome back",gateSub:"Sign in to sync your attendance, notes and personal items across every device.",gateTitleSignup:"Create your account",gateSubSignup:"One quick sign-up and your schedule, notes and attendance follow you everywhere.",loginTab:"Log in",signupTab:"Sign up",namePh:"Full name",pickGroupField:"Your group",phonePh:"01xxxxxxxxx",passPh:"Password (6+ characters)",loginBtn:"Log in",signupBtn:"Create account",authNote:"Your number is only used to sign in — no SMS is sent.",logoutBtn:"Log out",notLoggedIn:"Log in to sync your attendance, notes and personal items across devices.",loginCta:"Log in / Sign up",openAdmin:"Open admin page",errFill:"Please fill in every field",errPhone:"Enter a valid phone number",errPassShort:"Password must be at least 6 characters",errPickGroup:"Pick your group",errLogin:"Wrong phone number or password",errSignup:"Could not create the account — the number may already be registered",errGeneric:"Something went wrong, try again",errOffline:"No connection — check your internet and try again",
 noteTitle:"Your note",notePh:"e.g. bring the lab report, seat near the door…",saveBtn:"Save",deleteBtn:"Delete",noteSaved:"Note saved",noteDeleted:"Note deleted",loginFirst:"Log in first",
 addPersonal:"+ Add a personal item to this day",eventTitle:"Personal item",eventTitlePh:"Title (e.g. private tutoring)",eventRoomPh:"Location (optional)",eventSaved:"Personal item added",eventDeleted:"Removed",personal:"Personal",
@@ -10,6 +11,7 @@ linksTitle:"Links & resources",noLinks:"Nothing here yet",dismiss:"Dismiss",sync
 ar:{subtitle:"الجدول الأسبوعي",nextClass:"المحاضرة الجاية",room:"القاعة",weekTitle:"أسبوع فردي / زوجي",weekDesc:"بيبدّل فيزيا الثلاثاء بين تمرين ومعمل",odd:"فردي",even:"زوجي",noClass:"مفيش محاضرات النهارده",install:"ثبّت التطبيق",installDesc:"يشتغل أوفلاين مع تنبيه قبل كل محاضرة",installBtn:"تثبيت",iosInstall:'دوس Share بعدين "Add to Home Screen"',today:"النهارده",share:"مشاركة",notify:"التنبيهات",remindOn:"التنبيه شغال",remindOff:"نبّهني قبلها بـ",offline:"مفيش نت دلوقتي",searchPh:"دور على مادة أو دكتور",settingsTitle:"الإعدادات",theme:"المظهر",dark:"غامق",light:"فاتح",arFont:"الخط العربي",reminderDefault:"وقت التنبيه الافتراضي",testNotif:"جرّب تنبيه تجريبي",aboutLine:"C.S Schedule · كلية الحاسبات والذكاء الاصطناعي، جامعة ماي بالقاهرة",now:"دلوقتي",undo:"تراجع",gap:"فترة راحة",noResults:"مفيش نتايج",busiest:"أزحم يوم",attendance:"سجّل حضور (بيتصفر كل أسبوع)",shareExport:"مشاركة وتصدير",gpaCalc:"حاسبة الجي بي إيه",addCourse:"+ ضيف مادة",gpaResult:"الجي بي إيه التقديري",copyLink:"انسخ الرابط",nativeShare:"شارك عبر…",showQr:"اعرض QR كود",weekImage:"الجدول الأسبوعي كصورة",saveImage:"احفظ كصورة",printPdf:"اطبع / احفظ PDF",bgNote:"التنبيهات في الخلفية بتعتمد على نظام التشغيل والمتصفح — بتشتغل أفضل لما التطبيق يفضل متثبت. مش مدعومة على iOS Safari.",groupLabel:"الجروب",switchedTo:"اتبدّل لجروب",legendNote:"فردي / زوجي = الحصة بتحصل في الأسابيع الفردية أو الزوجية بس",pickGroup:"اختار جروبك",wallLabel:"ثيم الخلفية",accSettings:"إعدادات الحساب",accName:"الاسم",accGroup:"الجروب",accEng:"كورس الإنجليزي",engWed:"الأربع",engThu:"الخميس",engNone:"مفيش",engHint:"بيظهر في جدولك في اليوم ده، الفترة الرابعة (14:20 – 16:00).",schedMissing:"جدولي مش موجود",missingTitle:"جدولك مش موجود لسه",missingText:"كلمني واتساب وابعتلي إن جدولك مش موجود وهضيفهولك.",waBtn:"كلمني واتساب",waHelpTitle:"جدولك مش موجود أو فيه غلط؟",waHelpText:"كلمني واتساب على:",accSave:"احفظ التعديلات",accSaved:"اتحفظ",accPassTitle:"تغيير الباسورد",accPassPh:"الباسورد الجديد (٦ حروف على الأقل)",accPassSave:"حدّث",accPassDone:"الباسورد اتغيّر",errRate:"محاولات كتير، استنى دقيقة وجرب تاني",errExists:"الرقم ده عليه حساب بالفعل — سجّل دخول",errService:"خدمة الدخول مش شغالة دلوقتي، جرب كمان شوية",offlineNoAccount:"مفيش نت — التطبيق شغال من غير تسجيل دخول.",gateWaLink:"جدولي مش موجود؟ كلمني واتساب",missingSignupNote:"تقدر تعمل الحساب عادي — كلمني واتساب وهضيف جدولك.",errNeedNet:"ده محتاج نت",errNameEmpty:"الاسم مينفعش يبقى فاضي",errAccSave:"محصلش حفظ، جرب تاني",
 linksNav:"اللينكات",searchLinksPh:"دور على لينك…",linksEmpty:"مفيش لينكات لسه",allCats:"الكل",openLink:"فتح",
 examNext:"الامتحان الجاي",examsTitle:"الامتحانات",noExams:"مفيش امتحانات جاية",examNow:"دلوقتي",examFinished:"خلص",icsBtn:"ضيف لتقويمي (.ics)",icsDone:"ملف التقويم جاهز — افتحه عشان يضيف المواعيد",icsEmpty:"مفيش حاجة تتصدّر لسه",obTitle:"إعداد سريع",obText:"أكّد الجروب ويوم كورس الإنجليزي عشان جدولك يطلع مظبوط.",obSave:"احفظ وكمل",obSkip:"بعدين",
+briefToday:"النهارده",briefTomorrow:"بكره",briefDismiss:"تمام",notifTitle:"الإشعارات",notifClassAll:"فكّرني قبل كل محاضرة",notifMorning:"ملخص الصبح",notifPrayerShow:"اعرض مواعيد الصلاة",notifPrayerPush:"تنبيه وقت الصلاة",notifExam:"تذكير الامتحانات (قبلها بيوم وبساعتين)",notifBrief:"كارت ملخص اليوم في الشاشة الرئيسية",notifPushOn:"إشعارات Push شغالة — التنبيهات بتوصلك حتى لو التطبيق مقفول.",notifPushEnable:"شغّل إشعارات Push",notifPushDisable:"اقفل إشعارات Push",notifLocalOnly:"التنبيهات شغالة والتطبيق مفتوح. شغّل Push عشان توصلك وهو مقفول.",notifUnsupported:"المتصفح ده مش بيدعم الإشعارات.",notifIosHint:"على الآيفون: ضيف التطبيق للشاشة الرئيسية الأول (مشاركة ← إضافة للشاشة الرئيسية) وبعدين شغّل ده.",notifDenied:"الإشعارات متقفلة — اسمح بيها من إعدادات المتصفح.",notifNoServer:"إشعارات Push لسه متفعّلتش — كلّم الأدمن.",notifLoginFirst:"سجّل دخول الأول عشان تشغّل إشعارات Push.",notifSaved:"التنبيهات اتحدّثت",openNotify:"الإشعارات والتنبيهات",nowTitle:"دلوقتي",nowTag:"دلوقتي",nowNextTag:"الجاية",nowRest:"باقي اليوم",nowNone:"مفيش محاضرات جاية",nowOpenApp:"افتح التطبيق كامل",nowOpen:"افتح شاشة \"دلوقتي\"",nowNextPrayer:"الصلاة الجاية",nowNextExam:"الامتحان الجاي",nowIn:"بعد",nowHelp:"ضيف الشاشة دي للشاشة الرئيسية وبضغطة واحدة تشوف إيه اللي شغال دلوقتي. أندرويد: قايمة المتصفح ← إضافة للشاشة الرئيسية. آيفون: مشاركة ← إضافة للشاشة الرئيسية. اعمل كده والشاشة دي مفتوحة.",prayerApprox:"مواعيد الصلاة محسوبة للقاهرة وممكن تختلف دقيقة أو دقيقتين عن إمساكية المسجد.",
 accountLabel:"الحساب",loginTitle:"تسجيل الدخول",gateTitle:"أهلاً بيك تاني",gateSub:"سجّل دخول عشان الحضور والنوتس والحاجات الشخصية تتزامن على كل أجهزتك.",gateTitleSignup:"اعمل حسابك",gateSubSignup:"حساب واحد بسيط وهتلاقي جدولك ونوتسك وحضورك معاك في أي مكان.",loginTab:"دخول",signupTab:"حساب جديد",namePh:"الاسم بالكامل",pickGroupField:"جروبك",phonePh:"01xxxxxxxxx",passPh:"الباسورد (٦ حروف على الأقل)",loginBtn:"دخول",signupBtn:"إنشاء حساب",authNote:"رقمك بيتستخدم بس للدخول — مفيش أي SMS هيتبعت.",logoutBtn:"تسجيل خروج",notLoggedIn:"سجّل دخول عشان الحضور والنوتس والحاجات الشخصية تتزامن على كل أجهزتك.",loginCta:"دخول / حساب جديد",openAdmin:"افتح صفحة الأدمن",errFill:"لازم تملأ كل الخانات",errPhone:"اكتب رقم موبايل صحيح",errPassShort:"الباسورد لازم يبقى ٦ حروف على الأقل",errPickGroup:"اختار جروبك",errLogin:"رقم الموبايل أو الباسورد غلط",errSignup:"الحساب متعملش — ممكن الرقم مسجل قبل كده",errGeneric:"حصل خطأ، جرب تاني",errOffline:"مفيش نت — اتأكد من الاتصال وجرب تاني",
 noteTitle:"نوتة المحاضرة",notePh:"مثلاً: هات تقرير المعمل، اقعد جنب الباب…",saveBtn:"احفظ",deleteBtn:"امسح",noteSaved:"اتحفظت النوتة",noteDeleted:"اتمسحت النوتة",loginFirst:"سجّل دخول الأول",
 addPersonal:"+ ضيف حاجة شخصية لليوم ده",eventTitle:"حاجة شخصية",eventTitlePh:"العنوان (مثلاً: درس خصوصي)",eventRoomPh:"المكان (اختياري)",eventSaved:"اتضافت الحاجة الشخصية",eventDeleted:"اتشالت",personal:"شخصي",
@@ -427,7 +429,7 @@ async function recheckSession(){
   if(session){ await loadProfile(); renderAccountBox(); setL(); syncAll(); }
   else updateGate();
 }
-function syncAll(){ syncSettings(); syncExams(); syncCourses(); syncGroup(group); syncLinksAndAnnouncements(); syncNotesAttendanceEvents(); }
+function syncAll(){ syncSettings(); syncExams(); syncCourses(); syncGroup(group); syncLinksAndAnnouncements(); syncNotesAttendanceEvents(); schedulePushSync(); }
 async function bootAuth(){
   if(!BACKEND_ON) return;
   const c = await ensureSb();
@@ -642,7 +644,7 @@ function paintExamsSheet(){
 }
 $('exam-card').addEventListener('click', ()=>{ paintExamsSheet(); openSheet('exams-sheet'); });
 $('exam-card').addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); paintExamsSheet(); openSheet('exams-sheet'); } });
-setInterval(paintExams, 30000);
+setInterval(()=>tickExtras(), 20000);
 
 // ---- calendar export (.ics) ----
 const ICS_WEEKS = 16, DAY_OFF = { sat:0, sun:1, mon:2, tue:3, wed:4, thu:5 };
@@ -756,9 +758,279 @@ $('ob-save').addEventListener('click', async ()=>{
   $('onboard-sheet').classList.remove('open');
   renderAccountBox();
   if(isStudent && f.group_key){ pickedGroup = false; applyGroup(f.group_key, false); }
-  setL(); paintExams();
+  setL(); paintExams(); paintBrief(); schedulePushSync();
   showToast(t('accSaved'));
 });
+
+// ======== alerts, daily brief, prayer times, "Now" screen ========
+const PREF_DEF = { rem_all:'1', morning_on:'1', morning_time:'07:30', prayer_show:'1', prayer_push:'0', exam_rem:'1', brief_card:'1' };
+function pref(k){ const v = localStorage.getItem('cs_'+k); return v===null ? PREF_DEF[k] : v; }
+function setPref(k, v){ try{ localStorage.setItem('cs_'+k, v); }catch(e){} }
+function ymd(d){ return d.getFullYear()+pad2(d.getMonth()+1)+pad2(d.getDate()); }
+function satStart(d){ const x = new Date(d); x.setHours(0,0,0,0); x.setDate(x.getDate() - ((x.getDay()+1) % 7)); return x; }
+function dateOfDay(key){ const base = satStart(new Date()); base.setDate(base.getDate() + DAY_OFF[key]); return base; }
+function fmtMin(m){ return pad2(Math.floor(m/60)) + ':' + pad2(m%60); }
+function fmtDur(min){ min = Math.max(0, Math.round(min)); const h = Math.floor(min/60), m = min%60; return lang==='ar' ? ((h?h+' س ':'') + m + ' د') : ((h?h+'h ':'') + m + 'm'); }
+function fmtClock(d){ return d.toLocaleTimeString(lang==='ar' ? 'ar-EG' : 'en-US', { hour:'numeric', minute:'2-digit', hour12:true }); }
+
+// lectures that really happen on a calendar date (odd/even alternation + English course)
+function lecturesOn(date){
+  const dk = DAYS.find(dd=>dd.idx===date.getDay()); if(!dk) return [];
+  const wOff = Math.round((satStart(date) - satStart(new Date())) / (7*864e5));
+  const parity = (wOff%2===0) ? week : (week==='odd' ? 'even' : 'odd');
+  const base = missingView() ? [] : (GROUPS[group]||[]);
+  return [...base.filter(l=>l.day===dk.key), ...engLectures(dk.key)]
+    .map(l=> (l.alt && parity==='even') ? {...l, type:l.alt.type, cat:l.alt.cat||l.cat, room:l.alt.room, staff:l.alt.staff, staffAr:l.alt.staffAr} : l)
+    .sort((a,b)=>a.p-b.p);
+}
+
+// ---- prayer times: offline astronomical calculation (Egyptian General Authority of Survey angles) ----
+const PRAYER = { lat:30.0444, lng:31.2357, tz:'Africa/Cairo', fajr:19.5, isha:17.5 };
+const PRAYER_KEYS = ['fajr','dhuhr','asr','maghrib','isha'];
+const PRAYER_NAME = { fajr:{en:'Fajr',ar:'الفجر'}, dhuhr:{en:'Dhuhr',ar:'الظهر'}, asr:{en:'Asr',ar:'العصر'}, maghrib:{en:'Maghrib',ar:'المغرب'}, isha:{en:'Isha',ar:'العشاء'} };
+function prayerName(k){ return PRAYER_NAME[k][lang==='ar'?'ar':'en']; }
+const dToR = d => d*Math.PI/180, rToD = r => r*180/Math.PI;
+function fixNum(a, b){ a = a - b*Math.floor(a/b); return a<0 ? a+b : a; }
+function julianDay(y, m, d){ if(m<=2){ y -= 1; m += 12; } const A = Math.floor(y/100), B = 2 - A + Math.floor(A/4); return Math.floor(365.25*(y+4716)) + Math.floor(30.6001*(m+1)) + d + B - 1524.5; }
+function sunPos(jd){
+  const D = jd - 2451545.0, g = fixNum(357.529 + 0.98560028*D, 360), q = fixNum(280.459 + 0.98564736*D, 360);
+  const L = fixNum(q + 1.915*Math.sin(dToR(g)) + 0.020*Math.sin(dToR(2*g)), 360), e = 23.439 - 0.00000036*D;
+  const RA = fixNum(rToD(Math.atan2(Math.cos(dToR(e))*Math.sin(dToR(L)), Math.cos(dToR(L)))) / 15, 24);
+  return { decl: rToD(Math.asin(Math.sin(dToR(e))*Math.sin(dToR(L)))), eqt: q/15 - RA };
+}
+function cairoOffsetHours(y, m, d){
+  const probe = new Date(Date.UTC(y, m-1, d, 12));
+  const p = new Intl.DateTimeFormat('en-US', { timeZone:PRAYER.tz, hourCycle:'h23', year:'numeric', month:'numeric', day:'numeric', hour:'numeric', minute:'numeric' }).formatToParts(probe).reduce((o,x)=>{ o[x.type] = +x.value; return o; }, {});
+  return Math.round((Date.UTC(p.year, p.month-1, p.day, p.hour, p.minute) - probe.getTime()) / 3600000);
+}
+function prayerTimes(date){
+  const y = date.getFullYear(), m = date.getMonth()+1, d = date.getDate(), key = y+'-'+m+'-'+d;
+  if(prayerTimes._c && prayerTimes._c.key===key) return prayerTimes._c.v;
+  const tz = cairoOffsetHours(y, m, d), lat = PRAYER.lat, lng = PRAYER.lng, jd = julianDay(y, m, d) - lng/(15*24);
+  const mid = t => fixNum(12 - sunPos(jd+t).eqt, 24);
+  const ang = (angle, t, ccw) => {
+    const decl = sunPos(jd+t).decl;
+    const v = (1/15) * rToD(Math.acos((-Math.sin(dToR(angle)) - Math.sin(dToR(decl))*Math.sin(dToR(lat))) / (Math.cos(dToR(decl))*Math.cos(dToR(lat)))));
+    return mid(t) + (ccw ? -v : v);
+  };
+  const asr = (f, t) => { const decl = sunPos(jd+t).decl; return ang(-rToD(Math.atan(1/(f + Math.tan(dToR(Math.abs(lat-decl)))))), t, false); };
+  const raw = { fajr:ang(PRAYER.fajr, 5/24, true), dhuhr:mid(12/24), asr:asr(1, 13/24), maghrib:ang(0.833, 18/24, false), isha:ang(PRAYER.isha, 18/24, false) };
+  const out = {};
+  Object.keys(raw).forEach(k=>{ const mins = Math.round((raw[k] + tz - lng/15) * 60); out[k] = new Date(Date.UTC(y, m-1, d) + (mins - tz*60) * 60000); });
+  prayerTimes._c = { key, v:out };
+  return out;
+}
+function paintPrayerStrip(){
+  const el = $('prayer-strip'); if(!el) return;
+  if(pref('prayer_show')!=='1'){ el.style.display = 'none'; return; }
+  const date = dateOfDay(activeDay.key), tms = prayerTimes(date), now = new Date();
+  const nextK = date.toDateString()===now.toDateString() ? (PRAYER_KEYS.find(k=>tms[k]>now) || null) : null;
+  el.innerHTML = PRAYER_KEYS.map(k=>`<div class="pr-chip${k===nextK?' next':''}"><span>${prayerName(k)}</span><b>${fmtClock(tms[k])}</b></div>`).join('');
+  el.style.display = 'flex';
+}
+function prayerBadge(l){
+  if(pref('prayer_show')!=='1' || !PMIN[l.p]) return '';
+  const tms = prayerTimes(dateOfDay(l.day)), s = PMIN[l.p][0], e = PMIN[l.p][1];
+  for(const k of PRAYER_KEYS){ const mm = tms[k].getHours()*60 + tms[k].getMinutes(); if(mm>=s && mm<e) return `<span class="chip pr-badge">${prayerName(k)} ${fmtClock(tms[k])}</span>`; }
+  return '';
+}
+
+// ---- daily brief ----
+function briefText(date){
+  const ar = lang==='ar', ls = lecturesOn(date), dk = DAYS.find(dd=>dd.idx===date.getDay());
+  const parts = [];
+  if(!ls.length) parts.push(ar ? 'مفيش محاضرات ✨' : 'No classes ✨');
+  else {
+    const f = ls[0], last = ls[ls.length-1], first = disp(f,'title') + (f.room && f.room!=='—' ? ` (${f.room})` : '');
+    parts.push(ar ? `${ls.length} ${ls.length>2?'محاضرات':'محاضرة'}. أولها ${first} الساعة ${fmtMin(PMIN[f.p][0])} وبتخلص ${fmtMin(PMIN[last.p][1])}.`
+                  : `${ls.length} ${ls.length===1?'class':'classes'}. First: ${first} at ${fmtMin(PMIN[f.p][0])}, done by ${fmtMin(PMIN[last.p][1])}.`);
+  }
+  const d0 = new Date(date); d0.setHours(0,0,0,0);
+  examsData.filter(e=>(!e.group_key || e.group_key===group) && new Date(e.starts_at).getTime()>=d0.getTime() && new Date(e.starts_at).getTime()<d0.getTime()+2*864e5)
+    .forEach(e=> parts.push('📝 ' + examTitle(e) + ' — ' + examDateStr(e)));
+  return { title: '☀️ ' + (dk ? DAYNAMES[dk.key][lang] : date.toLocaleDateString(ar ? 'ar-EG' : 'en-GB', { weekday:'long' })), body: parts.join('\n') };
+}
+function paintBrief(){
+  const card = $('brief-card'); if(!card) return;
+  if(pref('brief_card')!=='1' || missingView()){ card.style.display = 'none'; return; }
+  const now = new Date(), evening = now.getHours()>=18, date = new Date(now);
+  if(evening) date.setDate(date.getDate()+1);
+  if(localStorage.getItem('cs_brief_dis')===date.toDateString()){ card.style.display = 'none'; return; }
+  const b = briefText(date);
+  $('brief-title').textContent = (evening ? '🌙 ' + t('briefTomorrow') : '☀️ ' + t('briefToday')) + ' · ' + b.title.replace('☀️ ', '');
+  $('brief-body').textContent = b.body;
+  card.style.display = 'block';
+}
+$('brief-dismiss').addEventListener('click', ()=>{
+  const now = new Date(), date = new Date(now); if(now.getHours()>=18) date.setDate(date.getDate()+1);
+  try{ localStorage.setItem('cs_brief_dis', date.toDateString()); }catch(e){}
+  $('brief-card').style.display = 'none';
+});
+
+// ---- alert schedule (class reminders, morning brief, prayers, exams) ----
+function buildPushItems(recent){
+  const out = [], now = Date.now(), floor = recent ? now - 5*60000 : now, ar = lang==='ar', mins = parseInt(defMins,10) || 15;
+  for(let off=0; off<10; off++){
+    const date = new Date(); date.setHours(0,0,0,0); date.setDate(date.getDate()+off);
+    const day = ymd(date), ls = lecturesOn(date);
+    ls.forEach(l=>{
+      const id = `${group}-${l.day}-${l.p}-${l.code}`;
+      if(pref('rem_all')!=='1' && !savedReminders[id]) return;
+      const at = new Date(date); at.setHours(0, PMIN[l.p][0] - mins, 0, 0);
+      if(at.getTime() <= floor) return;
+      out.push({ at:at.toISOString(), tag:`cls-${id}-${day}`, title:'⏰ ' + disp(l,'title'), body: ar ? `بتبدأ كمان ${mins} دقيقة · القاعة ${l.room}` : `Starts in ${mins} min · Room ${l.room}` });
+    });
+    if(pref('morning_on')==='1' && ls.length){
+      const hm = (pref('morning_time')||'07:30').split(':').map(Number), at = new Date(date); at.setHours(hm[0]||7, hm[1]||0, 0, 0);
+      if(at.getTime() > floor){ const b = briefText(date); out.push({ at:at.toISOString(), tag:'brief-'+day, title:b.title, body:b.body }); }
+    }
+    if(pref('prayer_push')==='1'){
+      const tms = prayerTimes(date);
+      PRAYER_KEYS.forEach(k=>{ if(tms[k].getTime() > floor) out.push({ at:tms[k].toISOString(), tag:`pr-${k}-${day}`, title:'🕌 ' + prayerName(k), body:fmtClock(tms[k]) }); });
+    }
+  }
+  if(pref('exam_rem')==='1'){
+    upcomingExams().forEach(e=>{
+      [[864e5, ar?'بكره':'Tomorrow'], [2*36e5, ar?'بعد ساعتين':'In 2 hours']].forEach(([ms, lbl])=>{
+        const at = new Date(e.starts_at).getTime() - ms;
+        if(at > floor) out.push({ at:new Date(at).toISOString(), tag:`ex-${e.id}-${ms}`, title:'📝 ' + examTitle(e), body: lbl + ' · ' + examDateStr(e) + (e.room ? ' · ' + e.room : '') });
+      });
+    });
+  }
+  out.sort((a,b)=> a.at<b.at ? -1 : 1);
+  return out.slice(0, 300);
+}
+// while the app is open and push is off, fire due alerts locally
+function showLocalNotification(it){
+  const opts = { body:it.body, tag:it.tag, icon:'./icon-192.png', badge:'./icon-192.png', vibrate:[120,60,120] };
+  if('serviceWorker' in navigator){ navigator.serviceWorker.ready.then(r=>r.showNotification(it.title, opts)).catch(()=>{ try{ new Notification(it.title, opts); }catch(e){} }); }
+  else { try{ new Notification(it.title, opts); }catch(e){} }
+}
+function localNotifyTick(){
+  if(localStorage.getItem('cs_push_on')==='1') return;
+  if(!('Notification' in window) || Notification.permission!=='granted') return;
+  const now = Date.now(), fired = jget('cs_fired', {}); let changed = false;
+  buildPushItems(true).forEach(it=>{ if(Date.parse(it.at) <= now && !fired[it.tag]){ fired[it.tag] = now; changed = true; showLocalNotification(it); } });
+  Object.keys(fired).forEach(k=>{ if(now - fired[k] > 2*864e5){ delete fired[k]; changed = true; } });
+  if(changed) jset('cs_fired', fired);
+}
+
+// ---- Web Push (server delivers the uploaded schedule via the send-push Edge Function) ----
+function pushSupported(){ return 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window; }
+function isIOSDevice(){ return /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1); }
+function inStandalone(){ return (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone===true; }
+function urlB64ToBytes(b){ const pad = '='.repeat((4 - b.length%4) % 4), raw = atob((b+pad).replace(/-/g,'+').replace(/_/g,'/')); return Uint8Array.from(raw, c=>c.charCodeAt(0)); }
+async function currentSub(){ try{ const reg = await navigator.serviceWorker.ready; return await reg.pushManager.getSubscription(); }catch(e){ return null; } }
+async function uploadPush(sub){
+  if(!sb || !session || !navigator.onLine || !sub) return;
+  const j = sub.toJSON(), items = buildPushItems(false);
+  try{
+    await sb.from('push_subscriptions').upsert({ endpoint:j.endpoint, p256dh:j.keys.p256dh, auth:j.keys.auth, user_id:session.user.id, schedule:items, next_at: items.length ? items[0].at : null, last_run:null, updated_at:new Date().toISOString() }, { onConflict:'endpoint' });
+  }catch(e){}
+}
+let pushTimer = null;
+function schedulePushSync(){
+  if(localStorage.getItem('cs_push_on')!=='1') return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(async ()=>{ const sub = await currentSub(); if(sub) uploadPush(sub); else { try{ localStorage.setItem('cs_push_on','0'); }catch(e){} paintNotify(); } }, 3000);
+}
+async function enablePush(){
+  if(!pushSupported()){ showToast(t('notifUnsupported')); return; }
+  if(isIOSDevice() && !inStandalone()){ showToast(t('notifIosHint')); return; }
+  if(!session){ showToast(t('notifLoginFirst')); return; }
+  const key = siteSettings.vapid_public; if(!key){ showToast(t('notifNoServer')); return; }
+  const perm = await Notification.requestPermission();
+  if(perm!=='granted'){ showToast(t('notifDenied')); paintNotify(); return; }
+  try{
+    const reg = await navigator.serviceWorker.ready;
+    let sub = await reg.pushManager.getSubscription();
+    if(!sub) sub = await reg.pushManager.subscribe({ userVisibleOnly:true, applicationServerKey:urlB64ToBytes(key) });
+    setPref('push_on', '1'); await uploadPush(sub); showToast(t('notifSaved'));
+  }catch(e){ showToast(t('notifNoServer')); }
+  paintNotify();
+}
+async function disablePush(silent){
+  const sub = await currentSub();
+  try{ if(sub){ if(sb && session) await sb.from('push_subscriptions').delete().eq('endpoint', sub.endpoint); await sub.unsubscribe(); } }catch(e){}
+  setPref('push_on', '0'); if(!silent){ showToast(t('notifSaved')); paintNotify(); }
+}
+function paintNotify(){
+  if(!$('notify-sheet')) return;
+  document.querySelectorAll('#notify-sheet .tog').forEach(b=>{ const on = pref(b.dataset.k)==='1'; b.classList.toggle('on', on); b.setAttribute('aria-checked', on ? 'true' : 'false'); });
+  $('morning-time').value = pref('morning_time');
+  const st = $('notify-status'), btn = $('notify-push-btn'), on = localStorage.getItem('cs_push_on')==='1';
+  let msg, label = t('notifPushEnable'), disabled = false;
+  if(!('Notification' in window)){ msg = t('notifUnsupported'); disabled = true; }
+  else if(isIOSDevice() && !inStandalone()){ msg = t('notifIosHint'); disabled = true; }
+  else if(Notification.permission==='denied'){ msg = t('notifDenied'); disabled = true; }
+  else if(on){ msg = t('notifPushOn'); label = t('notifPushDisable'); }
+  else msg = t('notifLocalOnly');
+  st.textContent = msg; btn.textContent = label; btn.disabled = disabled; btn.style.opacity = disabled ? .5 : 1;
+}
+$('open-notify-btn').addEventListener('click', ()=>{ paintNotify(); openSheet('notify-sheet'); });
+$('dock-notify-btn').addEventListener('click', ()=>{ paintNotify(); openSheet('notify-sheet'); });
+$('notify-push-btn').addEventListener('click', ()=>{ localStorage.getItem('cs_push_on')==='1' ? disablePush(false) : enablePush(); });
+$('notify-sheet').addEventListener('click', async e=>{
+  const b = e.target.closest('.tog'); if(!b) return;
+  setPref(b.dataset.k, pref(b.dataset.k)==='1' ? '0' : '1');
+  if((b.dataset.k==='rem_all' || b.dataset.k==='prayer_push' || b.dataset.k==='morning_on') && pref(b.dataset.k)==='1' && 'Notification' in window && Notification.permission==='default') await Notification.requestPermission();
+  paintNotify(); paintBrief(); paintPrayerStrip(); render(); schedulePushSync();
+});
+$('morning-time').addEventListener('change', e=>{ if(e.target.value){ setPref('morning_time', e.target.value); schedulePushSync(); } });
+
+// ---- "Now" screen: the glanceable home-screen view ----
+function paintNow(){
+  const v = $('now-view'); if(!v || !v.classList.contains('open')) return;
+  const now = new Date(), ar = lang==='ar', loc = ar ? 'ar-EG' : 'en-US';
+  $('now-clock').textContent = now.toLocaleTimeString(loc, { hour:'numeric', minute:'2-digit', hour12:true });
+  $('now-date').textContent = now.toLocaleDateString(ar ? 'ar-EG' : 'en-GB', { weekday:'long', day:'numeric', month:'long' });
+  const curMin = now.getHours()*60 + now.getMinutes() + now.getSeconds()/60, todayLs = lecturesOn(now);
+  let cur = null, next = null, nextDay = '', rest = [];
+  todayLs.forEach(l=>{ const s = PMIN[l.p][0], e = PMIN[l.p][1]; if(curMin>=s && curMin<e) cur = l; else if(curMin<s){ if(!next) next = l; else rest.push(l); } });
+  if(!cur && !next){
+    for(let off=1; off<=7 && !next; off++){
+      const d = new Date(now); d.setDate(d.getDate()+off); const ls = lecturesOn(d);
+      if(ls.length){ next = ls[0]; nextDay = DAYNAMES[DAYS.find(dd=>dd.idx===d.getDay()).key][lang]; rest = ls.slice(1); }
+    }
+  }
+  const main = cur || next; let html = '';
+  if(!main) html = `<div class="glass now-main"><p class="now-title">${t('nowNone')}</p></div>`;
+  else {
+    const s = PMIN[main.p][0], e = PMIN[main.p][1];
+    let line, prog = '';
+    if(cur){ line = fmtLeft(Math.max(1, Math.ceil(e-curMin))); prog = `<div class="now-prog"><i style="width:${Math.round((curMin-s)/(e-s)*100)}%"></i></div>`; }
+    else if(nextDay) line = nextDay;
+    else line = t('nowIn') + ' ' + fmtDur(s - curMin);
+    html = `<div class="glass-hero now-main"><span class="now-tag">${cur ? t('nowTag') : t('nowNextTag')}</span>
+      <p class="now-title">${esc(disp(main,'title'))}</p>
+      <p class="now-sub">${esc(disp(main,'type'))}${disp(main,'staff') ? ' · ' + esc(disp(main,'staff')) : ''}</p>
+      <div class="now-room"><small>${t('room')}</small>${esc(main.room||'—')}</div>
+      <p class="now-left-big">${esc(line)}${cur ? '' : ' · ' + PERIODS[main.p]}</p>${prog}</div>`;
+  }
+  if(rest.length) html += `<p class="now-sec">${(nextDay || t('nowRest')).toUpperCase()}</p>` + rest.map(l=>`<div class="glass now-row2"><span class="tm">${fmtMin(PMIN[l.p][0])}</span><span class="nm">${esc(disp(l,'title'))}</span><span class="rm">${esc(l.room||'')}</span></div>`).join('');
+  // next prayer + next exam
+  let tms = prayerTimes(now), pk = PRAYER_KEYS.find(k=>tms[k]>now), pdate = tms;
+  if(!pk){ const tm = new Date(now); tm.setDate(tm.getDate()+1); pdate = prayerTimes(tm); pk = 'fajr'; }
+  const chips = [];
+  if(pref('prayer_show')==='1') chips.push(`<div class="glass now-chip"><p>${t('nowNextPrayer')}</p><p>${prayerName(pk)}</p><p>${fmtClock(pdate[pk])} · ${t('nowIn')} ${fmtDur((pdate[pk]-now)/60000)}</p></div>`);
+  const ex = upcomingExams()[0];
+  if(ex) chips.push(`<div class="glass now-chip"><p>${t('nowNextExam')}</p><p>${esc(fmtExamLeft(new Date(ex.starts_at)-now))}</p><p>${esc(examTitle(ex))}</p></div>`);
+  if(chips.length) html += `<div class="now-chips">${chips.join('')}</div>`;
+  $('now-body').innerHTML = html;
+}
+function openNow(on){
+  $('now-view').classList.toggle('open', on);
+  document.documentElement.style.overflow = on ? 'hidden' : '';
+  if(on){ paintNow(); try{ history.replaceState(null, '', location.pathname + '?view=widget'); }catch(e){} }
+  else { try{ history.replaceState(null, '', location.pathname); }catch(e){} }
+}
+$('dock-now-btn').addEventListener('click', ()=> openNow(true));
+$('open-now-btn').addEventListener('click', ()=>{ document.querySelectorAll('.sheet.open').forEach(x=>x.classList.remove('open')); openNow(true); });
+$('now-close').addEventListener('click', ()=> openNow(false));
+$('now-open-app').addEventListener('click', ()=> openNow(false));
+$('now-help-btn').addEventListener('click', ()=>{ const h = $('now-help'); h.style.display = h.style.display==='none' ? 'block' : 'none'; });
+
+function tickExtras(){ paintExams(); paintPrayerStrip(); paintNow(); paintBrief(); localNotifyTick(); }
 
 // ---- auth ------------------------------------------------------------------
 async function startSession(s, fb){
@@ -787,6 +1059,7 @@ async function doLogIn(phoneLocal, pass){
 }
 async function doLogOut(){
   explicitLogout = true;
+  try{ await disablePush(true); }catch(e){}
   try{ if(sb) await sb.auth.signOut({ scope:'local' }); }catch(e){}
   try{ Object.keys(localStorage).forEach(k=>{ if(/^sb-.*-auth-token/.test(k) || k==='cs_profile' || k==='cs_eng_day' || k==='cs_outbox' || k.indexOf('cs_ud_')===0) localStorage.removeItem(k); }); }catch(e){}
   session = null; profile = null; notesMap = {}; attMap = {}; personalEvents = []; pickedGroup = false;
@@ -882,7 +1155,7 @@ $('acc-save').addEventListener('click', async ()=>{
   document.querySelectorAll('.sheet.open').forEach(x=>x.classList.remove('open'));
   renderAccountBox();
   if(isStudent && f.group_key){ pickedGroup = false; applyGroup(f.group_key, false); }
-  setL();
+  setL(); paintBrief(); schedulePushSync();
   showToast(t('accSaved'));
 });
 $('acc-pass-save').addEventListener('click', async ()=>{
@@ -1163,7 +1436,7 @@ function setLang(l){
   document.querySelectorAll('[data-i18n-ph]').forEach(el=> el.placeholder = t(el.dataset.i18nPh));
   $('lang-btn').textContent = l==='ar' ? 'EN' : 'AR';
   buildWallGrid(); buildTabs(); buildLegend(); updateWeekCard(); render(); calcNext();
-  refreshAuthTexts(); renderAccountBox(); paintLinks(); applySettings(); paintExams();
+  refreshAuthTexts(); renderAccountBox(); paintLinks(); applySettings(); paintExams(); paintBrief(); paintPrayerStrip(); paintNotify(); paintNow(); schedulePushSync();
 }
 function isoWeekOdd(){ const d=new Date(); const onejan=new Date(d.getFullYear(),0,1); const wk=Math.ceil((((d-onejan)/86400000)+onejan.getDay()+1)/7); return wk%2===1; }
 // a8_week used to be one shared "odd"/"even" string for every group. It's now a {group: "odd"|"even"} map
@@ -1245,6 +1518,7 @@ function cardHTML(l, showDay){
           <span class="chip" style="color:${c.color};background:${c.color}22">${disp(l,'type')}</span>
           <span class="text-[10px] text-zinc-500">${PERIODS[l.p]}${showDay?' · '+DAYNAMES[l.day][lang]:''}</span>
           ${live?`<span class="chip chip-now">${t('now')}</span>`:''}
+          ${prayerBadge(l)}
         </div>
         <h4 class="text-sm font-bold text-white font-head">${disp(l,'title')}</h4>
         ${l.staff?`<p class="text-[11px] text-zinc-400 flex items-center gap-1.5 mt-2"><svg class="ic text-[10px]"><use href="#i-${c.icon}"/></svg>${disp(l,'staff')}</p>`:''}
@@ -1297,7 +1571,7 @@ function render(){
       }
       buildStats();
     }
-    saveUserCache();
+    saveUserCache(); paintPrayerStrip();
     requestAnimationFrame(()=>{ list.style.opacity=1; list.style.transform='translateY(0)'; });
   }, 100);
 }
@@ -1352,7 +1626,7 @@ document.body.addEventListener('click', async e=>{
   }
   const id=btn.dataset.id, wasOn=!!savedReminders[id];
   savedReminders[id]=!wasOn; localStorage.setItem('a8_reminders', JSON.stringify(savedReminders));
-  render();
+  render(); schedulePushSync();
   if(wasOn){ showToast(lang==='ar'?'اتلغى التنبيه':'Reminder cleared', {label:t('undo'), cb:()=>{ savedReminders[id]=true; localStorage.setItem('a8_reminders',JSON.stringify(savedReminders)); render(); }}); }
   else { showToast(lang==='ar'?`تم ضبط تنبيه لـ ${btn.dataset.label}`:`Reminder set for ${btn.dataset.label}`); }
 });
@@ -1414,7 +1688,7 @@ $('gate-theme-btn').addEventListener('click', ()=>{ theme = theme==='light' ? 'd
 $('gate-lang-btn').addEventListener('click', ()=> setLang(lang==='en'?'ar':'en'));
 $('theme-seg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; theme=b.dataset.v; localStorage.setItem('a8_theme',theme); applyChrome(); });
 $('font-seg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; font=b.dataset.v; localStorage.setItem('a8_font',font); applyChrome(); });
-$('mins-seg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; defMins=b.dataset.v; localStorage.setItem('a8_mins',defMins); applyChrome(); render(); });
+$('mins-seg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; defMins=b.dataset.v; localStorage.setItem('a8_mins',defMins); applyChrome(); render(); schedulePushSync(); });
 async function fireTest(){
   if(!('Notification' in window)){ showToast(lang==='ar'?'المتصفح مش بيدعم الإشعارات':'Notifications not supported'); return; }
   const p = await Notification.requestPermission();
@@ -1444,7 +1718,7 @@ function applyGroup(g, announce){
   week = weekMap[group] || (isoWeekOdd() ? 'odd':'even'); applyWeekUI();
   notesMap={}; attMap={}; personalEvents=[]; loadUserCache();
   searching=false; $('search-row').style.display='none'; $('search-input').value='';
-  setL(); paintLinks(); paintExams();
+  setL(); paintLinks(); paintExams(); paintBrief(); schedulePushSync();
   if(announce) showToast(`${t('switchedTo')} ${g}`);
   if(BACKEND_ON && sb){ syncGroup(g); syncLinksAndAnnouncements(); if(session) syncNotesAttendanceEvents(); }
 }
@@ -1468,7 +1742,6 @@ $('wall-grid').addEventListener('click', e=>{ const b=e.target.closest('.wall-op
 $('lang-btn').addEventListener('click', ()=> setLang(lang==='en'?'ar':'en'));
 $('today-shortcut-btn').addEventListener('click', ()=>{ const d=DAYS.find(dd=>dd.idx===new Date().getDay())||DAYS[0]; activeDay=d; searching=false; $('search-row').style.display='none'; paintTabs(); render(); showToast(lang==='ar'?'اتنقلت لجدول النهارده':'Jumped to today'); });
 $('share-schedule-btn').addEventListener('click', ()=>{ if(navigator.share){ navigator.share({title:'C.S Schedule', text:`${group} weekly timetable`, url:location.href}).catch(()=>{}); } else { navigator.clipboard.writeText(location.href); showToast(lang==='ar'?'اتنسخ الرابط':'Link copied'); } });
-$('dock-notify-btn').addEventListener('click', fireTest);
 
 window.addEventListener('online', ()=> $('offline-chip').style.display='none');
 window.addEventListener('offline', ()=> $('offline-chip').style.display='block');
@@ -1614,7 +1887,10 @@ if(qp.get('view')==='today'){ const d=DAYS.find(dd=>dd.idx===new Date().getDay()
 
 paintGroup(); setLang(lang); applyWeekUI(); applyChrome(); updateWeekCard();
 if(BACKEND_ON) updateGate();
-applySettings();
+applySettings(); paintBrief(); paintPrayerStrip();
 if(location.hash==='#links') openLinksPage(true);
 bootAuth();
+if(qp.get('view')==='widget') openNow(true);
+if(qp.get('view')==='exams') setTimeout(()=>{ paintExamsSheet(); openSheet('exams-sheet'); }, 300);
+setTimeout(localNotifyTick, 4000);
 if(qp.get('view')==='settings') setTimeout(()=>openSheet('settings-sheet'), 250);

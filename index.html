@@ -75,6 +75,14 @@
 
   <div id="announce-list" class="space-y-2"></div>
 
+  <section id="brief-card" class="glass rounded-2xl p-3.5 brief-card rise" style="display:none">
+    <div class="flex items-start justify-between gap-3">
+      <p id="brief-title" class="text-xs font-bold text-white"></p>
+      <button id="brief-dismiss" type="button" class="text-[10px] font-bold text-zinc-400 shrink-0" data-i18n="briefDismiss">Got it</button>
+    </div>
+    <p id="brief-body" class="brief-body text-[12px] text-zinc-300 leading-relaxed mt-1.5"></p>
+  </section>
+
   <div id="app-grid" class="space-y-5">
   <div id="col-side" class="space-y-5">
   <section class="glass-hero rounded-3xl p-5 relative overflow-hidden rise" style="animation-delay:.14s">
@@ -119,6 +127,7 @@
   </div>
   <div id="col-main" class="space-y-5 min-w-0">
   <div class="flex gap-2.5 overflow-x-auto no-scrollbar py-1.5 rise" id="day-tabs" style="animation-delay:.26s"></div>
+  <div id="prayer-strip" class="prayer-strip" style="display:none"></div>
   <p class="text-[11px] text-zinc-400" id="stats-line"></p>
   <div class="flex gap-2 overflow-x-auto no-scrollbar text-[10px] rise" id="legend" style="animation-delay:.3s"></div>
   <p class="text-[10px] text-zinc-500 -mt-3" id="legend-note" data-i18n="legendNote">ODD / EVEN = session runs on odd or even weeks only</p>
@@ -133,6 +142,7 @@
   <div class="dock glass rounded-full px-2 py-2 flex items-center gap-1 max-w-md w-full justify-around relative border border-white/10">
     <button id="today-shortcut-btn" class="flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-full text-zinc-300 active:scale-90 transition relative z-10"><svg class="ic"><use href="#i-calendar-day"/></svg><span class="text-[10px] font-semibold" data-i18n="today">Today</span></button>
     <button id="share-schedule-btn" class="flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-full text-zinc-300 active:scale-90 transition relative z-10"><svg class="ic"><use href="#i-share-nodes"/></svg><span class="text-[10px] font-semibold" data-i18n="share">Share</span></button>
+    <button id="dock-now-btn" class="flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-full text-zinc-300 active:scale-90 transition relative z-10"><svg class="ic"><use href="#r-clock"/></svg><span class="text-[10px] font-semibold" data-i18n="nowTitle">Now</span></button>
     <button id="dock-links-btn" class="flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-full text-zinc-300 active:scale-90 transition relative z-10"><svg class="ic"><use href="#i-link"/></svg><span class="text-[10px] font-semibold" data-i18n="linksNav">Links</span></button>
     <button id="dock-notify-btn" class="flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-full text-zinc-300 active:scale-90 transition relative z-10"><svg class="ic"><use href="#i-bell"/></svg><span class="text-[10px] font-semibold" data-i18n="notify">Alerts</span></button>
   </div>
@@ -185,10 +195,8 @@
         <div class="wall-grid" id="wall-grid"></div></div>
       <div><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="arFont">Arabic font</p>
         <div class="seg glass rounded-full p-1" id="font-seg"><button data-v="plex">IBM Plex</button><button data-v="alt">Cairo</button></div></div>
-      <div><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="reminderDefault">Default reminder time</p>
-        <div class="seg glass rounded-full p-1" id="mins-seg"><button data-v="5">5m</button><button data-v="10">10m</button><button data-v="15">15m</button><button data-v="30">30m</button></div></div>
-      <button id="settings-test-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200" data-i18n="testNotif">Send a test notification</button>
-      <p class="text-[10px] text-zinc-500" data-i18n="bgNote">Background alerts depend on your OS/browser — most reliable when the app stays installed. Not supported on iOS Safari.</p>
+      <button id="open-notify-btn" type="button" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><svg class="ic text-[11px]"><use href="#i-bell"/></svg><span data-i18n="openNotify">Notifications &amp; alerts</span></button>
+      <button id="open-now-btn" type="button" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><svg class="ic text-[11px]"><use href="#r-clock"/></svg><span data-i18n="nowOpen">Open the "Now" screen</span></button>
       <button id="share-tools-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><svg class="ic text-[11px]"><use href="#i-share-nodes"/></svg><span data-i18n="shareExport">Share & export</span></button>
       <button id="gpa-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200 flex items-center justify-center gap-2"><svg class="ic text-[11px]"><use href="#i-calculator"/></svg><span data-i18n="gpaCalc">GPA calculator</span></button>
       <p class="text-[10px] text-zinc-500 pt-2 border-t border-white/10" data-i18n="aboutLine">C.S Schedule · Faculty of Computers &amp; AI, May University in Cairo</p>
@@ -287,6 +295,41 @@
         <a id="gate-wa-link" class="gate-wa-link" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg><span data-i18n="gateWaLink">Schedule missing? Message me on WhatsApp</span></a>
       </div>
     </div>
+  </div>
+</div>
+
+<div id="notify-sheet" class="sheet">
+  <div class="sheet-bg" data-close></div>
+  <div class="sheet-panel glass">
+    <div class="flex items-center justify-between mb-4"><h2 class="text-base font-bold text-white" data-i18n="notifTitle">Notifications</h2>
+      <button data-close class="w-8 h-8 rounded-full glass flex items-center justify-center text-zinc-300"><svg class="ic text-xs"><use href="#i-xmark"/></svg></button></div>
+    <div class="space-y-4 text-sm">
+      <div class="glass rounded-xl p-3"><p id="notify-status" class="text-[11px] text-zinc-300 leading-relaxed"></p>
+        <button id="notify-push-btn" type="button" class="mt-2.5 w-full rounded-xl py-2.5 text-xs font-bold btn-acc"></button></div>
+      <div><p class="text-xs font-bold text-zinc-300 mb-1.5" data-i18n="reminderDefault">Default reminder time</p>
+        <div class="seg glass rounded-full p-1" id="mins-seg"><button data-v="5">5m</button><button data-v="10">10m</button><button data-v="15">15m</button><button data-v="30">30m</button></div></div>
+      <div class="tog-row"><span data-i18n="notifClassAll">Remind me before every class</span><button type="button" class="tog" data-k="rem_all" role="switch"></button></div>
+      <div class="tog-row"><span><span data-i18n="notifMorning">Morning summary</span> <input id="morning-time" type="time" class="field time-in" style="margin-inline-start:6px"/></span><button type="button" class="tog" data-k="morning_on" role="switch"></button></div>
+      <div class="tog-row"><span data-i18n="notifExam">Exam reminders (1 day + 2 hours before)</span><button type="button" class="tog" data-k="exam_rem" role="switch"></button></div>
+      <div class="tog-row"><span data-i18n="notifBrief">Daily summary card on the home screen</span><button type="button" class="tog" data-k="brief_card" role="switch"></button></div>
+      <div class="tog-row"><span data-i18n="notifPrayerShow">Show prayer times</span><button type="button" class="tog" data-k="prayer_show" role="switch"></button></div>
+      <div class="tog-row"><span data-i18n="notifPrayerPush">Prayer time alerts</span><button type="button" class="tog" data-k="prayer_push" role="switch"></button></div>
+      <p class="text-[10px] text-zinc-500 leading-relaxed" data-i18n="prayerApprox">Prayer times are calculated for Cairo and can differ by 1-2 minutes from the mosque timetable.</p>
+      <button id="settings-test-btn" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200" data-i18n="testNotif">Send a test notification</button>
+    </div>
+  </div>
+</div>
+
+<div id="now-view" aria-label="Now">
+  <div class="now-inner">
+    <div class="now-top">
+      <div class="flex-1 min-w-0"><div id="now-clock" class="now-clock"></div><div id="now-date" class="now-date"></div></div>
+      <button id="now-help-btn" type="button" aria-label="Add to home screen" class="w-9 h-9 rounded-full glass flex items-center justify-center text-zinc-200 text-xs font-bold shrink-0">?</button>
+      <button id="now-close" type="button" aria-label="Open the full app" class="w-9 h-9 rounded-full glass flex items-center justify-center text-zinc-200 shrink-0"><svg class="ic text-xs"><use href="#i-xmark"/></svg></button>
+    </div>
+    <p id="now-help" class="glass rounded-2xl p-3 text-[11px] text-zinc-300 leading-relaxed mb-3" style="display:none" data-i18n="nowHelp"></p>
+    <div id="now-body"></div>
+    <button id="now-open-app" type="button" class="w-full glass rounded-xl py-2.5 text-xs font-bold text-zinc-200" data-i18n="nowOpenApp">Open the full app</button>
   </div>
 </div>
 

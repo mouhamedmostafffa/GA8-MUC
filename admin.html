@@ -351,6 +351,13 @@
             <p class="cp-lab">Arabic</p><textarea id="st-banner-ar" rows="2" class="field"></textarea>
           </div>
           <div class="glass rounded-2xl p-4">
+            <h3 class="cp-h">Push notifications</h3>
+            <p class="cp-lab">Public key (VAPID) — from <code>npx web-push generate-vapid-keys</code></p>
+            <input id="st-vapid" class="field" dir="ltr" placeholder="B…"/>
+            <p id="st-push-count" class="text-[11px] text-zinc-400 mt-2"></p>
+            <p class="text-[11px] text-zinc-500 mt-1 leading-relaxed">Setup steps are at the top of edge-function-send-push.ts. Until a key is saved here, students only get alerts while the app is open.</p>
+          </div>
+          <div class="glass rounded-2xl p-4">
             <h3 class="cp-h">Backup &amp; restore</h3>
             <p class="text-[11px] text-zinc-500 mb-3 leading-relaxed">Download everything as one JSON file. Restoring puts back schedules, courses, links, announcements, exams and settings. It never deletes anything and never touches accounts.</p>
             <div class="flex flex-wrap gap-2">
@@ -876,6 +883,8 @@ async function loadSettings(){
   $('st-links-en').value = o.links_title_en||''; $('st-links-ar').value = o.links_title_ar||'';
   $('st-banner-on').checked = o.banner_on==='1'; $('st-banner-en').value = o.banner_en||''; $('st-banner-ar').value = o.banner_ar||'';
   $('st-signup').checked = o.signup_open!=='0';
+  $('st-vapid').value = o.vapid_public||'';
+  try{ const r=await sb.from('push_subscriptions').select('id',{count:'exact',head:true}); $('st-push-count').textContent = r.error ? 'Subscribed devices: run the updated schema.sql to see this.' : 'Subscribed devices: '+(r.count||0); }catch(e){}
 }
 $('st-save').addEventListener('click', async ()=>{
   const wa = normDigits($('st-whatsapp').value).replace(/\D/g,'');
@@ -883,7 +892,8 @@ $('st-save').addEventListener('click', async ()=>{
     whatsapp: wa ? (wa.startsWith('0') ? '20'+wa.slice(1) : wa) : '',
     links_title_en: $('st-links-en').value.trim(), links_title_ar: $('st-links-ar').value.trim(),
     banner_on: $('st-banner-on').checked?'1':'0', banner_en: $('st-banner-en').value.trim(), banner_ar: $('st-banner-ar').value.trim(),
-    signup_open: $('st-signup').checked?'1':'0'
+    signup_open: $('st-signup').checked?'1':'0',
+    vapid_public: $('st-vapid').value.trim()
   };
   const rows = Object.entries(vals).map(([key,value])=>({key,value,updated_at:new Date().toISOString()}));
   const r = await sb.from('site_settings').upsert(rows,{onConflict:'key'});
